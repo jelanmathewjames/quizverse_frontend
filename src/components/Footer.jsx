@@ -1,17 +1,33 @@
-import React from "react";
+import collegeLogo from '../assets/images/college-logo.png';
+
 import { BsFacebook, BsInstagram, BsLinkedin, BsTwitterX } from "react-icons/bs";
+
+import React from "react";
+import { Footer } from "react-daisyui";
+
 
 const newDate = new Date();
 const year = newDate.getFullYear();
-const Footer = () => {
+const FooterNew = () => {
   return (
     <>
-      <footer className="relative left-0 bottom-0 h-[10vh] py-5 flex flex-col sm:flex-row items-center  justify-between sm:px-20 text-white bg-gray-800">
-        <section className="text-lg">
-          Copyright {year} | All rights are reserved.
-        </section>
-        <section className="flex justify-center items-center text-2xl text-white gap-5">
-          <a href="#" className="hover:text-blue-400 transition-all ease-in-out duration-500">
+    
+      
+<Footer className="p-10 bg-neutral text-neutral-content" >
+<div>
+<svg width="60" height="60" viewBox="0  0  24  24" xmlns="" fillRule="evenodd" clipRule="evenodd" className="fill-current" style={{backgroundImage: `url(${collegeLogo})`, backgroundSize: 'cover'}}>
+  <path d=""></path>
+</svg>
+  <p>
+    College Of Engineering Adoor
+    <br />
+    Copyright {year} | All rights are reserved.
+  </p>
+</div>
+
+<div>
+  <Footer.Title>Social Media</Footer.Title>
+  <a href="#" className="hover:text-blue-400 transition-all ease-in-out duration-500">
             <BsFacebook />
           </a>
           <a href="#" className="hover:text-blue-400 transition-all ease-in-out duration-500">
@@ -23,10 +39,25 @@ const Footer = () => {
           <a href="#" className="hover:text-blue-400 transition-all ease-in-out duration-500">
             <BsTwitterX />
           </a>
-        </section>
-      </footer>
+</div>
+<div>
+  <Footer.Title>Pages</Footer.Title>
+  <a className="link link-hover">About us</a>
+  <a className="link link-hover">Contact</a>
+  <a className="link link-hover">Jobs</a>
+  <a className="link link-hover">Press kit</a>
+</div>
+<div>
+  <Footer.Title>Legal</Footer.Title>
+  <a className="link link-hover">Terms of use</a>
+  <a className="link link-hover">Privacy policy</a>
+  <a className="link link-hover">Cookie policy</a>
+</div>
+</Footer>
+
     </>
   );
 };
 
-export default Footer;
+export default FooterNew;
+
