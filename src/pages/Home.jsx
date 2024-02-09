@@ -6,8 +6,8 @@ const Home = () => {
   return (
     <HomeLayout>
       <div className="pt-10 flex items-center justify-center gap-10 mx-16 h-[100vh]">
-        <div className="w-1/2 space-y-6">
-          <h1 className="text-5xl font-semibold">
+        <div className=" space-y-6">
+          <h1 className="text-5xl font-semibold text-center">
             Welcome to{" "}
             <span className="text-blue-500 font-bolds"> QuizVerse</span>
           </h1>
@@ -15,8 +15,8 @@ const Home = () => {
             We have large set of question library developed by qualified
             faculties
           </p>
-          <div className="space-x-6">
-            <Link to="/login">
+          <div className="flex flex-row gap-3 justify-center ">
+            <Link to="/signin">
             <button className="btn btn-active btn-primar w-24 btn-primary">Login</button>
             </Link>
             <Link to="/signup">
