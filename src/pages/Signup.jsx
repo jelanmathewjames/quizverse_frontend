@@ -70,7 +70,7 @@ const Signup = () => {
         <form
           onSubmit={onFormSubmit}
           noValidate
-          className="flex flex-col justify-center gap-3 rounded-lg p-10 bg-blue-700  backdrop-blur-md "
+          className="flex flex-col justify-center gap-3 rounded-lg p-10  bg-gray-900 border-2   backdrop-blur-md "
         >
           <h1 className="text-2xl text-center font-bold pb-3">SignUp</h1>
           <div className="flex flex-col gap-1">
