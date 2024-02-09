@@ -16,7 +16,7 @@ const Home = () => {
             faculties
           </p>
           <div className="space-x-6">
-            <Link to="/login">
+            <Link to="/signin">
             <button className="btn btn-active btn-primar w-24 btn-primary">Login</button>
             </Link>
             <Link to="/signup">

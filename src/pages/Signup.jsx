@@ -118,7 +118,7 @@ const Signup = () => {
           <button className="btn btn-outline btn-info">Create account</button>
           <p className="text-center">
             already have an account ?{" "}
-            <Link to="/login" className="cursor-pointer text-accent">
+            <Link to="/signin" className="cursor-pointer text-accent">
               Login
             </Link>
           </p>
