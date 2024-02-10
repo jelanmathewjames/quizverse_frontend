@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { login } from "../redux/slices/authSlice";
+import axiosInstance from "../config/axiosInstance";
+
+
 
 const Signin = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [signinDetails, setSigninDetails] = useState({
-    userName: "",
+    username_or_email: "",
     password: "",
   });
 
@@ -23,19 +23,28 @@ const Signin = () => {
   const onFormSubmit = async (e) => {
     console.log(signinDetails);
     e.preventDefault();
-    if (!signinDetails.userName || !signinDetails.password) {
+    if (!signinDetails.username_or_email || !signinDetails.password) {
       toast.error("Please fill all the details");
       return;
     }
     
-
-    const response = await dispatch(login(signinDetails));
-    console.log(response);
-    if (response?.payload?.success) {
+    try{
+      const response = await axiosInstance.post("/auth/login/", signinDetails);
+      window.localStorage.setItem('access',response.data.access_token);
+      window.localStorage.setItem('refresh',response.data.refresh_token);
       navigate("/dashboard");
+      toast.success(
+        "Successfully Logged In."
+      );
     }
+    catch(e){
+      toast.error(
+        e.response.data.details
+      );
+    }
+  
     setSigninDetails({
-      userName: "",
+      username_or_email: "",
       password: "",
     });
   };
@@ -51,15 +60,15 @@ const Signin = () => {
 
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span    className="label-text text-white font-bold">userName</span>
+              <span    className="label-text text-white font-bold">user name</span>
             </div>
             <input
              onChange={handleUserInputs}
              type="text"
-             placeholder="Enter userName"
-             id="userName"
-             name="userName"
-             value={signinDetails.userName}
+             placeholder="Enter user name"
+             id="username_or_email"
+             name="username_or_email"
+             value={signinDetails.username_or_email}
               className="input input-bordered w-full max-w-xs"
             />
           </label>

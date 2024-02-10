@@ -3,15 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import toast from "react-hot-toast";
 import { isEmail, isValidPassword } from "../helpers/regexMatcher";
-import { useDispatch } from "react-redux";
-import { createAccount } from "../redux/slices/authSlice";
+import axiosInstance from "../config/axiosInstance";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const [signupDetails, setSignupDetails] = useState({
     email: "",
-    userName: "",
+    username: "",
     password: ""
   });
 
@@ -22,18 +21,17 @@ const Signup = () => {
     }));
   };
   const onFormSubmit = async (e) => {
-    console.log(signupDetails);
     e.preventDefault();
     if (
       !signupDetails.email ||
-      !signupDetails.userName ||
+      !signupDetails.username ||
       !signupDetails.password
     ) {
       toast.error("Please fill all the details");
       return;
     }
-    if (signupDetails.userName.length < 5) {
-      toast.error("userName should be at least 5 characters");
+    if (signupDetails.username.length < 5) {
+      toast.error("username should be at least 5 characters");
       return;
     }
     if (!isEmail(signupDetails.email)) {
@@ -41,28 +39,30 @@ const Signup = () => {
       return;
     }
     if (!isValidPassword(signupDetails.password)) {
-      console.log(signupDetails.password);
-      console.log(isValidPassword(signupDetails.password));
       toast.error(
         "Invalid Password,Password should be 6 to 16 character long with atleast a number and special character"
       );
       return;
     }
-    const formData = new FormData();
-    formData.append("userName",  signupDetails.userName);
-    formData.append("email",   signupDetails.email);
-    formData.append("password",  signupDetails.password);
-
-    const response = await dispatch(createAccount(formData));
-    console.log(response);
-    if(response?.payload?.success){
-      navigate("/dashboard");
+   
+    try{
+      const response = await axiosInstance.post("/auth/register/", signupDetails);
+      navigate("/signin");
+      toast.success(
+        "Account created successfully! Please verify your email."
+      );
+    }
+    catch(e){
+      toast.error(
+        e.response.data.details
+      );
     }
     setSignupDetails({
       email: "",
-      userName: "",
+      username: "",
       password: "",
     });
+
   };
   return (
     <HomeLayout>
@@ -88,16 +88,16 @@ const Signup = () => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="userName" className="text-white font-bold">
-              UserName{" "}
+            <label htmlFor="username" className="text-white font-bold">
+              username{" "}
             </label>
             <input
               onChange={handleUserInputs}
               type="text"
-              placeholder="Enter userName"
-              id="userName"
-              name="userName"
-              value={signupDetails.userName} 
+              placeholder="Enter username"
+              id="username"
+              name="username"
+              value={signupDetails.username} 
               className="input input-bordered w-full max-w-xs"
             />
           </div>
