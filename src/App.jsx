@@ -4,6 +4,7 @@ import Signup from "./pages/Signup"
 import Dashboard from "./pages/Dashboard"
 import Signin from "./pages/signin"
 import Resetpassword from "./pages/Resetpassword"
+import NotFound from "./pages/NotFound"
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/signin" element={<Signin/>}> </Route>
       <Route path="/dashboard" element={<Dashboard/>}> </Route>
       <Route path="/resetpassword" element={<Resetpassword/>}> </Route>
+      <Route path="*" element={<NotFound/>}> </Route>
 
     </Routes>
   )
