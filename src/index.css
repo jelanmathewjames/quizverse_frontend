@@ -19,5 +19,9 @@
     -webkit-text-fill-color: transparent;
   }
   
-
+  .navbar {
+    @apply bg-transparent fixed top-0 w-full;
+    @apply z-50;
+    /* background: transparent !important; */
+  }
  
