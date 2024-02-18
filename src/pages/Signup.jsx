@@ -66,15 +66,20 @@ const Signup = () => {
   };
   return (
     <HomeLayout>
-      <div className="flex items-center justify-center h-[100vh] ">
+      <div className="flex items-center justify-center h-[100vh] relative overflow-hidden ">
+      <div className="absolute opacity-40 animate-blob dark:mix-blend-overlay mix-blend-multiply filter blur-xl top-1/2 left-1/3 transform translate-x-1/2 translate-y-1/2 w-80 h-80 bg-yellow-400 rounded-full "></div>
+          <div className="absolute opacity-40 animate-blob animation-delay-2000 dark:mix-blend-overlay mix-blend-multiply filter blur-xl top-1/3 left-1/2 transform translate-x-1/2 translate-y-1/2 w-72 h-72 bg-blue-500 rounded-full "></div>
+          <div className="absolute opacity-40 animate-blob animation-delay-4000 dark:mix-blend-overlay mix-blend-multiply filter blur-xl top-1/3 left-1/6 sm:left-1/3 transform translate-x-1/2 translate-y-1/2 w-72 h-72 bg-pink-400 rounded-full "></div> 
+
         <form
           onSubmit={onFormSubmit}
           noValidate
-          className="flex flex-col justify-center gap-3 rounded-lg p-10  bg-gray-900 border-2   backdrop-blur-md "
+          className="flex flex-col justify-center gap-3 rounded-lg p-10   shadow-2xl 
+          w-[80vw] sm:w-[410px]  border-2   backdrop-blur-md "
         >
           <h1 className="text-2xl text-center font-bold pb-3">SignUp</h1>
           <div className="flex flex-col gap-1">
-            <label htmlFor="email" className="text-white font-bold">
+            <label htmlFor="email" className=" font-bold">
               Email{" "}
             </label>
             <input
@@ -88,7 +93,7 @@ const Signup = () => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="username" className="text-white font-bold">
+            <label htmlFor="username" className=" font-bold">
               username{" "}
             </label>
             <input
@@ -102,7 +107,7 @@ const Signup = () => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="password" className="text-white font-bold">
+            <label htmlFor="password" className=" font-bold">
               Password{" "}
             </label>
             <input
@@ -115,10 +120,10 @@ const Signup = () => {
               className="input input-bordered w-full max-w-xs"
             />
           </div>
-          <button className="btn btn-outline btn-info">Create account</button>
+          <button className="btn btn-outline btn-active">Create account</button>
           <p className="text-center">
             already have an account ?{" "}
-            <Link to="/signin" className="cursor-pointer text-accent">
+            <Link to="/signin" className="cursor-pointer ">
               Login
             </Link>
           </p>
