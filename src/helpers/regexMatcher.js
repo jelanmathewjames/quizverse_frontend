@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export function isEmail(string){
     const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/
     return string.match(emailRegex);

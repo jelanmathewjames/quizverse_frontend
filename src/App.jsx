@@ -1,10 +1,11 @@
 import { Route, Routes } from "react-router-dom"
-import Home from "./pages/Home"
-import Signup from "./pages/Signup"
+
 import Dashboard from "./pages/Dashboard"
-import Signin from "./pages/Signin"
-import Resetpassword from "./pages/Resetpassword"
+import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
+import Resetpassword from "./pages/Resetpassword"
+import Signin from "./pages/Signin"
+import Signup from "./pages/Signup"
 
 
 function App() {
