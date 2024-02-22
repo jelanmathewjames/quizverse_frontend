@@ -1,11 +1,3 @@
-import collegeLogo from '../assets/images/college-logo.png';
-
-import { BsFacebook, BsInstagram, BsLinkedin, BsTwitterX } from "react-icons/bs";
-
-import React from "react";
-import { Footer } from "react-daisyui";
-
-
 const newDate = new Date();
 const year = newDate.getFullYear();
 const FooterNew = () => {
@@ -15,7 +7,7 @@ const FooterNew = () => {
   <nav className="grid grid-flow-col gap-4">
     <a href='#'  className="link no-underline ">About us</a>
     <a href='#' className="link no-underline ">Contact</a>
-    <a href='https://cea.ac.in/' target='_blank' className="link no-underline ">cea</a>
+    <a href='https://cea.ac.in/' target='_blank' className="link no-underline " rel="noreferrer">cea</a>
   </nav> 
   <nav>
     <div className="grid grid-flow-col gap-4">
