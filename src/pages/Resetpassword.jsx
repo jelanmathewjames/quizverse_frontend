@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import HomeLayout from "../layouts/HomeLayout";
-import toast from "react-hot-toast";
+
 import axiosInstance from "../config/axiosInstance";
+import HomeLayout from "../layouts/HomeLayout";
 
 
 const Resetpassword= () => {

@@ -1,6 +1,7 @@
-import React from "react";
-import HomeLayout from "../layouts/HomeLayout";
+
 import { Link } from "react-router-dom";
+
+import HomeLayout from "../layouts/HomeLayout";
 
 const Home = () => {
   return (

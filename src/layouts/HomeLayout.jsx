@@ -1,7 +1,7 @@
-import FooterNew from "../components/Footer";
-
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import FooterNew from "../components/Footer";
 
 const HomeLayout = ({ children }) => {
   const [theme, setTheme] = useState(
