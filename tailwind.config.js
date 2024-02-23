@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,6 +7,7 @@ module.exports = {
     'node_modules/daisyui/dist/**/*.js',
     'node_modules/react-daisyui/dist/**/*.js',
   ],
+  darkMode : 'class',
   theme: {
     extend: {
       animation:{

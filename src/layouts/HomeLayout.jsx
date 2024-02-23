@@ -7,6 +7,8 @@ const HomeLayout = ({ children }) => {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
+  const [toggleChecked, setToggleChecked] = useState(true);
+  const handleToggleCheck = (e) => setToggleChecked(e.target.checked);
   const handleToggle = (e) => {
     if (e.target.checked) {
       setTheme("dark");
@@ -16,8 +18,11 @@ const HomeLayout = ({ children }) => {
   };
   useEffect(() => {
     localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
-    document.querySelector("html").setAttribute("data-theme", localTheme);
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    html.classList.remove("light", "dark");
+    html.classList.add(theme);
+    setToggleChecked(theme === "dark");
   }, [theme]);
 
   return (
@@ -59,7 +64,7 @@ const HomeLayout = ({ children }) => {
                   className="swap swap-rotate   justify-start ml-2 pt-1"
                   onClick={handleToggle}
                 >
-                  <input type="checkbox" id="mode-change" />
+                  <input type="checkbox" id="mode-change" checked={toggleChecked} onChange={handleToggleCheck}/>
                   <svg
                     className="swap-on fill-current w-7 h-7"
                     xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +105,7 @@ const HomeLayout = ({ children }) => {
               className="swap swap-rotate  justify-start ml-4 pt-2"
               onClick={handleToggle}
             >
-              <input type="checkbox" id="mode-change" />
+              <input type="checkbox" id="mode-change" checked={toggleChecked} onChange={handleToggleCheck} />
               <svg
                 className="swap-on fill-current w-7 h-7 "
                 xmlns="http://www.w3.org/2000/svg"
