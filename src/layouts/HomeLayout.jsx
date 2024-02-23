@@ -105,7 +105,7 @@ const HomeLayout = ({ children }) => {
               className="swap swap-rotate  justify-start ml-4 pt-2"
               onClick={handleToggle}
             >
-              <input type="checkbox" id="mode-change" checked={toggleChecked} onChange={handleToggleCheck} />
+              <input type="checkbox" id="mode-change-in-side" checked={toggleChecked} onChange={handleToggleCheck} />
               <svg
                 className="swap-on fill-current w-7 h-7 "
                 xmlns="http://www.w3.org/2000/svg"
