@@ -1,13 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext,useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 import axiosInstance from "../config/axiosInstance";
+import { AuthContext } from "../context/AuthProvider";
 import HomeLayout from "../layouts/HomeLayout";
 
 
 
 const Signin = () => {
+  const {setAuth} = useContext(AuthContext);
   const navigate = useNavigate();
   const [loading,setLoading] = useState(false);
   const [signinDetails, setSigninDetails] = useState({
@@ -35,6 +37,16 @@ const Signin = () => {
     try{
       setLoading(true);
       const response = await axiosInstance.post("/auth/login/", signinDetails);
+      /* 
+      //get assigned role numbers ( user ? admin ) from the response 
+      const roles = response?.data?.roles;
+      */
+      setAuth(
+        {
+          acess_token: response?.data?.access_token,
+          refresh_token: response?.data?.refresh_token,
+        }
+      );
       window.localStorage.setItem('access',response.data.access_token);
       window.localStorage.setItem('refresh',response.data.refresh_token);
       navigate("/dashboard");
