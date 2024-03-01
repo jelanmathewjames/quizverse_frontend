@@ -1,0 +1,15 @@
+[
+    {
+      "name": "adminItem1",
+      "link": "/item1"
+    },
+    {
+      "name": "adminItem2",
+      "link": "/item2"
+    },
+    {
+        "name": "adminItem2",
+        "link": "/item2"
+    }
+
+]
