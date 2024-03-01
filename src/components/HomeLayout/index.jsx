@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import FooterNew from "../components/Footer";
+import FooterNew from "../Footer";
 
 const HomeLayout = ({ children }) => {
   const [theme, setTheme] = useState(
@@ -136,5 +137,7 @@ const HomeLayout = ({ children }) => {
     </>
   );
 };
-
+HomeLayout.propTypes = {
+    children: PropTypes.node.isRequired,
+}
 export default HomeLayout;
