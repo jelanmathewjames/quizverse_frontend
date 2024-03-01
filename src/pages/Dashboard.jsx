@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
-import { AuthContext } from "../context/AuthProvider";
+import useAuth from "../hooks/useAuth";
 
 
 const Dashboard = () => {
-    const {auth} = useContext(AuthContext);
+    const {auth} = useAuth();
     console.log(auth);
     return (
         <div>

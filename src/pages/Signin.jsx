@@ -3,13 +3,13 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 import axiosInstance from "../config/axiosInstance";
-import { AuthContext } from "../context/AuthProvider";
+import useAuth from "../hooks/useAuth";
 import HomeLayout from "../layouts/HomeLayout";
 
 
 
 const Signin = () => {
-  const {setAuth} = useContext(AuthContext);
+  const {setAuth} = useAuth();
   const navigate = useNavigate();
   const [loading,setLoading] = useState(false);
   const [signinDetails, setSigninDetails] = useState({
