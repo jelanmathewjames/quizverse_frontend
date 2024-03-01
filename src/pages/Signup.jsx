@@ -2,9 +2,9 @@ import  { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
+import HomeLayout from "../components/HomeLayout";
 import axiosInstance from "../config/axiosInstance";
 import { isValidEmail, isValidPassword ,isValidUsername} from "../helpers/regexMatcher";
-import HomeLayout from "../layouts/HomeLayout";
 
 const Signup = () => {
   const navigate = useNavigate();
