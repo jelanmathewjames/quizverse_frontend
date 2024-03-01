@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 
 import Dashboard from "./pages/Dashboard"
+import FacultyDashboard from "./pages/Dashboard/Faculty"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import Resetpassword from "./pages/Resetpassword"
@@ -17,6 +18,7 @@ function App() {
       <Route path="/signin" element={<Signin/>}> </Route>
       <Route path="/dashboard" element={<Dashboard/>}> </Route>
       <Route path="/resetpassword" element={<Resetpassword/>}> </Route>
+      <Route path="/facultydashboard" element={<FacultyDashboard/>}> </Route>
       <Route path="*" element={<NotFound/>}> </Route>
 
     </Routes>
