@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound"
 import Resetpassword from "./pages/Resetpassword"
 import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"
+import Unauthorized from "./pages/Unauthorized"
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
       <Route path="/signin" element={<Signin/>}> </Route>
       <Route path="/dashboard" element={<Dashboard/>}> </Route>
       <Route path="/resetpassword" element={<Resetpassword/>}> </Route>
-      <Route path="/facultydashboard" element={<FacultyDashboard/>}> </Route>
+      <Route path="/facultydashboard/*" element={<FacultyDashboard/>}> </Route>
+      <Route path="/unauthorized" element={<Unauthorized/>}></Route>
       <Route path="*" element={<NotFound/>}> </Route>
 
     </Routes>
