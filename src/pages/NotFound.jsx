@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
+import useTheme from "../hooks/useTheme";
+
 const NotFound = () => {
   const navigate = useNavigate();
+  useTheme();
 
   const goBack = () => {
     navigate(-1);
@@ -11,11 +14,13 @@ const NotFound = () => {
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
         <div className="max-w-md">
-          <h1 className="text-5xl font-bold">  Page not found</h1>
+          <h1 className="text-5xl font-bold"> Page not found</h1>
           <p className="py-6">
-          Sorry, we couldn&rsquo;t find the page you&rsquo;re looking for.
+            Sorry, we couldn&rsquo;t find the page you&rsquo;re looking for.
           </p>
-          <button className="btn btn-outline btn-active" onClick={goBack}>Go Back</button>
+          <button className="btn btn-outline btn-active" onClick={goBack}>
+            Go Back
+          </button>
         </div>
       </div>
     </div>
