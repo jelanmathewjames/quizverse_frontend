@@ -135,7 +135,7 @@ const Signin = () => {
           </label>
           <button className="btn btn-outline btn-active">Login</button>
           <p className="text-center">
-            Donot have an account ?{" "}
+            Don&rsquo;t have an account ?{" "}
             <Link to="/signup" className="cursor-pointer ">
               Signup
             </Link>
