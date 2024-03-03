@@ -58,19 +58,20 @@ const DashboardLayout = ({ navitems, children, title }) => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-10  rounded-box w-52"
+                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100  rounded-box w-52"
                 >
                   <li>
-                    <a className="justify-between">
+                    <button onClick={()=> setOption(3) } className="justify-between">
                       Profile
                       <span className="badge">New</span>
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a>Settings</a>
+                    <button onClick={()=> setOption(5) }>Settings</button>
                   </li>
                   <li>
-                    <a>Logout</a>
+                    {/* add a logout functionality */}
+                    <button >Logout</button>
                   </li>
                 </ul>
               </div>
