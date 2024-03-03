@@ -37,17 +37,13 @@ const Signin = () => {
     try {
       setLoading(true);
       const response = await axiosInstance.post("/auth/login/", signinDetails);
-      /* 
-      //get assigned role numbers ( user ? admin ) from the response 
-      const roles = response?.data?.roles;
-      */
+     
       let userData = jwtDecode(response.data.access_token);
       setAuth(
         {
           user: userData?.user,
           role: userData?.role,
           acess_token: response?.data?.access_token,
-          refresh_token: response?.data?.refresh_token,
         }
       );
       navigate("/dashboard");
@@ -61,9 +57,6 @@ const Signin = () => {
       );
     } finally {
       setLoading(false);
-      setSigninDetails({
-        password: "",
-      });
     }
   };
   return (
