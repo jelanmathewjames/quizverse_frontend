@@ -1,14 +1,18 @@
 [
     {
-      "name": "adminItem1",
+      "name": "Start Quiz",
       "link": "/item1"
     },
     {
-      "name": "adminItem2",
+      "name": "Create Qbank",
       "link": "/item2"
     },
     {
-        "name": "adminItem2",
+        "name": "Recent Quiz",
+        "link": "/item2"
+    },
+    {
+        "name": "Profile",
         "link": "/item2"
     }
 

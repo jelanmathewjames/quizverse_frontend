@@ -1,19 +1,19 @@
 import DashboardLayout from '../../../components/DashboardLayout';
-import items from './facultyNavItems.json';
+import CreateQbank from './CreateQbank';
+import items from './facultyNavItems.json'; 
+import Profile from './Profile';
+import QuizHistory from './QuizHistory';
+import StartQuiz from './StartQuiz';
 
 const FacultyDashboard = () => {
   return (
     <DashboardLayout navitems={items} title="faculty">
-        <>
-        
-        </>
-      {/* Other specific content for the faculty dashboard */}
-      <div>
-        <h1>Welcome to the Faculty Dashboard</h1>
-        {/* Other components or features specific to the Faculty Dashboard */}
-      </div>
+        <StartQuiz/>
+        <CreateQbank/>
+        <QuizHistory/>
+        <Profile/>
     </DashboardLayout>
   );
 };
 
-export default FacultyDashboard;
+export default FacultyDashboard;           

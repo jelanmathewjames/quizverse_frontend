@@ -1,0 +1,27 @@
+ [
+        {
+            "id": 1,
+            "code": "CS301L",
+            "name": "Data Structures Lab"
+        },
+        {
+            "id": 2,
+            "code": "CS302L",
+            "name": "Database Management Systems Lab"
+        },
+        {
+            "id": 3,
+            "code": "CS303L",
+            "name": "Operating Systems Lab"
+        },
+        {
+            "id": 4,
+            "code": "CS304L",
+            "name": "Computer Networks Lab"
+        },
+        {
+            "id": 5,
+            "code": "CS305L",
+            "name": "Software Engineering Lab"
+        }
+    ]

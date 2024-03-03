@@ -1,0 +1,65 @@
+[
+        {
+            "subjectName": "Physics Lab",
+            "subjectId": 1,
+            "questionBanks": [
+                {
+                    "id": 1,
+                    "name": "Qbank1",
+                    "createdDate": "2022-01-01"
+                },
+                {
+                    "id": 2,
+                    "name": "Qbank2",
+                    "createdDate": "2022-01-15"
+                },
+                {
+                    "id": 3,
+                    "name": "Qbank3",
+                    "createdDate": "2022-02-01"
+                }
+            ]
+        },
+        {
+            "subjectName": "Chemistry Lab",
+            "subjectId": 2,
+            "questionBanks": [
+                {
+                    "id": 1,
+                    "name": "Qbank1",
+                    "createdDate": "2022-01-01"
+                },
+                {
+                    "id": 2,
+                    "name": "Qbank2",
+                    "createdDate": "2022-01-15"
+                },
+                {
+                    "id": 3,
+                    "name": "Qbank3",
+                    "createdDate": "2022-02-01"
+                }
+            ]
+        },
+        {
+            "subjectName": "Biology Lab",
+            "subjectId": 3,
+            "questionBanks": [
+                {
+                    "id": 1,
+                    "name": "Qbank1",
+                    "createdDate": "2022-01-01"
+                },
+                {
+                    "id": 2,
+                    "name": "Qbank2",
+                    "createdDate": "2022-01-15"
+                },
+                {
+                    "id": 3,
+                    "name": "Qbank3",
+                    "createdDate": "2022-02-01"
+                }
+            ]
+        }
+    ]
