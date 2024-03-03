@@ -6,11 +6,13 @@ const CheckAuth = ({ allowedRoles }) => {
     const location = useLocation();
 
     return (
-        auth?.roles?.find(role => allowedRoles?.includes(role))
-            ? <Outlet />
-            : auth?.user
-                ? <Navigate to="/unauthorized" state={{ from: location }} replace />
-                : <Navigate to="/login" state={{ from: location }} replace />
+        auth?.user
+            ? allowedRoles?.length > 0
+                ? auth?.roles?.find(role => allowedRoles.includes(role))
+                    ? <Outlet />
+                    : <Navigate to="/unauthorized" state={{ from: location }} replace />
+                : <Outlet />
+            : <Navigate to="/login" state={{ from: location }} replace />
     );
 }
 

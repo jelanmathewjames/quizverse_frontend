@@ -1,6 +1,7 @@
-import { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 import HomeLayout from "../components/HomeLayout";
 import axiosInstance from "../config/axiosInstance";
@@ -40,14 +41,15 @@ const Signin = () => {
       //get assigned role numbers ( user ? admin ) from the response 
       const roles = response?.data?.roles;
       */
+      let userData = jwtDecode(response.data.access_token);
       setAuth(
         {
+          user: userData?.user,
+          role: userData?.role,
           acess_token: response?.data?.access_token,
           refresh_token: response?.data?.refresh_token,
         }
       );
-      window.localStorage.setItem('access', response.data.access_token);
-      window.localStorage.setItem('refresh', response.data.refresh_token);
       navigate("/dashboard");
       toast.success(
         "Successfully Logged In."
@@ -59,12 +61,10 @@ const Signin = () => {
       );
     } finally {
       setLoading(false);
+      setSigninDetails({
+        password: "",
+      });
     }
-
-    setSigninDetails({
-      username_or_email: "",
-      password: "",
-    });
   };
   return (
     <HomeLayout>
