@@ -12,7 +12,7 @@ const CheckAuth = ({ allowedRoles }) => {
                     ? <Outlet />
                     : <Navigate to="/unauthorized" state={{ from: location }} replace />
                 : <Outlet />
-            : <Navigate to="/login" state={{ from: location }} replace />
+            : <Navigate to="/signin" state={{ from: location }} replace />
     );
 }
 
