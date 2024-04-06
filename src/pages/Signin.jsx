@@ -1,7 +1,7 @@
-import toast from "react-hot-toast";
-import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../components/HomeLayout";
 import axiosInstance from "../config/axiosInstance";
@@ -61,11 +61,7 @@ const Signin = () => {
   };
   return (
     <HomeLayout>
-      {
-        loading && <div className="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-20 z-50 flex items-center justify-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#483eda]"></div>
-        </div>
-      }
+   
       <div className="flex items-center  justify-center h-[100vh] relative overflow-hidden ">
         <div className="absolute opacity-40 animate-blob dark:mix-blend-overlay mix-blend-multiply filter blur-xl top-1/2 left-1/3 transform translate-x-1/2 translate-y-1/2 w-80 h-80 bg-yellow-400 rounded-full "></div>
         <div className="absolute opacity-40 animate-blob animation-delay-2000 dark:mix-blend-overlay mix-blend-multiply filter blur-xl top-1/3 left-1/2 transform translate-x-1/2 translate-y-1/2 w-72 h-72 bg-blue-500 rounded-full "></div>
@@ -126,7 +122,13 @@ const Signin = () => {
               </span>
             </div>
           </label>
-          <button className="btn btn-outline btn-active">Login</button>
+          <button className="btn btn-outline btn-active">
+            {
+              loading?
+              <div className="animate-spin rounded-full  w-5 h-5 border-t-2 border-b-3 dark:border-[black] border-[#ffffff]"></div>
+              :"Login"
+            }
+          </button>
           <p className="text-center">
             Don&rsquo;t have an account ?{" "}
             <Link to="/signup" className="cursor-pointer ">
