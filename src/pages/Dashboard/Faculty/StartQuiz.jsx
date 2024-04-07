@@ -182,9 +182,11 @@ const StartQuiz = () => {
   }, []);
   return (
     <>
-      <div className="flex gap-2 flex-wrap justify-center items-center pt-12">
+    <div className="flex justify-center m-5">
+    <div className="flex justify-center bg-base-100 w-full p-5 pb-10 rounded-lg shadow-xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 m-auto   pt-12">
         <select
-          className="select select-bordered w-full max-w-xs"
+          className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
           value={selectedDepartment}
           onChange={handleDepartmentChange}
         >
@@ -198,7 +200,7 @@ const StartQuiz = () => {
           ))}
         </select>
         <select
-          className="select select-bordered w-full max-w-xs"
+          className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px]  max-w-xs"
           value={selectedSemester}
           onChange={handleSemesterChange}
         >
@@ -212,7 +214,7 @@ const StartQuiz = () => {
           ))}
         </select>
         <select
-          className="select select-bordered w-full max-w-xs"
+          className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
           value={selectedSubject}
           onChange={handleSubjectChange}
         >
@@ -229,7 +231,7 @@ const StartQuiz = () => {
             ))}
         </select>
         <select
-          className="select select-bordered w-full max-w-xs"
+          className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
           value={selectedQuestionBank}
           onChange={handleQuestionBankChange}
         >
@@ -246,7 +248,7 @@ const StartQuiz = () => {
               ))}
         </select>
         <select
-          className="select select-bordered w-full max-w-xs"
+          className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
           onClick={(e) => {
             if (e.target.value === "custom") {
               setShowPopup(true);
@@ -312,6 +314,14 @@ const StartQuiz = () => {
           )}
         </div>
       </div>
+
+
+
+      </div>
+      
+
+    </div>
+      
 
       <div className="flex justify-center p-">
         <button className="btn btn-outline btn-active mt-3" onClick={startQz}>
