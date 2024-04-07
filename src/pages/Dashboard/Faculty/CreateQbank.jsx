@@ -1,80 +1,207 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
-import subjectsData from './subjects.json';
+import departmentsData from "../Faculty/dummy_data/departments.json";
+import moduleData from "../Faculty/dummy_data/module.json";
+import semestersData from "../Faculty/dummy_data/semesters.json";
+import subjectsData from "../Faculty/dummy_data/subjects.json";
+import ModuleQuestionReader from "./moduleQuestionReader";
 
+const CreateQubank = () => {
+  const [semesters, setSemesters] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [subjects, setSubjects] = useState("");
 
-const CreateQbank = () => {
-    const [subjects, setSubjects] = useState('');
-    const [selectedSubject, setSelectedSubject] = useState('');
-    const [questionBanks, setQuestionBanks] = useState([]);
-    const [numQuestions, setNumQuestions] = useState(0);
-    const [questions, setQuestions] = useState([]);
+  const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [selectedSemester, setSelectedSemester] = useState("");
+  const [selectedSubject, setSelectedSubject] = useState("");
+  const [questionData, setQuestionData] = useState(null);
+  const [questionType, setQuestionType] = useState("mcq");
+  const modules = moduleData;
+  console.log(modules);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setSubjects(subjectsData);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
-    }, []);
+  const [loading, setLoading] = useState(false);
 
-    const handleSubjectChange = (event) => {
-        setSelectedSubject(event.target.value);
-    };
+  // fetch data from the server using dummy data
+  useEffect(() => {
+    setSemesters(semestersData);
+    setDepartments(departmentsData);
+    setSubjects(subjectsData);
+  }, []);
+  const handleQuestionData = (data) => {
+    setQuestionData(data);
+  };
+  //fetch data from server by api calls
+  //-------------------------------------------
+  //  useEffect(() => {
+  //     const fetchDepartments = async () => {
+  //       try {
+  //         const response = await axios.get('/api/departments');
+  //         setDepartments(response.data);
+  //       } catch (error) {
+  //         console.error('Failed to fetch departments:', error);
+  //       }
+  //     };
+  //     fetchDepartments();
+  //  }, []);
+  //
+  // useEffect(() => {
+  //     const fetchSubjects = async () => {
+  //         try {
+  //             const response = await axios.get('/api/subjects', {
+  //                 params: {
+  //                     semester: selectedSemester,
+  //                     department: selectedDepartment
+  //                 }
+  //             });
+  //             setSubjects(response.data);
+  //         } catch (error) {
+  //             console.error('Failed to fetch subjects:', error);
+  //         }
+  //     };
+  //     fetchSubjects();
+  // }, [selectedSemester, selectedDepartment]);
+  //   useEffect(() => {
+  //     const fetchModules = async () => {
+  //         try {
+  //             const response = await axios.get('/api/modules', {
+  //                 params: {
+  //                     semester: selectedSemester,
+  //                     department: selectedDepartment,
+  //                     subject: selectedSubject
+  //                 }
+  //             });
+  //             // Process the response and update the state with the fetched modules
+  //         } catch (error) {
+  //             console.error('Failed to fetch modules:', error);
+  //         }
+  //     };
+  //     fetchModules();
+  // }, [selectedSemester, selectedDepartment, selectedSubject]);
 
-    const handleNumQuestionsChange = (event) => {
-        setNumQuestions(parseInt(event.target.value));
-    };
+  const handleDepartmentChange = (event) => {
+    setSelectedDepartment(event.target.value);
+  };
 
-    const handleQuestionChange = (event, index) => {
-        const updatedQuestions = [...questions];
-        updatedQuestions[index] = event.target.value;
-        setQuestions(updatedQuestions);
-    };
+  const handleSemesterChange = (event) => {
+    setSelectedSemester(event.target.value);
+  };
 
-    const handleOptionChange = (event, questionIndex, optionIndex) => {
-        const updatedQuestions = [...questions];
-        const question = updatedQuestions[questionIndex];
-        if (!question.options) {
-            question.options = [];
-        }
-        question.options[optionIndex] = event.target.value;
-        setQuestions(updatedQuestions);
-    };
+  const handleSubjectChange = (event) => {
+    setSelectedSubject(event.target.value);
+  };
 
-    const handleSave = () => {
-        const questionBank = {
-            subject: selectedSubject,
-            questions: questions.slice(0, numQuestions)
-        };
-        // TODO: Post questionBank to API
-        console.log(questionBank);
-    };
+  const startQz = async () => {
+    console.log(selectedDepartment, selectedSemester, selectedSubject);
+    if (!selectedDepartment || !selectedSemester || !selectedSubject) {
+      toast.error("Please fill all the details");
+      return;
+    }
+    try {
+      setLoading(true);
+      const response = await axios.post("/api/startQuiz", {
+        departmentId: selectedDepartment,
+        semesterId: selectedSemester,
+      });
+      toast.success("Quiz started successfully");
+      console.log(response.data);
+    } catch (error) {
+      toast.error("Failed to start quiz");
+      console.error("Failed to start quiz", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-        <div className="p-4">
-            <h1 className="text-2xl font-bold mb-4">Create Question Bank</h1>
-            <select className="select select-bordered w-full max-w-xs mb-4" value={selectedSubject} onChange={handleSubjectChange}>
-                <option disabled selected value="">Select Subject</option>
-                {subjects && subjects.map(subject => (
-                    <option key={subject.id} value={subject.id}>{subject.name}</option>
+  return (
+    <>
+      <div className="flex justify-center m-5">
+        <div className="flex justify-center bg-base-100 w-full p-5 pb-10 rounded-lg shadow-xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 m-auto   pt-12">
+            <select
+              className="select select-bordered w-[400px] sm:w-[300px] md:w-[500px] max-w-xs"
+              value={selectedDepartment}
+              onChange={handleDepartmentChange}
+            >
+              <option disabled value="">
+                Select Department
+              </option>
+              {departments.map((department) => (
+                <option key={department.id} value={department.id}>
+                  {department.name}
+                </option>
+              ))}
+            </select>
+            <select
+              className="select select-bordered w-[400px] sm:w-[300px] md:w-[500px]  max-w-xs"
+              value={selectedSemester}
+              onChange={handleSemesterChange}
+            >
+              <option disabled value="">
+                Select Semester
+              </option>
+              {semesters.map((semester) => (
+                <option key={semester.id} value={semester.name}>
+                  {semester.name}
+                </option>
+              ))}
+            </select>
+            <select
+              className="select select-bordered w-[400px] sm:w-[300px] md:w-[500px] max-w-xs"
+              value={selectedSubject}
+              onChange={handleSubjectChange}
+            >
+              <option disabled value="">
+                Select Subject
+              </option>
+              {selectedSemester &&
+                selectedDepartment &&
+                subjects &&
+                subjects.map((subject) => (
+                  <option key={subject.id} value={subject.id}>
+                    {subject.name}
+                  </option>
                 ))}
             </select>
-            <input type="number" className="input input-bordered w-full max-w-xs mb-4" value={numQuestions} onChange={handleNumQuestionsChange} />
-            {Array.from({ length: numQuestions }, (_, index) => (
-                <div key={index} className="mb-4">
-                    <input type="text" className="input input-bordered w-full mb-2" value={questions[index] || ''} onChange={(event) => handleQuestionChange(event, index)} />
-                    {Array.from({ length: 4 }, (_, optionIndex) => (
-                        <input key={optionIndex} type="text" className="input input-bordered w-full mb-2" value={(questions[index]?.options || [])[optionIndex] || ''} onChange={(event) => handleOptionChange(event, index, optionIndex)} />
-                    ))}
-                </div>
-            ))}
-            <button className="btn btn-primary" onClick={handleSave}>Save</button>
+          </div>
         </div>
-    );
-}
+      </div>
+      {selectedDepartment && selectedSemester && selectedSubject && (
+        <div>
+            {
+            console.log("inside the modules")
 
-export default CreateQbank;
+            }
+          {modules
+            .filter((module) => module.course_id == selectedSubject)
+            .map((module, index) => (
+              <ModuleQuestionReader
+                key={index} // It's important to provide a unique key for each child in a list
+                moduleName={module.module_name}
+                moduleNumber={module.module_num}
+                moduleId={module.module_id}
+                onQuestionData={handleQuestionData}
+                questionType={questionType}
+              />
+            ))
+            
+            }
+
+          {/* <div className="flex justify-center p-">
+                <button className="btn btn-outline btn-active mt-3" onClick={startQz}>
+                  {loading ? (
+                    <div className="animate-spin rounded-full  w-5 h-5 border-t-2 border-b-3 dark:border-[black] border-[#ffffff]"></div>
+                  ) : (
+                    "Create QuestionBank"
+                  )}
+                </button>
+        
+              </div> */}
+        </div>
+      )}
+    </>
+  );
+};
+
+export default CreateQubank;
