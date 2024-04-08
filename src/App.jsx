@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 
+import CheckAuth from "./components/CheckAuth"
 import Dashboard from "./pages/Dashboard"
 import FacultyDashboard from "./pages/Dashboard/Faculty"
 import Home from "./pages/Home"
@@ -8,7 +9,6 @@ import Resetpassword from "./pages/Resetpassword"
 import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"
 import Unauthorized from "./pages/Unauthorized"
-import CheckAuth from "./components/CheckAuth"
 
 
 function App() {
