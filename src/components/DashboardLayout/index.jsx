@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Children, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import { MdWavingHand } from "react-icons/md";
 import { PiChalkboardTeacherDuotone } from "react-icons/pi";
 
@@ -7,9 +7,30 @@ import ThemeToggle from "../ThemeToggle";
 
 const DashboardLayout = ({ navitems, children, title }) => {
   const [option, setOption] = useState(0);
+
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScrollTop > lastScrollTop) {
+        setIsNavVisible(false);
+      } else {
+        setIsNavVisible(true);
+      }
+      setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+ }, [lastScrollTop]);
+
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-10  bg-base-100 shadow-lg  ">
+      <nav className={`fixed top-0 left-0 right-0 z-10 bg-base-100 shadow-lg transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className=" flex items-center justify-between py-4 px-6  ">
           <div className="flex items-center left-0 ">
             <button
