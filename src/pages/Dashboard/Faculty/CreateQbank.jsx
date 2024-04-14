@@ -16,9 +16,9 @@ const CreateQubank = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedSemester, setSelectedSemester] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
-  const [questionData, setQuestionData] = useState(null);
-  const [questionType, setQuestionType] = useState("mcq");
-  const modules = moduleData;
+  const [questionData, setQuestionData] = useState([]);
+ 
+  const modules = moduleData.filter((module) => module.course_id == selectedSubject);
   console.log(modules);
 
   const [loading, setLoading] = useState(false);
@@ -29,9 +29,17 @@ const CreateQubank = () => {
     setDepartments(departmentsData);
     setSubjects(subjectsData);
   }, []);
-  const handleQuestionData = (data) => {
-    setQuestionData(data);
-  };
+  const handleQuestionData = (moduleId, data) => {
+    setQuestionData(prevData => ({
+       ...prevData,
+       [moduleId]: {
+         ...prevData[moduleId],
+         ...data
+       }
+  }));
+    console.log(questionData);
+   };
+   
   //fetch data from server by api calls
   //-------------------------------------------
   //  useEffect(() => {
@@ -92,23 +100,26 @@ const CreateQubank = () => {
     setSelectedSubject(event.target.value);
   };
 
-  const startQz = async () => {
-    console.log(selectedDepartment, selectedSemester, selectedSubject);
-    if (!selectedDepartment || !selectedSemester || !selectedSubject) {
-      toast.error("Please fill all the details");
+  const CreateQBank = async () => {
+    
+    if (Object.keys(questionData).length !== modules.length) 
+    { toast.error("Please complete all module questions"); 
       return;
-    }
+   }
     try {
       setLoading(true);
-      const response = await axios.post("/api/startQuiz", {
-        departmentId: selectedDepartment,
-        semesterId: selectedSemester,
-      });
-      toast.success("Quiz started successfully");
-      console.log(response.data);
+        const response = await axios.post("/api/createQbank", {
+          department: selectedDepartment,
+          semester: selectedSemester,
+          subject: selectedSubject,
+          questions: questionData,
+        });
+        toast.success("QuizBank created successfully");
+        console.log(response.data);
+    
+      
     } catch (error) {
-      toast.error("Failed to start quiz");
-      console.error("Failed to start quiz", error);
+      toast.error("Failed to Create QuizBank");
     } finally {
       setLoading(false);
     }
@@ -181,23 +192,26 @@ const CreateQubank = () => {
                 moduleName={module.module_name}
                 moduleNumber={module.module_num}
                 moduleId={module.module_id}
-                onQuestionData={handleQuestionData}
-                questionType={questionType}
+                onQuestionData={(data) => handleQuestionData(module.module_id, data)}
+                questionType={'mcq'}
               />
             ))
             
             }
-
-          {/* <div className="flex justify-center p-">
-                <button className="btn btn-outline btn-active mt-3" onClick={startQz}>
-                  {loading ? (
-                    <div className="animate-spin rounded-full  w-5 h-5 border-t-2 border-b-3 dark:border-[black] border-[#ffffff]"></div>
-                  ) : (
-                    "Create QuestionBank"
-                  )}
-                </button>
-        
-              </div> */}
+            {
+              modules.length === 0 ? <div className="flex justify-center p-5">No modules found</div>
+              : <div className="flex justify-center p-">
+              <button className="btn btn-outline btn-active mt-3" onClick={CreateQBank}>
+                {loading ? (
+                  <div className="animate-spin rounded-full  w-5 h-5 border-t-2 border-b-3 dark:border-[black] border-[#ffffff]"></div>
+                ) : (
+                  "Create QuestionBank"
+                )}
+              </button>
+      
+            </div> 
+            }
+          
         </div>
       )}
     </>
