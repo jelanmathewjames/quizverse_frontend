@@ -36,7 +36,10 @@ const Signin = () => {
 
     try {
       setLoading(true);
-      const response = await axiosInstance.post("/auth/login/", signinDetails);
+      const response = await axiosInstance.post(
+          "/auth/login/", 
+          signinDetails
+      );
      
       let userData = jwtDecode(response.data.access_token);
       setAuth(
