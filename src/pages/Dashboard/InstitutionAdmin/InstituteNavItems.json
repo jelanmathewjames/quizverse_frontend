@@ -1,10 +1,12 @@
+
 [
     {
-      "name": "Item 1",
-      "link": "/item1"
+      "name": "Add Course"
     },
     {
-      "name": "Item 2",
-      "link": "/item2"
+      "name": "Add Faculty "
+    },
+    {
+      "name": "Log out"
     }
   ]
