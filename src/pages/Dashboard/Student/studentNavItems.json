@@ -1,10 +1,16 @@
 [
+    
     {
-      "name": "Item 1",
-      "link": "/item1"
+      "name": "Take Quiz"
     },
     {
-      "name": "Item 2",
-      "link": "/item2"
+      "name": "Quiz Results"
+    },
+    {
+      "name": "Profile"
+    },
+    {
+      "name": "Logout"
     }
+
   ]

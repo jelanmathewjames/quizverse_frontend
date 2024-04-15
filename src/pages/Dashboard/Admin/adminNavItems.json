@@ -1,10 +1,11 @@
 [
     {
-      "name": "Item 1",
-      "link": "/item1"
+      "name": "Add instituteAdmin"
     },
     {
-      "name": "Item 2",
-      "link": "/item2"
+      "name": "Add communityAdmin"
+    },
+    {
+      "name":"Log out"
     }
   ]

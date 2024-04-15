@@ -1,17 +1,16 @@
 import DashboardLayout from '../../../components/DashboardLayout';
+import Profile from './Profile';
+import QuizResult from './QuizResult';
 import items from './studentNavItems.json';
+import TakeQuiz from './TakeQuiz';
+
 
 const StudentDashboard = () => {
   return (
     <DashboardLayout navitems={items} title="student">
-        <>
-        
-        </>
-      {/* Other specific content for the faculty dashboard */}
-      <div>
-        <h1>Welcome to the admin Dashboard</h1>
-        {/* Other components or features specific to the Faculty Dashboard */}
-      </div>
+      <TakeQuiz/>
+      <QuizResult />
+      <Profile />
     </DashboardLayout>
   );
 };
