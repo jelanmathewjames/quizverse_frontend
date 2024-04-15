@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Children, useEffect, useState } from "react";
+import { AiOutlineLogout } from "react-icons/ai";
 import { MdWavingHand } from "react-icons/md";
 import { PiChalkboardTeacherDuotone } from "react-icons/pi";
 
@@ -30,7 +31,7 @@ const DashboardLayout = ({ navitems, children, title }) => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-10 bg-base-100 shadow-lg transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-10 bg-base-100 lg:hidden shadow-lg transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className=" flex items-center justify-between py-4 px-6  ">
           <div className="flex items-center left-0 ">
             <button
@@ -59,13 +60,10 @@ const DashboardLayout = ({ navitems, children, title }) => {
             <h1 className="text-2xl font-bold lg:hidden">QuizVerse</h1>
             
             <h1 className="text-2xl font-semibold ml-[300px] hidden lg:block">Hello  </h1>
-            <div className="m-3 ">{<MdWavingHand  size={30} />}  </div>
+            {/* <div className="m-3 ">{<MdWavingHand  size={30} />}  </div> */}
           </div>
           <ul className=" flex items-center  space-x-4">
-            <ul className="hidden sm:flex space-x-4 cursor-pointer">
-              <button className=" btn cursor-pointer">  sample 2 </button>
-              <button className=" btn cursor-pointer">  sample 1 </button>
-            </ul>
+           
             <ul className="items-center ">
               <div className="dropdown dropdown-end">
                 <div
@@ -92,7 +90,7 @@ const DashboardLayout = ({ navitems, children, title }) => {
                   </li>
                   <li>
                     {/* add a logout functionality */}
-                    <button >Logout</button>
+                    <button > <span><AiOutlineLogout /></span>  Logout</button>
                   </li>
                 </ul>
               </div>
@@ -103,7 +101,7 @@ const DashboardLayout = ({ navitems, children, title }) => {
       <div className="drawer lg:drawer-open ">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content  flex flex-col bg-base-200 ">
-          <div className="min-h-[85vh] mt-20 p-5">
+          <div className="min-h-[85vh] mt-20 lg:mt-0 p-5">
             {Children.toArray(children)[option]}
           </div>
         </div>
@@ -122,7 +120,7 @@ const DashboardLayout = ({ navitems, children, title }) => {
                 key={index}
                 className= {` font-bold text-[16px] shadow-sm  rounded-lg mb-4 ${option === index? 'bg-base-300' : ''} `}
               >
-                <button onClick={() => setOption(index)}>{item.name}</button>
+                <button onClick={() => setOption(index)}> {item.name}</button>
               </li>
             ))}
             <li>
