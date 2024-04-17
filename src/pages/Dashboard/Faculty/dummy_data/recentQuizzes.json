@@ -1,0 +1,62 @@
+[
+    {
+        "quizId": 1,
+        "quizName": "DS Quiz",
+        "quizDate": "2022-09-15",
+        "quizSubject": "Data Structures"
+    },
+    {
+        "quizId": 2,
+        "quizName": "DBMS Quiz",
+        "quizDate": "2022-09-16",
+        "quizSubject": "DBMS"
+    },
+    {
+        "quizId": 3,
+        "quizName": "Operating Systems Quiz",
+        "quizDate": "2022-09-17",
+        "quizSubject": "Operating Systems"
+    },
+    {
+        "quizId": 4,
+        "quizName": "Algorithms Quiz",
+        "quizDate": "2022-09-18",
+        "quizSubject": "Algorithms"
+    },
+    {
+        "quizId": 5,
+        "quizName": "Networking Quiz",
+        "quizDate": "2022-09-19",
+        "quizSubject": "Networking"
+    },
+    {
+        "quizId": 6,
+        "quizName": "Web Development Quiz",
+        "quizDate": "2022-09-20",
+        "quizSubject": "Web Development"
+    },
+    {
+        "quizId": 7,
+        "quizName": "Artificial Intelligence Quiz",
+        "quizDate": "2022-09-21",
+        "quizSubject": "Artificial Intelligence"
+    },
+    {
+        "quizId": 8,
+        "quizName": "Database Design Quiz",
+        "quizDate": "2022-09-22",
+        "quizSubject": "Database Design"
+    },
+    {
+        "quizId": 9,
+        "quizName": "Software Engineering Quiz",
+        "quizDate": "2022-09-23",
+        "quizSubject": "Software Engineering"
+    },
+    {
+        "quizId": 10,
+        "quizName": "Computer Architecture Quiz",
+        "quizDate": "2022-09-24",
+        "quizSubject": "Computer Architecture"
+    }
+]
