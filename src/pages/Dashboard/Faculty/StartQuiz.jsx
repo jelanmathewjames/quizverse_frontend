@@ -1,4 +1,5 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { TiTick } from "react-icons/ti";
@@ -8,6 +9,7 @@ import questionBanksData from "../Faculty/dummy_data/qBanks.json";
 import semestersData from "../Faculty/dummy_data/semesters.json";
 import studentsData from "../Faculty/dummy_data/students.json";
 import subjectsData from "../Faculty/dummy_data/subjects.json";
+import { containerVariants } from "./../../../helpers/animationHelpers/containerVariants";
 
 const StartQuiz = () => {
   const [semesters, setSemesters] = useState([]);
@@ -180,9 +182,12 @@ const StartQuiz = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   return (
     <>
-    <div className="flex justify-center m-5">
+    <motion.div className="flex justify-center m-5 "initial="hidden"
+    animate="visible"
+    variants={containerVariants}>
     <div className="flex justify-center bg-base-100 w-full p-5 pb-10 rounded-lg shadow-xl">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 m-auto   pt-12">
         <select
@@ -320,7 +325,7 @@ const StartQuiz = () => {
       </div>
       
 
-    </div>
+    </motion.div>
       
 
       <div className="flex justify-center p-">

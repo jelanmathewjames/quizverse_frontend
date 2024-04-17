@@ -1,4 +1,5 @@
 import axios from "axios";
+import { motion } from 'framer-motion';
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -6,6 +7,7 @@ import departmentsData from "../Faculty/dummy_data/departments.json";
 import moduleData from "../Faculty/dummy_data/module.json";
 import semestersData from "../Faculty/dummy_data/semesters.json";
 import subjectsData from "../Faculty/dummy_data/subjects.json";
+import { containerVariants } from "./../../../helpers/animationHelpers/containerVariants";
 import ModuleQuestionReader from "./moduleQuestionReader";
 
 const CreateQubank = () => {
@@ -21,6 +23,12 @@ const CreateQubank = () => {
   const modules = moduleData.filter((module) => module.course_id == selectedSubject);
   console.log(modules);
 
+
+
+   const moduleVariants = {
+    hidden: { opacity: 0.5, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.2 } },
+};
   const [loading, setLoading] = useState(false);
 
   // fetch data from the server using dummy data
@@ -127,7 +135,10 @@ const CreateQubank = () => {
 
   return (
     <>
-      <div className="flex justify-center m-5">
+
+      <motion.div className="flex justify-center m-5"  initial="hidden"
+    animate="visible"
+    variants={containerVariants}>
         <div className="flex justify-center bg-base-100 w-full p-5 pb-10 rounded-lg shadow-xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 m-auto   pt-12">
             <select
@@ -177,9 +188,11 @@ const CreateQubank = () => {
             </select>
           </div>
         </div>
-      </div>
+      </motion.div>
       {selectedDepartment && selectedSemester && selectedSubject && (
-        <div>
+        <motion.div  variants={containerVariants}
+        initial="hidden"
+        animate="visible">
             {
             console.log("inside the modules")
 
@@ -212,8 +225,9 @@ const CreateQubank = () => {
             </div> 
             }
           
-        </div>
+        </motion.div>
       )}
+    
     </>
   );
 };

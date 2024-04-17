@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
@@ -5,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../components/HomeLayout";
 import axiosInstance from "../config/axiosInstance";
+import { formVariants } from "../helpers/animationHelpers/formVariants";
 import useAuth from "../hooks/useAuth";
 
 
@@ -70,7 +72,8 @@ const Signin = () => {
         <div className="absolute opacity-40 animate-blob animation-delay-2000 dark:mix-blend-overlay mix-blend-multiply filter blur-xl top-1/3 left-1/2 transform translate-x-1/2 translate-y-1/2 w-72 h-72 bg-blue-500 rounded-full "></div>
         <div className="absolute opacity-40 animate-blob animation-delay-4000 dark:mix-blend-overlay mix-blend-multiply filter blur-xl top-1/3 left-1/6 sm:left-1/3 transform translate-x-1/2 translate-y-1/2 w-72 h-72 bg-pink-400 rounded-full "></div>
 
-        <form
+        <motion.form
+          {...formVariants}
           onSubmit={onFormSubmit}
           noValidate
           className="flex flex-col justify-center gap-3 rounded-lg border-[1px]  p-10 backdrop-blur-md shadow-2xl 
@@ -138,7 +141,7 @@ const Signin = () => {
               Signup
             </Link>
           </p>
-        </form>
+        </motion.form>
       </div>
     </HomeLayout>
   );
