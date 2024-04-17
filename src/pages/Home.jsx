@@ -1,8 +1,9 @@
+import { motion } from "framer-motion";
 import { useEffect,useState } from "react";
 import { Link } from "react-router-dom";
 
 import HomeLayout from "../components/HomeLayout";
-
+import { homeVariants } from "../helpers/animationHelpers/homeVariants";
 
 
 const Home = () => {
@@ -20,6 +21,11 @@ const Home = () => {
     }, []);
 
     return (
+       
+      <motion.div
+      {...homeVariants}
+      >
+
       <HomeLayout>
       <div className="relative overflow-hidden dark:bg-gradient-to-l dark:from-slate-800 dark:to-slate-950 ">
       
@@ -51,6 +57,8 @@ const Home = () => {
         </div>
       </div>
       </HomeLayout>
+      </motion.div>
+
     );
   };
 
