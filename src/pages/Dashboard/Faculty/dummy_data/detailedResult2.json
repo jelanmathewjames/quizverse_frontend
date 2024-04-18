@@ -1,0 +1,31 @@
+{
+    "moduleResults": [
+       {
+         "moduleName": "Introduction to Databases",
+         "moduleNumber": 1,
+         "marksObtained": 80
+       },
+       {
+         "moduleName": "Relational Database Management Systems (RDBMS)",
+         "moduleNumber": 2,
+         "marksObtained": 85
+       },
+       {
+         "moduleName": "Database Design",
+         "moduleNumber": 3,
+         "marksObtained": 90
+       },
+       {
+         "moduleName": "Database Implementation",
+         "moduleNumber": 4,
+         "marksObtained": 88
+       },
+       {
+         "moduleName": "Transaction Management",
+         "moduleNumber": 5,
+         "marksObtained": 92
+       }
+    ],
+    "totalMarksObtained": 255,
+    "totalExamMarks": 300
+}

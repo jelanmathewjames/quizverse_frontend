@@ -1,0 +1,374 @@
+{
+  "quiz": {
+      "quizId": "QZ12345",
+      "title": "Computer Science Midterm",
+      "subject": "Data Structures and Algorithms",
+      "totalQuestions": 20,
+      "totalMarks": 100,
+      "semester": "S6",
+      "department": "Computer Science",
+      "date": "2021-10-15"
+  },
+  "results": [
+      {
+          "studentId": 1,
+          "studentName": "John Doe",
+          "roll_number": "ADR21CS001",
+          "score": 85
+      },
+      {
+          "studentId": 2,
+          "studentName": "Jane Smith",
+          "roll_number": "ADR21CS002",
+          "score": 90
+      },
+      {
+          "studentId": 3,
+          "studentName": "Emma Johnson",
+          "roll_number": "ADR21CS003",
+          "score": 80
+      },
+      {
+          "studentId": 4,
+          "studentName": "Michael Brown",
+          "roll_number": "ADR21CS004",
+          "score": -1
+      },
+      {
+          "studentId": 5,
+          "studentName": "Sophia White",
+          "roll_number": "ADR21CS005",
+          "score": 95
+      },
+      {
+          "studentId": 6,
+          "studentName": "Liam Miller",
+          "roll_number": "ADR21CS006",
+          "score": -1
+      },
+      {
+          "studentId": 7,
+          "studentName": "Olivia Davis",
+          "roll_number": "ADR21CS007",
+          "score": 78
+      },
+      {
+          "studentId": 8,
+          "studentName": "William Wilson",
+          "roll_number": "ADR21CS008",
+          "score": 92
+      },
+      {
+          "studentId": 9,
+          "studentName": "Ava Taylor",
+          "roll_number": "ADR21CS009",
+          "score": 82
+      },
+      {
+          "studentId": 10,
+          "studentName": "James Anderson",
+          "roll_number": "ADR21CS010",
+          "score": 70
+      },
+      {
+          "studentId": 11,
+          "studentName": "Mary Thompson",
+          "roll_number": "ADR21CS011",
+          "score": 87
+      },
+      {
+          "studentId": 12,
+          "studentName": "Robert White",
+          "roll_number": "ADR21CS012",
+          "score": 91
+      },
+      {
+          "studentId": 13,
+          "studentName": "Ethan Martinez",
+          "roll_number": "ADR21CS013",
+          "score": 83
+      },
+      {
+          "studentId": 14,
+          "studentName": "Isabella Harris",
+          "roll_number": "ADR21CS014",
+          "score": 89
+      },
+      {
+          "studentId": 15,
+          "studentName": "Mason Wilson",
+          "roll_number": "ADR21CS015",
+          "score": 81
+      },
+      {
+          "studentId": 16,
+          "studentName": "Sophia Anderson",
+          "roll_number": "ADR21CS016",
+          "score": 76
+      },
+      {
+          "studentId": 17,
+          "studentName": "Alexander Taylor",
+          "roll_number": "ADR21CS017",
+          "score": 96
+      },
+      {
+          "studentId": 18,
+          "studentName": "Amelia Thomas",
+          "roll_number": "ADR21CS018",
+          "score": 79
+      },
+      {
+          "studentId": 19,
+          "studentName": "Jacob Jackson",
+          "roll_number": "ADR21CS019",
+          "score": 93
+      },
+      {
+          "studentId": 20,
+          "studentName": "Oliver Moore",
+          "roll_number": "ADR21CS020",
+          "score": 84
+      },
+      {
+          "studentId": 21,
+          "studentName": "Evelyn Lee",
+          "roll_number": "ADR21CS021",
+          "score": 77
+      },
+      {
+          "studentId": 22,
+          "studentName": "Daniel Hall",
+          "roll_number": "ADR21CS022",
+          "score": 97
+      },
+      {
+          "studentId": 23,
+          "studentName": "Emily Clark",
+          "roll_number": "ADR21CS023",
+          "score": 88
+      },
+      {
+          "studentId": 24,
+          "studentName": "Matthew Scott",
+          "roll_number": "ADR21CS024",
+          "score": 71
+      },
+      {
+          "studentId": 25,
+          "studentName": "Harper Green",
+          "roll_number": "ADR21CS025",
+          "score": 85
+      },
+      {
+          "studentId": 26,
+          "studentName": "Benjamin King",
+          "roll_number": "ADR21CS026",
+          "score": 90
+      },
+      {
+          "studentId": 27,
+          "studentName": "Elizabeth Adams",
+          "roll_number": "ADR21CS027",
+          "score": 80
+      },
+      {
+          "studentId": 28,
+          "studentName": "Sebastian Martinez",
+          "roll_number": "ADR21CS028",
+          "score": 75
+      },
+      {
+          "studentId": 29,
+          "studentName": "Avery Harris",
+          "roll_number": "ADR21CS029",
+          "score": 95
+      },
+      {
+          "studentId": 30,
+          "studentName": "Sofia Johnson",
+          "roll_number": "ADR21CS030",
+          "score": 88
+      },
+      {
+          "studentId": 31,
+          "studentName": "David Brown",
+          "roll_number": "ADR21CS031",
+          "score": 78
+      },
+      {
+          "studentId": 32,
+          "studentName": "Madison Wilson",
+          "roll_number": "ADR21CS032",
+          "score": 92
+      },
+      {
+          "studentId": 33,
+          "studentName": "Joseph Taylor",
+          "roll_number": "ADR21CS033",
+          "score": 82
+      },
+      {
+          "studentId": 34,
+          "studentName": "Victoria Anderson",
+          "roll_number": "ADR21CS034",
+          "score": 70
+      },
+      {
+          "studentId": 35,
+          "studentName": "Dylan Thompson",
+          "roll_number": "ADR21CS035",
+          "score": 87
+      },
+      {
+          "studentId": 36,
+          "studentName": "Gabriella White",
+          "roll_number": "ADR21CS036",
+          "score": 91
+      },
+      {
+          "studentId": 37,
+          "studentName": "Carter Johnson",
+          "roll_number": "ADR21CS037",
+          "score": 75
+      },
+      {
+          "studentId": 38,
+          "studentName": "Zoe Davis",
+          "roll_number": "ADR21CS038",
+          "score": 83
+      },
+      {
+          "studentId": 39,
+          "studentName": "Luke Smith",
+          "roll_number": "ADR21CS039",
+          "score": 89
+      },
+      {
+          "studentId": 40,
+          "studentName": "Natalie Brown",
+          "roll_number": "ADR21CS040",
+          "score": 81
+      },
+      {
+          "studentId": 41,
+          "studentName": "Christopher Wilson",
+          "roll_number": "ADR21CS041",
+          "score": 76
+      },
+      {
+          "studentId": 42,
+          "studentName": "Addison Taylor",
+          "roll_number": "ADR21CS042",
+          "score": 96
+      },
+      {
+          "studentId": 43,
+          "studentName": "Ella Thomas",
+          "roll_number": "ADR21CS043",
+          "score": 79
+      },
+      {
+          "studentId": 44,
+          "studentName": "Andrew Jackson",
+          "roll_number": "ADR21CS044",
+          "score": 93
+      },
+      {
+          "studentId": 45,
+          "studentName": "Grace Moore",
+          "roll_number": "ADR21CS045",
+          "score": 84
+      },
+      {
+          "studentId": 46,
+          "studentName": "Jack Lee",
+          "roll_number": "ADR21CS046",
+          "score": 77
+      },
+      {
+          "studentId": 47,
+          "studentName": "Audrey Hall",
+          "roll_number": "ADR21CS047",
+          "score": 97
+      },
+      {
+          "studentId": 48,
+          "studentName": "Ryan Clark",
+          "roll_number": "ADR21CS048",
+          "score": 88
+      },
+      {
+          "studentId": 49,
+          "studentName": "Aiden Scott",
+          "roll_number": "ADR21CS049",
+          "score": 71
+      },
+      {
+          "studentId": 50,
+          "studentName": "Scarlett Green",
+          "roll_number": "ADR21CS050",
+          "score": 85
+      },
+      {
+          "studentId": 51,
+          "studentName": "Lucas King",
+          "roll_number": "ADR21CS051",
+          "score": 90
+      },
+      {
+          "studentId": 52,
+          "studentName": "Madeline Adams",
+          "roll_number": "ADR21CS052",
+          "score": 80
+      },
+      {
+          "studentId": 53,
+          "studentName": "Isaac Martinez",
+          "roll_number": "ADR21CS053",
+          "score": 75
+      },
+      {
+          "studentId": 54,
+          "studentName": "Hannah Harris",
+          "roll_number": "ADR21CS054",
+          "score": 95
+      },
+      {
+          "studentId": 55,
+          "studentName": "Elijah Johnson",
+          "roll_number": "ADR21CS055",
+          "score": 88
+      },
+      {
+          "studentId": 56,
+          "studentName": "Leah Wilson",
+          "roll_number": "ADR21CS056",
+          "score": 92
+      },
+      {
+          "studentId": 57,
+          "studentName": "Nathan Taylor",
+          "roll_number": "ADR21CS057",
+          "score": 82
+      },
+      {
+          "studentId": 58,
+          "studentName": "Lillian Anderson",
+          "roll_number": "ADR21CS058",
+          "score": 70
+      },
+      {
+          "studentId": 59,
+          "studentName": "Christian Thompson",
+          "roll_number": "ADR21CS059",
+          "score": 87
+      },
+      {
+          "studentId": 60,
+          "studentName": "Alex Johnson",
+          "roll_number": "ADR21CS060",
+          "score": 75
+      }
+  ]
+}
