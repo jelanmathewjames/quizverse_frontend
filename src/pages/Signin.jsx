@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import HomeLayout from "../components/HomeLayout";
 import axiosInstance from "../config/axiosInstance";
@@ -13,6 +13,8 @@ import useAuth from "../hooks/useAuth";
 const Signin = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from || { pathname: "/dashboard" };
   const [loading, setLoading] = useState(false);
   const [signinDetails, setSigninDetails] = useState({
     username_or_email: "",
@@ -51,7 +53,7 @@ const Signin = () => {
           acess_token: response?.data?.access_token,
         }
       );
-      navigate("/dashboard");
+      navigate(from, { replace: true });
       toast.success(
         "Successfully Logged In."
       );

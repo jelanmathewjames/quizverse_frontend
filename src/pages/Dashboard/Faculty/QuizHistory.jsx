@@ -4,7 +4,7 @@ import { BsGraphUpArrow } from "react-icons/bs";
 
 import { containerVariants } from '../../../helpers/animationHelpers/containerVariants';
 import recentQuizzes from './dummy_data/recentQuizzes.json';
-import QuizResult from './quizResult';
+import QuizResult from './QuizResult';
 
 const QuizHistory = () => {
     const [quizData, setQuizData] = useState([]);
