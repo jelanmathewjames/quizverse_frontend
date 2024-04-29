@@ -1,4 +1,4 @@
-import axiosInstance from "../config.axiosInstance";
+import axiosInstance from "../config/axiosInstance";
 import { jwtDecode } from "jwt-decode";
 import useAuth from "./useAuth";
 
