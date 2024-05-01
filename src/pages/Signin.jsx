@@ -14,6 +14,7 @@ const Signin = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [stayLoggedIn, setStayLoggedIn] = useState(false);
   const [signinDetails, setSigninDetails] = useState({
     username_or_email: "",
     password: "",
@@ -113,7 +114,19 @@ const Signin = () => {
               className="input input-bordered w-full max-w-xs"
             />
             <div className="label">
-              <span className="label-text-alt"></span>
+              <span className="label-text-alt">
+                <input
+                  type="checkbox"
+                  name="stayLoggedIn"
+                  id="stayLoggedIn"
+                  checked={stayLoggedIn}
+                  onChange={(e) => setStayLoggedIn(e.target.checked)}
+                />
+                <label htmlFor="stayLoggedIn" className="cursor-pointer">
+                  Stay logged in
+                </label>
+                
+              </span>
               <span className="label-text-alt">
                 <Link
                   to="/resetPassword"
