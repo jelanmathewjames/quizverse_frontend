@@ -1,5 +1,5 @@
 export const homeVariants = {
-    initial: { opacity: 0, scale: 0.8 },
-    animate: { opacity: 1, scale: 1 },
+    initial: { opacity: 0, filter: 'blur(1px)' },
+    animate: { opacity: 1, filter: 'blur(0px)' },
     transition: { duration: 1, ease: "easeInOut" },
 };
