@@ -56,7 +56,10 @@ const Signup = () => {
    
     try{
       setLoading(true);
-      const response = await axiosInstance.post("/auth/register/", signupDetails);
+      const response = await axiosInstance.post(
+        "/auth/register/", 
+        signupDetails
+      );
       navigate("/signin");
       toast.success(
         "Account created successfully! Please verify your email.",{
