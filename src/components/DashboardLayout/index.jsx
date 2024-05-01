@@ -31,7 +31,7 @@ const DashboardLayout = ({ navitems, children, title }) => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-10 bg-base-100 lg:hidden shadow-lg transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+      <nav className={`fixed top-1 left-1 right-1 z-10 rounded-xl bg-base-100 lg:hidden shadow-md transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className=" flex items-center justify-between py-4 px-6  ">
           <div className="flex items-center left-0 ">
             <button
