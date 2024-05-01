@@ -8,7 +8,7 @@ import moduleData from "../Faculty/dummy_data/module.json";
 import semestersData from "../Faculty/dummy_data/semesters.json";
 import subjectsData from "../Faculty/dummy_data/subjects.json";
 import { containerVariants } from "./../../../helpers/animationHelpers/containerVariants";
-import ModuleQuestionReader from "./moduleQuestionReader";
+import ModuleQuestionReader from "./ModuleQuestionReader";
 
 const CreateQubank = () => {
   const [semesters, setSemesters] = useState([]);
