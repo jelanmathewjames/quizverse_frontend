@@ -27,15 +27,25 @@ function App() {
       
       <Route element={<PersistenLogin/>}>
         <Route element={<CheckAuth allowedRoles={[]} />}>
-          <Route path="/dashboard" element={<Dashboard/>}> </Route>
-          <Route path="/faculty/*" element={<FacultyDashboard/>}> </Route>
-          <Route path="/institute/*" element={<InstitutionAdmin/>}> </Route>
-          <Route path="/student/*" element={<StudentDashboard/>}> </Route>
-          <Route path="/admin/*" element={<AdminDashboard/>}> </Route>
-          <Route path="/community/*" element={<CommunityDashboard/>}> </Route>
           <Route path="/resetpassword" element={<Resetpassword/>}> </Route>
-          <Route path="*" element={<NotFound/>}> </Route>
+          <Route path="/dashboard" element={<Dashboard/>}> </Route>
         </Route>
+        <Route element={<CheckAuth allowedRoles={["Faculty"]} />}>
+          <Route path="/faculty/*" element={<FacultyDashboard/>}> </Route>
+        </Route>
+        <Route element={<CheckAuth allowedRoles={["Institute"]} />}>
+          <Route path="/institute/*" element={<InstitutionAdmin/>}> </Route>
+        </Route>
+        <Route element={<CheckAuth allowedRoles={["Student"]} />}>
+          <Route path="/student/*" element={<StudentDashboard/>}> </Route>
+        </Route>
+        <Route element={<CheckAuth allowedRoles={["Admin"]} />}>
+          <Route path="/admin/*" element={<AdminDashboard/>}> </Route>
+        </Route>  
+        <Route element={<CheckAuth allowedRoles={["Community"]} />}>
+          <Route path="/community/*" element={<CommunityDashboard/>}> </Route>
+        </Route>
+          <Route path="*" element={<NotFound/>}> </Route>
       </Route>
     </Routes>
   )

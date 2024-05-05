@@ -7,6 +7,7 @@ const useLogout = () => {
     const logout = async () => {
         await axiosInstance.post(
             '/auth/logout/',
+            null,
             { withCredentials : true}
         );
         setAuth(null);

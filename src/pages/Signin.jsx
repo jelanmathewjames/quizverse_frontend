@@ -16,7 +16,6 @@ const Signin = () => {
   const location = useLocation();
   const from = location?.state?.from || { pathname: "/dashboard" };
   const [loading, setLoading] = useState(false);
-  const [stayLoggedIn, setStayLoggedIn] = useState(false);
   const [signinDetails, setSigninDetails] = useState({
     username_or_email: "",
     password: "",
@@ -42,8 +41,9 @@ const Signin = () => {
     try {
       setLoading(true);
       const response = await axiosInstance.post(
-          "/auth/login/", 
-          signinDetails
+          "/auth/login/",  
+          signinDetails,
+          { withCredentials: true }
       );
      
       let userData = jwtDecode(response.data.access_token);
@@ -67,6 +67,15 @@ const Signin = () => {
       setLoading(false);
     }
   };
+
+  const togglePersist = () => {
+    setPersist(prev => !prev);
+  }
+
+  useEffect(() => {
+      localStorage.setItem("persist", persist);
+  }, [persist])
+  
   return (
     <HomeLayout>
    
@@ -122,10 +131,9 @@ const Signin = () => {
               <span className="label-text-alt">
                 <input
                   type="checkbox"
-                  name="stayLoggedIn"
-                  id="stayLoggedIn"
-                  checked={stayLoggedIn}
-                  onChange={(e) => setStayLoggedIn(e.target.checked)}
+                  id="persist"
+                  checked={persist}
+                  onChange={togglePersist}
                 />
                 <label htmlFor="stayLoggedIn" className="cursor-pointer">
                   Stay logged in
