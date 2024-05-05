@@ -9,6 +9,18 @@ import { homeVariants } from "../helpers/animationHelpers/homeVariants";
 const Home = () => {
 
     const [gridCells, setGridCells] = useState([]);
+    const text = "Revolutionizing Examination Experience";
+    const characters = text.split('');
+    const characterVariants = {
+      hidden: { opacity: 0, y: -20 },
+      visible: (i) => ({
+         opacity: 1,
+         y: 0,
+         transition: {
+           delay: i * 0.08, 
+         },
+      }),
+     };
 
     useEffect(() => {
       const cells = Array.from({ length: 100 }, (_, index) => (
@@ -43,8 +55,18 @@ const Home = () => {
           <span className="font-bold gradient-text "> QuizVerse</span>
           </h1>
           <p className="text-xl text-center">
-          Revolutionizing Examination Experience
-          </p>
+    {characters.map((char, index) => (
+      <motion.span
+        key={index}
+        variants={characterVariants}
+        initial="hidden"
+        animate="visible"
+        custom={index}
+      >
+        {char}
+      </motion.span>
+    ))}
+ </p>
           <div className="flex flex-row gap-3 justify-center ">
           <Link to="/signin">
             <button className="btn btn-outline  btn-active">Login</button>

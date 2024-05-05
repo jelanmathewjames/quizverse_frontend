@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://quizverse.azurewebsites.net/api/v1";
+const BASE_URL = "https://quizverse1.azurewebsites.net/api/v1";
 
 const axiosInstance = axios.create({
     baseURL: BASE_URL,
