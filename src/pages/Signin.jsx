@@ -11,7 +11,7 @@ import useAuth from "../hooks/useAuth";
 
 
 const Signin = () => {
-  const { setAuth } = useAuth();
+  const { auth, setAuth, persist, setPersist } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from || { pathname: "/dashboard" };
@@ -50,7 +50,7 @@ const Signin = () => {
         {
           user: userData?.user,
           role: userData?.role,
-          acess_token: response?.data?.access_token,
+          access_token: response?.data?.access_token,
         }
       );
       navigate(from, { replace: true });
