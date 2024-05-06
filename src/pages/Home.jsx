@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 import HomeLayout from "../components/HomeLayout";
 import { homeVariants } from "../helpers/animationHelpers/homeVariants";
-
+import useAuth from "../hooks/useAuth";
 
 const Home = () => {
-
+    const { auth } = useAuth();
     const [gridCells, setGridCells] = useState([]);
     const text = "Revolutionizing Examination Experience";
     const characters = text.split('');
@@ -68,12 +68,25 @@ const Home = () => {
     ))}
  </p>
           <div className="flex flex-row gap-3 justify-center ">
-          <Link to="/signin">
-            <button className="btn btn-outline  btn-active">Login</button>
-          </Link>
-          <Link to="/signup">
-            <button className="btn ">Sign up</button>
-          </Link>
+          {auth?.user ? 
+          (
+            <Link to="/dashboard">
+              <button className="btn btn-active">Dashboard</button>
+            </Link>
+          ) : 
+          (
+            <>
+            <Link to="/signin">
+              <button className="btn btn-active">Login</button>
+            </Link>
+            <Link to="/signup">
+              <button className="btn ">Sign up</button>
+            </Link>
+          </>
+            
+          )
+          }
+          
           </div>
         </div>
         </div>
