@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
-import { jwtDecode } from "jwt-decode";
+
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import HomeLayout from "../components/HomeLayout";
-import axiosInstance from "../config/axiosInstance";
 import { formVariants } from "../helpers/animationHelpers/formVariants";
 import useAuth from "../hooks/useAuth";
 
 
 const Signin = () => {
-  const { auth, setAuth, persist, setPersist } = useAuth();
-  const navigate = useNavigate();
+  const { login, persist, setPersist } = useAuth();
   const location = useLocation();
   const from = location?.state?.from || { pathname: "/dashboard" };
   const [loading, setLoading] = useState(false);
@@ -37,35 +35,9 @@ const Signin = () => {
       toast.error("Please fill all the details");
       return;
     }
-
-    try {
-      setLoading(true);
-      const response = await axiosInstance.post(
-          "/auth/login/",  
-          signinDetails,
-          { withCredentials: true }
-      );
-     
-      let userData = jwtDecode(response.data.access_token);
-      setAuth(
-        {
-          user: userData?.user,
-          role: userData?.role,
-          access_token: response?.data?.access_token,
-        }
-      );
-      navigate(from, { replace: true });
-      toast.success(
-        "Successfully Logged In."
-      );
-    }
-    catch (e) {
-      toast.error(
-        e.response.data.details
-      );
-    } finally {
-      setLoading(false);
-    }
+    setLoading(true);
+    await login(signinDetails, from);
+    setLoading(false);
   };
 
   const togglePersist = () => {
