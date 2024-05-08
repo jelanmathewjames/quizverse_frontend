@@ -1,19 +1,37 @@
+import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { toast } from "react-hot-toast";
 
-import ProfileCard from '../../../components/ProfileCard';
-import { containerVariants } from '../../../helpers/animationHelpers/containerVariants';
+import { containerVariants } from '../helpers/animationHelpers/containerVariants';
+import useAuth from '../hooks/useAuth';
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import ProfileCard from './ProfileCard';
+
 const Profile = () => {
   const [profileDetails, setProfileDetails] = useState({ name: '', id: '', department: '', role: '', registerNum: '' });
+  const axiosPrivate = useAxiosPrivate()
+  const { auth } = useAuth();
   useEffect(() => {
-    setProfileDetails({
-      name: "Jelan Mathew James",
-      id: "32",
-      department: "computer science",
-      role: "faculty",
-      registerNum: "ADR21CS032"
-    });
-  }, []);
+    try {
+      const profileHelper = async () => {
+        const response = await axiosPrivate.get("/auth/user")
+        console.log(response);
+        setProfileDetails({
+          username: response.data.username,
+          email: response.data.email,
+          roles: auth?.roles,
+          verified: response.data.is_verified == false ? "Email is Not Verified" : "Verified Profile"
+        });
+        }
+        profileHelper(); 
+    }
+    catch (e) {
+      toast.error(
+        e
+      );
+    }
+  },[auth, axiosPrivate]);
 
 // fetch data from server by api calls
 //-------------------------------------------
@@ -34,14 +52,13 @@ const Profile = () => {
     <motion.div className='w-full  'initial="hidden"
     animate="visible" variants={containerVariants} >
       {
-        profileDetails.name ? (
+        profileDetails.username ? (
           <div className="flex flex-col gap-4 p-4">
             <ProfileCard
-              name={profileDetails.name}
-              id={profileDetails.id}
-              department={profileDetails.department}
+              username={profileDetails.username}
+              email={profileDetails.email}
               role={profileDetails.role}
-              registerNum={profileDetails.registerNum}
+              verified={profileDetails.verified}
             ></ProfileCard>
           </div>
         ) : (

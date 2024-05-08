@@ -1,13 +1,17 @@
 import DashboardLayout from '../../../components/DashboardLayout';
-import AddCommunityAdmin from './AddCommunityAdmin';
-import AddInstituteAdmin from './AddInstituteAdmin';
-import items from './adminNavItems.json';
-
+import Profile from '../../../components/Profile';
+import items  from './adminNavItems.json';
+import CreateCommunityAdmin from './CreateCommunityAdmin';
+import CreateCourse from './CreateCourse';
+import CreateInstitute from './CreateInstitute';
+import CreateInstituteAdmin from './CreateInstituteAdmin';
 const AdminDashboard = () => {
   return (
     <DashboardLayout navitems={items} title="Admin">
-        <AddCommunityAdmin/>
-        <AddInstituteAdmin/>
+      <CreateCommunityAdmin />
+      <CreateCourse />
+      <CreateInstitute />
+      <CreateInstituteAdmin />
     </DashboardLayout>
   );
 };

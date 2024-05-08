@@ -1,7 +1,7 @@
 import DashboardLayout from '../../../components/DashboardLayout';
+import Profile from '../../../components/Profile';
 import CreateQbank from './CreateQbank';
 import items from './facultyNavItems.json'; 
-import Profile from './Profile';
 import QuizHistory from './QuizHistory';
 import StartQuiz from './StartQuiz';
 

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 
-import PersistenLogin from "./components/PersistLogin"
 import CheckAuth from "./components/CheckAuth"
+import PersistenLogin from "./components/PersistLogin"
 import Dashboard from "./pages/Dashboard"
 import AdminDashboard from "./pages/Dashboard/Admin"
 import CommunityDashboard from "./pages/Dashboard/CommunityAdmin"
@@ -31,7 +31,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>}> </Route>
           <Route path="/resetpassword" element={<Resetpassword/>}> </Route>
         </Route>
-        <Route element={<CheckAuth requireAuth={true} allowedRoles={["Faculty"]} />}>
+        <Route element={<CheckAuth requireAuth={true} allowedRoles={[]} />}>
           <Route path="/faculty/*" element={<FacultyDashboard/>}> </Route>
         </Route>
         <Route element={<CheckAuth requireAuth={true} allowedRoles={["Institute"]} />}>
