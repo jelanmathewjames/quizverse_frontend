@@ -14,11 +14,9 @@ const Dashboard = () => {
     const moveToDashBoard = (role) => {
         if (role == "Admin") {
             navigate("/admin");
-        }
-        else if (role == "Institute") {
+        }else if (role == "Institute") {
             navigate("/institute");
-        }
-        else if (role == "Community") {
+        }else if (role == "Community") {
             navigate("/community");
         }else if (role == "Faculty") {
             navigate("/faculty");
@@ -31,7 +29,7 @@ const Dashboard = () => {
    
 
     return (
-        <DashboardLayout navitems={items}>
+        <DashboardLayout navitems={items} title="dashboard" >
             
         <motion.div className="flex justify-center items-center flex-col  gap-2 m-5" variants={containerVariants}
         initial="hidden"
