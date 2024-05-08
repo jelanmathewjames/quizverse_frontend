@@ -56,6 +56,7 @@ const Dashboard = () => {
          }
         </motion.div>
         <Profile/>
+        <Notification/>
         </DashboardLayout>
 
 

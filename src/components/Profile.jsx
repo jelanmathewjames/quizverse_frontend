@@ -9,7 +9,7 @@ import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import ProfileCard from './ProfileCard';
 
 const Profile = () => {
-  const [profileDetails, setProfileDetails] = useState({ name: '', id: '', department: '', role: '', registerNum: '' });
+  const [profileDetails, setProfileDetails] = useState({});
   const axiosPrivate = useAxiosPrivate()
   const { auth } = useAuth();
   useEffect(() => {

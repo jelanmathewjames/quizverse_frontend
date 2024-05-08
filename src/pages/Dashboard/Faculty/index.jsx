@@ -1,5 +1,4 @@
 import DashboardLayout from '../../../components/DashboardLayout';
-import Profile from '../../../components/Profile';
 import CreateQbank from './CreateQbank';
 import items from './facultyNavItems.json'; 
 import QuizHistory from './QuizHistory';
@@ -11,7 +10,6 @@ const FacultyDashboard = () => {
         <StartQuiz/>
         <CreateQbank/>
         <QuizHistory/>
-        <Profile/>
     </DashboardLayout>
   );
 };

@@ -21,14 +21,6 @@ const CreateQubank = () => {
   const [questionData, setQuestionData] = useState([]);
  
   const modules = moduleData.filter((module) => module.course_id == selectedSubject);
-  console.log(modules);
-
-
-
-   const moduleVariants = {
-    hidden: { opacity: 0.5, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.2 } },
-};
   const [loading, setLoading] = useState(false);
 
   // fetch data from the server using dummy data
