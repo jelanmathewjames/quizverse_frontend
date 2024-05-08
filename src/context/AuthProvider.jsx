@@ -1,17 +1,15 @@
-import { createContext, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { createContext, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 import axiosInstance from "../config/axiosInstance";
-
 const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
   const [auth, setAuth] = useState(null);
   const [persist, setPersist] = useState(JSON.parse(localStorage.getItem("persist")) || false);
   const navigate = useNavigate();
-
   const login = async (signinDetails, from) => {
     try{
       const response = await axiosInstance.post(
@@ -22,7 +20,7 @@ const AuthProvider = ({children}) => {
       let userData = jwtDecode(response.data.access_token);
       setAuth({
         user: userData?.user,
-        role: userData?.role,
+        role: userData?.roles,
         access_token: response?.data?.access_token,
       });
       navigate(from, { replace: true });
@@ -47,24 +45,15 @@ const AuthProvider = ({children}) => {
     let userData = jwtDecode(response.data.access_token);
     setAuth({
       user: userData?.user, 
-      role: userData?.role, 
+      role: userData?.roles, 
       access_token: response?.data?.access_token 
     })
 
     return response?.data?.access_token
   }
 
-  const logout = async () => {
-    await axiosInstance.post(
-        '/auth/logout/',
-        null,
-        { withCredentials : true}
-    );
-    setAuth(null);
-  }
-
   return (
-    <AuthContext.Provider value={{auth, setAuth, persist, setPersist, login, refresh, logout}}>
+    <AuthContext.Provider value={{auth, setAuth, persist, setPersist, login, refresh}}>
       {children}
     </AuthContext.Provider>
   );

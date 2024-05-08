@@ -10,7 +10,7 @@ const CheckAuth = ({ allowedRoles, requireAuth }) => {
         requireAuth ?
             auth?.user
                 ? allowedRoles?.length > 0
-                    ? auth?.roles?.find(role => allowedRoles.includes(role))
+                    ? auth?.role?.find(role => allowedRoles.includes(role))
                         ? <Outlet />
                         : <Navigate to="/unauthorized" state={{ from: location }} replace />
                     : <Outlet />

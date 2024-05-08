@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddInstituteAdmin = () => {
+const CreateCommunityAdmin = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const AddInstituteAdmin = () => {
     );
 }
 
-export default AddInstituteAdmin;
+export default CreateCommunityAdmin;

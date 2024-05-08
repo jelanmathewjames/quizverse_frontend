@@ -1,17 +1,15 @@
 import PropTypes from "prop-types";
 import { Children, useEffect, useState } from "react";
-import { AiOutlineLogout } from "react-icons/ai";
-import { MdWavingHand } from "react-icons/md";
 import { PiChalkboardTeacherDuotone } from "react-icons/pi";
 
+import useLogout from "../../hooks/useLogout";
 import ThemeToggle from "../ThemeToggle";
 
 const DashboardLayout = ({ navitems, children, title }) => {
   const [option, setOption] = useState(0);
-
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [isNavVisible, setIsNavVisible] = useState(true);
-
+  const logout = useLogout();
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -28,10 +26,13 @@ const DashboardLayout = ({ navitems, children, title }) => {
       window.removeEventListener('scroll', handleScroll);
     };
  }, [lastScrollTop]);
+  const logoutHandler = async () => {
+    await logout();
+  }
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-10 bg-base-100 lg:hidden shadow-lg transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+      <nav className={`fixed top-1 left-1 right-1 z-10 rounded-xl bg-base-100 lg:hidden shadow-md transition-all duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className=" flex items-center justify-between py-4 px-6  ">
           <div className="flex items-center left-0 ">
             <button
@@ -65,34 +66,17 @@ const DashboardLayout = ({ navitems, children, title }) => {
           <ul className=" flex items-center  space-x-4">
            
             <ul className="items-center ">
-              <div className="dropdown dropdown-end">
+              <div className="">
                 <div
                   tabIndex={0}
                   role="button"
-                  className="btn btn-ghost btn-circle avatar"
+                  className=" cursor-default avatar"
                 >
                   <div className=" rounded-full ">
                   <PiChalkboardTeacherDuotone size={36} />
                   </div>
                 </div>
-                <ul
-                  tabIndex={0}
-                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100  rounded-box w-52"
-                >
-                  <li>
-                    <button onClick={()=> setOption(3) } className="justify-between">
-                      Profile
-                      <span className="badge">New</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={()=> setOption(5) }>Settings</button>
-                  </li>
-                  <li>
-                    {/* add a logout functionality */}
-                    <button > <span><AiOutlineLogout /></span>  Logout</button>
-                  </li>
-                </ul>
+             
               </div>
             </ul>
           </ul>
@@ -123,6 +107,11 @@ const DashboardLayout = ({ navitems, children, title }) => {
                 <button onClick={() => setOption(index)}> {item.name}</button>
               </li>
             ))}
+            <li>
+              <button onClick={ logoutHandler}>
+                Logout
+              </button>
+            </li>
             <li>
               <ThemeToggle />
             </li>

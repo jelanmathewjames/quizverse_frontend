@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 
 import HomeLayout from "../components/HomeLayout";
 import { formVariants } from "../helpers/animationHelpers/formVariants";
