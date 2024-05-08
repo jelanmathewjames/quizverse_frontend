@@ -12,7 +12,7 @@ const DashboardLayout = ({ navitems, children, title }) => {
   const logout = useLogout();
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
       if (currentScrollTop > lastScrollTop) {
         setIsNavVisible(false);
       } else {
@@ -107,7 +107,7 @@ const DashboardLayout = ({ navitems, children, title }) => {
                 <button onClick={() => setOption(index)}> {item.name}</button>
               </li>
             ))}
-            <li>
+            <li className= {` font-bold text-[16px] shadow-sm  rounded-lg mb-4`}>
               <button onClick={ logoutHandler}>
                 Logout
               </button>
