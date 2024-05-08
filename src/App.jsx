@@ -20,24 +20,34 @@ function App() {
   
   return (
     <Routes>
-      <Route path="/" element={<Home/>}> </Route>
-      <Route path="/signup" element={<Signup/>}> </Route>
-      <Route path="/signin" element={<Signin/>}> </Route>
       <Route path="/unauthorized" element={<Unauthorized/>}></Route>
-      
       <Route element={<PersistenLogin/>}>
-        <Route element={<CheckAuth allowedRoles={[]} />}>
-          <Route path="/dashboard" element={<Dashboard/>}> </Route>
-          <Route path="/faculty/*" element={<FacultyDashboard/>}> </Route>
-          <Route path="/institute/*" element={<InstitutionAdmin/>}> </Route>
-          <Route path="/student/*" element={<StudentDashboard/>}> </Route>
-          <Route path="/admin/*" element={<AdminDashboard/>}> </Route>
-          <Route path="/community/*" element={<CommunityDashboard/>}> </Route>
-          <Route path="/resetpassword" element={<Resetpassword/>}> </Route>
-          <Route path="*" element={<NotFound/>}> </Route>
+        <Route path="/" element={<Home/>}> </Route>
+        <Route element={<CheckAuth requireAuth={false} allowedRoles={[]} />}>
+          <Route path="/signup" element={<Signup/>}> </Route>
+          <Route path="/signin" element={<Signin/>}> </Route>
         </Route>
+        <Route element={<CheckAuth requireAuth={true} allowedRoles={[]} />}>
+          <Route path="/dashboard" element={<Dashboard/>}> </Route>
+          <Route path="/resetpassword" element={<Resetpassword/>}> </Route>
+        </Route>
+        <Route element={<CheckAuth requireAuth={true} allowedRoles={["Faculty"]} />}>
+          <Route path="/faculty/*" element={<FacultyDashboard/>}> </Route>
+        </Route>
+        <Route element={<CheckAuth requireAuth={true} allowedRoles={["Institute"]} />}>
+          <Route path="/institute/*" element={<InstitutionAdmin/>}> </Route>
+        </Route>
+        <Route element={<CheckAuth requireAuth={true} allowedRoles={["Student"]} />}>
+          <Route path="/student/*" element={<StudentDashboard/>}> </Route>
+        </Route>
+        <Route element={<CheckAuth requireAuth={true} allowedRoles={["Admin"]} />}>
+          <Route path="/admin/*" element={<AdminDashboard/>}> </Route>
+        </Route>  
+        <Route element={<CheckAuth requireAuth={true} allowedRoles={["Community"]} />}>
+          <Route path="/community/*" element={<CommunityDashboard/>}> </Route>
+        </Route>
+          <Route path="*" element={<NotFound/>}> </Route>
       </Route>
-
     </Routes>
   )
 }

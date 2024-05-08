@@ -1,13 +1,70 @@
-import { createContext,useState } from "react";
+import { createContext, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
-const AuthContext = createContext({});
+import axiosInstance from "../config/axiosInstance";
+
+const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
-  const [auth,setAuth] = useState(null);
+  const [auth, setAuth] = useState(null);
   const [persist, setPersist] = useState(JSON.parse(localStorage.getItem("persist")) || false);
+  const navigate = useNavigate();
+
+  const login = async (signinDetails, from) => {
+    try{
+      const response = await axiosInstance.post(
+                          "/auth/login/",  
+                          signinDetails,
+                          { withCredentials: true }
+                        );
+      let userData = jwtDecode(response.data.access_token);
+      setAuth({
+        user: userData?.user,
+        role: userData?.role,
+        access_token: response?.data?.access_token,
+      });
+      navigate(from, { replace: true });
+      toast.success(
+        "Successfully Logged In."
+      );
+    }
+    catch (e) {
+      toast.error(
+        e.response.data.details
+      );
+    }
+  }
+
+  const refresh = async () => {
+    if (!persist) return;
+    const response = await axiosInstance.post(
+        '/auth/refresh/',
+        null,
+        { withCredentials: true }
+    );
+    let userData = jwtDecode(response.data.access_token);
+    setAuth({
+      user: userData?.user, 
+      role: userData?.role, 
+      access_token: response?.data?.access_token 
+    })
+
+    return response?.data?.access_token
+  }
+
+  const logout = async () => {
+    await axiosInstance.post(
+        '/auth/logout/',
+        null,
+        { withCredentials : true}
+    );
+    setAuth(null);
+  }
 
   return (
-    <AuthContext.Provider value={{auth, setAuth, persist, setPersist}}>
+    <AuthContext.Provider value={{auth, setAuth, persist, setPersist, login, refresh, logout}}>
       {children}
     </AuthContext.Provider>
   );
