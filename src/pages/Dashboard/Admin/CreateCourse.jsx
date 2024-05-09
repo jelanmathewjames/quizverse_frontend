@@ -1,9 +1,8 @@
-import React from 'react';
 
 const CreateCourse = () => {
     return (
         <div>
-            
+            logic for create course
         </div>
     );
 }
