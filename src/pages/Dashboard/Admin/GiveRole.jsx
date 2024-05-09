@@ -39,7 +39,7 @@ const GiveRole = () => {
     if( searchData != ""){
         searchUser(searchData);
     }else{
-        toast.error("Please enter a search value");
+        getUserDetails();
     } 
   };
  
@@ -49,19 +49,18 @@ const GiveRole = () => {
   const handleInstitutionChange = (event) => {
     setSelectedInstitution(event.target.value);
   }
+  const getUserDetails = async () => {
+    try {
+      const response = await axiosPrivate.get("/auth/users");
+      setUserDetails(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred");
 
-  useEffect(() => {
-    const getUserDetails = async () => {
-      try {
-        const response = await axiosPrivate.get("/auth/users");
-        setUserDetails(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-        toast.error("An error occurred");
-
-      }
-    };
+    }
+  };
+  useEffect(() => { 
     getUserDetails();
   }, []);
    
