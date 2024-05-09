@@ -71,7 +71,7 @@ const CreateInstitute = () => {
   },[]);
 
   const createEducationSystem = async () => {
-    if (educationSystem != "") {
+    if (educationSystemRead != "") {
       try {
         const response = await axiosPrivate.post("/admin/education-system/", {
           name: educationSystemRead,
