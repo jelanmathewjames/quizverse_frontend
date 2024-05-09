@@ -4,11 +4,18 @@ import toast from "react-hot-toast";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 const GiveRole = () => {
+ /*
+  dropdown - institution (get)
+
+  */
+
   const axiosPrivate = useAxiosPrivate();
   const [userDetails, setUserDetails] = useState([]);
   const [selectUsersId, setSelectUsersId] = useState([]); 
   const [searchData, setSearchData] = useState("");
   const [selectedRole,setSelectedRole] = useState(""); // [Institution Admin, Community Admin
+  const [institution, setInstitution] = useState([]);
+  const [selectedInstitution, setSelectedInstitution] = useState("");
   const handleInputChange = (event) => {
     setSearchData(event.target.value);
   };
@@ -39,6 +46,9 @@ const GiveRole = () => {
   const  handlerRoleChange = (event) => {
     setSelectedRole(event.target.value);
   };
+  const handleInstitutionChange = (event) => {
+    setSelectedInstitution(event.target.value);
+  }
 
   useEffect(() => {
     const getUserDetails = async () => {
@@ -55,6 +65,23 @@ const GiveRole = () => {
     getUserDetails();
   }, []);
    
+  // fetch institution data from the backend
+  useEffect(() => {
+    if(selectedRole == "Institution"){
+      const getInstitution = async () => {
+        try {
+          const response = await axiosPrivate.get("/admin/institution");
+          setInstitution(response.data);
+          console.log(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      getInstitution();
+    }
+
+   }, [selectedRole]);
+
   const giveRole = async () => {
     if (selectUsersId.length === 0) {
       toast.error("Please select a user");
@@ -67,12 +94,14 @@ const GiveRole = () => {
     try {
       if (selectedRole === "Institution") {
         await axiosPrivate.post("/admin/role/institution/", {
-            users_id: selectUsersId,
-        });
+            user_ids: selectUsersId,
+            entity_id: selectedInstitution
+          });
       } else if (selectedRole === "Community") {
         await axiosPrivate.post("/admin/role/community/", {
-            users_id: selectUsersId,
-        });
+            user_ids: selectUsersId,
+            entity_id: selectedInstitution
+          });
       }
       toast.success("Role given successfully");
     } catch (error) {
@@ -82,14 +111,16 @@ const GiveRole = () => {
   }
   return (
     <div className="grid grid-cols-2">
-      <div className="Role-selection flex flex-col gap-4">
+      {/* role selection */}
+      <div className=" flex flex-col gap-4">
+        
          <select
           className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
           value={selectedRole}
           onChange={handlerRoleChange}
         >
           <option disabled value="">
-            Select Department
+            Select Role
           </option>
             <option key={1} value={"Institution"}>
                 Institution Admin
@@ -98,9 +129,33 @@ const GiveRole = () => {
                  Community Admin
             </option>
         </select>
+
+        {/* conditional rendering */}
+        {selectedRole === "Institution" && (
+          <div>
+            <select
+              className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
+              value={selectedInstitution}
+              onChange={handleInstitutionChange}
+            >
+              <option disabled value="">
+                Select Institution
+              </option>
+              {institution.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <button className="btn btn-neutral w-80" onClick={ giveRole }>Give Role</button>
       </div>
-      <div className="userDetails w-72">
+
+
+      {/* user detials */}
+      <div className=" w-72">
         <div className="searchBar">
           <h1 className="text-xl font-bold mb-2 ml-1">User Details</h1>
           <label className="input input-bordered flex items-center gap-2">
