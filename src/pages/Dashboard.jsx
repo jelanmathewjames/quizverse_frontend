@@ -29,7 +29,7 @@ const Dashboard = () => {
    
 
     return (
-        <DashboardLayout navitems={items} title="dashboard" >
+        <DashboardLayout navitems={items} title="Dashboard" >
             
         <motion.div className="flex justify-center items-center flex-col  gap-2 m-5" variants={containerVariants}
         initial="hidden"

@@ -1,18 +1,14 @@
 [
     {
-      "name": "Create instituteAdmin"
+      "name": "Give Role"
     },
     {
-      "name": "Create communityAdmin"
-    },
-    {
-      "name":"Log out"
-    },{
       "name":"Create institute"
     },
     {
       "name":"Create community"
-    },{
+    },
+    {
       "name":"Create course"
     }
   ]
