@@ -34,7 +34,29 @@ const CreateInstitute = () => {
         createEducationSystem();
     }
   };
- 
+  const createInstitute = async() => {
+    if (name != "" && place != "" && institution != "" && selectedEducation != "") {
+      try {
+        const response = await axiosPrivate.post("/admin/institution/", {
+          name: name,
+          place: place,
+          institution_type: institution,
+          education_system_id: selectedEducation
+        });
+        console.log(response.data);
+        toast.success("Institution created");
+        setName("");
+        setPlace("");
+        setInstitution("");
+        setSelectedEducation("");
+      } catch (error) {
+        console.error(error);
+        toast.error("An error occurred");
+      }
+    } else {
+      toast.error("Please enter a value");
+    }
+  }
   useEffect(() => {
     const fetchEducationSystem = async () => {
       try {
@@ -115,6 +137,12 @@ const CreateInstitute = () => {
       ))}
 
         </select>
+        <button
+          className="btn btn-neutral w-80 mt-4 "
+          onClick={createInstitute}
+        >
+          Create Institute
+        </button>
       </div>
       {/* education system */}
       <div>

@@ -1,11 +1,8 @@
 import DashboardLayout from '../../../components/DashboardLayout';
-import Profile from '../../../components/Profile';
 import items  from './adminNavItems.json';
 import CreateCommunity from './CreateCommunity';
-import CreateCommunityAdmin from './CreateCommunityAdmin';
-import CreateCourse from './CreateCourse';
+import CreateCourseAndDepartment from './CreateCourseAndDepartment';
 import CreateInstitute from './CreateInstitute';
-import CreateInstituteAdmin from './CreateInstituteAdmin';
 import GiveRole from './GiveRole';
 const AdminDashboard = () => {
   return (
@@ -13,7 +10,7 @@ const AdminDashboard = () => {
       <GiveRole />
       <CreateInstitute />
       <CreateCommunity/>
-      <CreateCourse />
+      <CreateCourseAndDepartment />
     </DashboardLayout>
   );
 };
