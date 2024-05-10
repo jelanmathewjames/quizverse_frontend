@@ -22,9 +22,8 @@ const CreateCourseAndDepartment = () => {
       try {
         const response = await axiosPrivate.get("/admin/education-system");
         setEducationSystem(response.data);
-        console.log(response.data);
       } catch (error) {
-        console.error(error);
+        setEducationSystem([]);
       }
     };
     fetchEducationSystem();
@@ -35,9 +34,8 @@ const CreateCourseAndDepartment = () => {
       try {
         const response = await axiosPrivate.get("/admin/department");
         setDepartmentList(response.data);
-        console.log(response.data);
       } catch (error) {
-        console.error(error);
+        setDepartmentList([]);
       }
     };
     fetchDepartment();
@@ -49,12 +47,10 @@ const CreateCourseAndDepartment = () => {
         const response = await axiosPrivate.post("/admin/department/", {
           name: departmentRead,
         });
-        console.log(response.data);
-        toast.success("Education system created");
+        toast.success("Department created successfully");
         setDepartmentRead("");
       } catch (error) {
-        console.error(error);
-        toast.error("An error occurred");
+        toast.error(error.response.data.message);
       }
     } else {
       toast.error("Please enter a value");
@@ -105,18 +101,16 @@ const CreateCourseAndDepartment = () => {
           education_system_id: selectedEducation,
           class_or_semester: class_or_semester,
         });
-        console.log(response.data);
         setCourseId(response.data.id);
         setCourseName(response.data.name);
-        toast.success("Course created");
+        toast.success("Course created successfully");
         setName("");
         setCode("");
         setDepartment("");
         setSelectedEducation("");
         setClassOrSemester("");
       } catch (error) {
-        console.error(error);
-        toast.error("An error occurred");
+        toast.error(error.response.data.message);
       }
     } else {
       toast.error("Please enter a value");
