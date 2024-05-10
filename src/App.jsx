@@ -34,7 +34,7 @@ function App() {
         <Route element={<CheckAuth requireAuth={true} allowedRoles={[]} />}>
           <Route path="/faculty/*" element={<FacultyDashboard/>}> </Route>
         </Route>
-        <Route element={<CheckAuth requireAuth={true} allowedRoles={["Institute"]} />}>
+        <Route element={<CheckAuth requireAuth={true} allowedRoles={["Institution"]} />}>
           <Route path="/institute/*" element={<InstitutionAdmin/>}> </Route>
         </Route>
         <Route element={<CheckAuth requireAuth={true} allowedRoles={["Student"]} />}>
