@@ -28,13 +28,15 @@ const GiveRole = () => {
   const [selectedRole, setSelectedRole] = useState(""); // [Institution Admin, Community Admin
   const [institution, setInstitution] = useState([]);
   const [selectedInstitution, setSelectedInstitution] = useState("");
-  const [selectedUsersDetails,setSelectedUsersDetails]  = useState([]);
+  const [selectedUsersDetails, setSelectedUsersDetails] = useState([]);
   const [departmentList, setDepartmentList] = useState("");
   const [department, setDepartment] = useState("");
+  const [classOrSemester, setClassOrSemester] = useState("");
+
   const handleInputChange = (event) => {
     setSearchData(event.target.value);
   };
-  
+
   // read departmentList data
   useEffect(() => {
     const fetchDepartment = async () => {
@@ -87,7 +89,7 @@ const GiveRole = () => {
       toast.error("An error occurred");
     }
   };
-  
+
   useEffect(() => {
     getUserDetails();
   }, []);
@@ -119,13 +121,13 @@ const GiveRole = () => {
     try {
       if (selectedRole === "Faculty") {
         await axiosPrivate.post("/admin/role/faculty/", {
-          "user_membership_id":selectedUsersDetails,
-          "class_or_semester":null
+          user_membership_id: selectedUsersDetails,
+          class_or_semester: null,
         });
       } else if (selectedRole === "Student") {
         await axiosPrivate.post("/admin/role/student/", {
-          "user_membership_id":selectedUsersDetails,
-          "class_or_semester":null
+          user_membership_id: selectedUsersDetails,
+          class_or_semester: classOrSemester,
         });
       }
       toast.success("Role given successfully");
@@ -142,21 +144,20 @@ const GiveRole = () => {
     setDepartment(event.target.value);
   };
 
-  useEffect(()=>{
-    console.log(selectedUsersDetails)
-  },[selectedUsersDetails])
+  useEffect(() => {
+    console.log(selectedUsersDetails);
+  }, [selectedUsersDetails]);
   const handleMemberIdChange = (event, userId) => {
     const newMemberId = event.target.value;
     setSelectedUsersDetails((prevDetails) =>
       prevDetails.map((detail) =>
         detail.user_id == userId
-          ? { ...detail, member_id: newMemberId ,department_ids:[department]}
+          ? { ...detail, member_id: newMemberId, department_ids: [department] }
           : detail
       )
     );
   };
 
-  
   return (
     <div className="grid grid-cols-3">
       {/* role selection */}
@@ -177,40 +178,31 @@ const GiveRole = () => {
             Student
           </option>
         </select>
-      {/* select department */}
-      <select
-              className="select select-bordered  w-full mt- max-w-xs"
-              value={department}
-              onChange={handleDepartmentChange}
-            >
-              <option disabled value="">
-                Select Department..
+        {/* select department */}
+        <select
+          className="select select-bordered  w-full mt- max-w-xs"
+          value={department}
+          onChange={handleDepartmentChange}
+        >
+          <option disabled value="">
+            Select Department..
+          </option>
+          {departmentList != "" &&
+            departmentList.map((system) => (
+              <option key={system.id} value={system.id}>
+                {system.name}
               </option>
-              {departmentList != "" &&
-                departmentList.map((system) => (
-                  <option key={system.id} value={system.id}>
-                    {system.name}
-                  </option>
-                ))}
-            </select>
+            ))}
+        </select>
         {/* conditional rendering */}
-        {selectedRole === "Institution" && (
-          <div>
-            <select
-              className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
-              value={selectedInstitution}
-              onChange={handleInstitutionChange}
-            >
-              <option disabled value="">
-                Select Institution
-              </option>
-              {institution.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </div>
+        {selectedRole === "Student" && (
+          <input
+            type="number"
+            placeholder="Enter the semester/class."
+            className="input w-full mt- max-w-xs"
+            value={classOrSemester}
+            onChange={(event) => setClassOrSemester(event.target.value)}
+          />
         )}
 
         <button className="btn btn-neutral w-80" onClick={giveRole}>
@@ -270,17 +262,29 @@ const GiveRole = () => {
                           setSelectUsersId(
                             selectUsersId.filter((id) => id !== user.id)
                           );
-                          setSelectedUsersDetails(selectedUsersDetails.filter((user) => user.user_id != user.id))
+                          setSelectedUsersDetails(
+                            selectedUsersDetails.filter(
+                              (user) => user.user_id != user.id
+                            )
+                          );
                         } else {
                           setSelectUsersId([...selectUsersId, user.id]);
-                          setSelectedUsersDetails([...selectedUsersDetails,{user_id:user.id,member_id:""}])
+                          setSelectedUsersDetails([
+                            ...selectedUsersDetails,
+                            { user_id: user.id, member_id: "" },
+                          ]);
                         }
                       }}
                     />
                   </td>
                   <td>
                     {isSelected(user) ? (
-                      <input type="text" onChange={(event) => handleMemberIdChange(event, user.id)}   />                  
+                      <input
+                        type="text"
+                        onChange={(event) =>
+                          handleMemberIdChange(event, user.id)
+                        }
+                      />
                     ) : null}
                   </td>
                 </tr>
