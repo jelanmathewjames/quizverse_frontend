@@ -1,12 +1,8 @@
-
 [
     {
-      "name": "Add Course"
+      "name": "Give Roles"
     },
     {
-      "name": "Add Faculty "
-    },
-    {
-      "name": "Log out"
+      "name": "Link Department & Course"
     }
   ]
