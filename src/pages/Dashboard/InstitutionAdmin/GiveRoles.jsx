@@ -118,6 +118,10 @@ const GiveRole = () => {
       toast.error("Please select a role");
       return;
     }
+    if (selectedRole === "Student" && classOrSemester === "") {
+      toast.error("Please enter the class or semester");
+      return;
+    }
     try {
       if (selectedRole === "Faculty") {
         await axiosPrivate.post("/admin/role/faculty/", {
