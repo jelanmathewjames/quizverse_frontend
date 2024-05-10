@@ -130,7 +130,7 @@ const CreateCourseAndDepartment = () => {
         {/* div for course creattion */}
         <div className="flex flex-col gap-3   items-center">
           {/* course creation */}
-          <h1 className="text-center mb-3"> Course reation </h1>
+          <h1 className="text-center mb-3"> Course creation </h1>
           <div className="course flex flex-col gap-3">
             {/* input: name */}
             <input
@@ -203,7 +203,7 @@ const CreateCourseAndDepartment = () => {
 
         {/* departmenet creation */}
         <div className="department flex flex-col items-center">
-          <h1 className="text-center mb-7"> Department reation </h1>
+          <h1 className="text-center mb-7"> Department creation </h1>
           <input
             type="text"
             id="education-system"
