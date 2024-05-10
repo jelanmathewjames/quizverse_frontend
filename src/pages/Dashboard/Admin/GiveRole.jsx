@@ -30,10 +30,12 @@ const GiveRole = () => {
     const searchUser = async (search) => {
         try {
           const response = await axiosPrivate.get(`/auth/users?search=${search}`);
+          if (response.data.length === 0) {
+            toast.error("User not found");
+          }
           setUserDetails(response.data);
         } catch (error) {
-          console.error(error);
-          toast.error("User not found");
+          toast.error("Something went wrong");
         }
     }
     if( searchData != ""){
@@ -53,10 +55,8 @@ const GiveRole = () => {
     try {
       const response = await axiosPrivate.get("/auth/users");
       setUserDetails(response.data);
-      console.log(response.data);
     } catch (error) {
-      console.error(error);
-      toast.error("An error occurred");
+      setUserDetails([]);
 
     }
   };
@@ -71,9 +71,8 @@ const GiveRole = () => {
         try {
           const response = await axiosPrivate.get("/admin/institution");
           setInstitution(response.data);
-          console.log(response.data);
         } catch (error) {
-          console.error(error);
+          setInstitution([]);
         }
       };
       getInstitution();
@@ -91,21 +90,21 @@ const GiveRole = () => {
       return;
     }
     try {
+      let response
       if (selectedRole === "Institution") {
-        await axiosPrivate.post("/admin/role/institution/", {
+        response = await axiosPrivate.post("/admin/role/institution/", {
             user_ids: selectUsersId,
             entity_id: selectedInstitution
           });
       } else if (selectedRole === "Community") {
-        await axiosPrivate.post("/admin/role/community/", {
+        response = await axiosPrivate.post("/admin/role/community/", {
             user_ids: selectUsersId,
             entity_id: selectedInstitution
           });
       }
-      toast.success("Role given successfully");
+      toast.success(response.data.message);
     } catch (error) {
-      console.error(error);
-      toast.error("An error occurred");
+      toast.error(error.response.data.message);
     }
   }
   return (
