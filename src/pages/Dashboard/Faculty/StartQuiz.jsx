@@ -190,7 +190,7 @@ const StartQuiz = () => {
     variants={containerVariants}>
     <div className="flex justify-center bg-base-100 w-full p-5 pb-10 rounded-lg shadow-xl">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 m-auto   pt-12">
-        <select
+        {/* <select
           className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
           value={selectedDepartment}
           onChange={handleDepartmentChange}
@@ -203,8 +203,8 @@ const StartQuiz = () => {
               {department.name}
             </option>
           ))}
-        </select>
-        <select
+        </select> */}
+        {/* <select
           className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px]  max-w-xs"
           value={selectedSemester}
           onChange={handleSemesterChange}
@@ -217,7 +217,7 @@ const StartQuiz = () => {
               {semester.name}
             </option>
           ))}
-        </select>
+        </select> */}
         <select
           className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
           value={selectedSubject}
