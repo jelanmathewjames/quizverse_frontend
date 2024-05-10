@@ -23,9 +23,11 @@ const LinkDepartmentCourse = () => {
   const linkCourse = async () => {
     if (selectedCourses.length > 0) {
       try {
+        console.log(selectedCourses);
         const response = await axiosPrivate.post(
-          "/admin/link/institution-course/",
-          selectedCourses
+          "/admin/link/institution-course/",{
+            link_id:selectedCourses
+          }
         );
         toast.success(response.data.message);
       } catch (error) {
@@ -37,11 +39,12 @@ const LinkDepartmentCourse = () => {
   };
 
   const linkDepartments = async () => {
-    if (selectedCourses.length > 0) {
+    if (selectedDepatments.length > 0) {
       try {
         const response = await axiosPrivate.post(
-          "/admin/link/institution-department/",
-          selectedCourses
+          "/admin/link/institution-department/",{
+            link_id:selectedDepatments
+          }
         );
         console.log(response.data);
         toast.success(response.data.message);
@@ -165,16 +168,16 @@ const LinkDepartmentCourse = () => {
   return (
     <div className="flex flex-col gap-3">
       {/* your course and department */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="md:grid md:grid-cols-2 gap-3">
         {/* your courses  */}
-        <div className="w-80">
+        <div className="w-full">
           <div className="searchBar">
             <h1 className="text-xl font-bold mb-2 ml-1">Your Courses</h1>
             <label className="input input-bordered flex items-center gap-2">
               <input
                 type="text"
                 className="grow"
-                placeholder="Search"
+                placeholder="Search Your Courses.."
                 value={searchData.linkedCourse}
                 onChange={(event) => handleInputChange(event, "linkedCourse")}
                 onKeyDown={(event) => handleKeyPress(event, "linkedCourse")}
@@ -194,7 +197,7 @@ const LinkDepartmentCourse = () => {
               </svg>
             </label>
           </div>
-          <div className="w-80 h-64 overflow-y-auto no-scrollbar overflow-x-visible">
+          <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-64 overflow-y-auto no-scrollbar overflow-x-visible">
             <table className="table w-full">
               <thead>
                 <tr>
@@ -204,25 +207,35 @@ const LinkDepartmentCourse = () => {
                 </tr>
               </thead>
               <tbody>
-                {linkedCourse.map((course) => (
-                  <tr key={course.id}>
-                    <td>{course.username}</td>
-                    <td>{course.email}</td>
-                  </tr>
-                ))}
+                {
+                linkedCourse.length != 0 ?
+                (
+                  linkedCourse.map((course) => (
+                    <tr key={course.id}>
+                      <td>{course.username}</td>
+                      <td>{course.email}</td>
+                    </tr>
+                  ))
+                )
+                :
+                (
+                  
+                  <td colSpan={3} className="text-center ">No courses</td>
+                )
+                }
               </tbody>
             </table>
           </div>
         </div>
         {/* your department */}
-        <div className="w-80">
+        <div className="w-full">
           <div className="searchBar">
             <h1 className="text-xl font-bold mb-2 ml-1">Your Departments</h1>
             <label className="input input-bordered flex items-center gap-2">
               <input
                 type="text"
                 className="grow"
-                placeholder="Search Department.."
+                placeholder="Search Your Department.."
                 value={searchData.linkedDeps}
                 onChange={(event) => handleInputChange(event, "linkedDeps")}
                 onKeyDown={(event) => handleKeyPress(event, "linkedDeps")}
@@ -242,38 +255,41 @@ const LinkDepartmentCourse = () => {
               </svg>
             </label>
           </div>
-          <div className="w-80 h-64 overflow-y-auto no-scrollbar overflow-x-hidden ">
+          <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-64 overflow-y-auto no-scrollbar overflow-x-visible">
             <table className="table w-full">
               <thead>
                 <tr>
                   <th>Department</th>
-                  <th>Code</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                {linkedDeps.map((department) => (
+                {
+                linkedDeps.length != 0 ?
+                linkedDeps.map((department) => (
                   <tr key={department.id}>
-                    <td>{department.username}</td>
-                    <td>{department.email}</td>
+                    <td>{department.name}</td>
                   </tr>
-                ))}
+                ))
+                :
+                <td colSpan={3} className="text-center ">No Departments</td>
+                }
               </tbody>
             </table>
           </div>
         </div>
       </div>
       <hr className="border-purple-300 border-t-2" />
-      <div className="grid grid-cols-2 gap-3">
+      <div className="md:grid md:grid-cols-2 gap-3">
         {/* unlinked courses  */}
-        <div className="w-80">
+        <div className="w-full">
           <div className="searchBar">
             <h1 className="text-xl font-bold mb-2 ml-1">Available Courses</h1>
             <label className="input input-bordered flex items-center gap-2">
               <input
                 type="text"
                 className="grow"
-                placeholder="Search"
+                placeholder="Search Available Courses.."
                 value={searchData.courseList}
                 onChange={(event) => handleInputChange(event, "courseList")}
                 onKeyDown={(event) => handleKeyPress(event, "courseList")}
@@ -293,30 +309,30 @@ const LinkDepartmentCourse = () => {
               </svg>
             </label>
           </div>
-          <div className="w-80 h-96 overflow-y-auto no-scrollbar overflow-x-visible ">
+          <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-64 overflow-y-auto no-scrollbar overflow-x-visible">
             <table className="table w-full">
               <thead>
                 <tr>
-                  <th>Username</th>
-                  <th>Email</th>
+                  <th>Course</th>
+                  <th>Code</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                {courseList.map((user) => (
-                  <tr key={user.id}>
-                    <td>{user.username}</td>
-                    <td>{user.email}</td>
+                {courseList.map((course) => (
+                  <tr key={course.id}>
+                    <td>{course.name}</td>
+                    <td>{course.code}</td>
                     <td>
                       <input
                         type="checkbox"
                         onChange={() => {
-                          if (selectedCourses.includes(user.id)) {
+                          if (selectedCourses.includes(course.id)) {
                             setSelectedCourses([
-                              selectedCourses.filter((id) => id !== user.id),
+                              selectedCourses.filter((id) => id !== course.id),
                             ]);
                           } else {
-                            setSelectedCourses([...selectedCourses, user.id]);
+                            setSelectedCourses([...selectedCourses, course.id]);
                           }
                         }}
                       />
@@ -326,7 +342,7 @@ const LinkDepartmentCourse = () => {
               </tbody>
             </table>
           </div>
-          <div className="w-80 flex p-6">
+          <div className="w-full  flex p-6 justify-center">
             <button
               className="btn btn-neutral w-40 mx-auto "
               onClick={linkCourse}
@@ -337,7 +353,7 @@ const LinkDepartmentCourse = () => {
         </div>
         {/* unlinked department */}
         <div className="">
-          <div className="w-80 ">
+          <div className="w-full ">
             <div className="searchBar">
               <h1 className="text-xl font-bold mb-2 ml-1">
                 Available Departments
@@ -346,7 +362,7 @@ const LinkDepartmentCourse = () => {
                 <input
                   type="text"
                   className="grow"
-                  placeholder="Search"
+                  placeholder="Search Available Departments.."
                   value={searchData.departmentList}
                   onChange={(event) =>
                     handleInputChange(event, "departmentList")
@@ -368,35 +384,33 @@ const LinkDepartmentCourse = () => {
                 </svg>
               </label>
             </div>
-            <div className="w-80 h-96 overflow-y-auto no-scrollbar overflow-x-visible">
+            <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-64 overflow-y-auto no-scrollbar overflow-x-visible">
               <table className="table w-full">
                 <thead>
                   <tr>
-                    <th>Username</th>
-                    <th>Email</th>
+                    <th>department</th>
                     <th></th>
                   </tr>
                 </thead>
                 
                 <tbody>
-                  {departmentList.map((user) => (
-                    <tr key={user.id}>
-                      <td>{user.username}</td>
-                      <td>{user.email}</td>
+                  {departmentList.map((department) => (
+                    <tr key={department.id}>
+                      <td>{department.name}</td>
                       <td>
                         <input
                           type="checkbox"
                           onChange={() => {
-                            if (selectedDepatments.includes(user.id)) {
+                            if (selectedDepatments.includes(department.id)) {
                               setSelectedDepatments([
                                 selectedDepatments.filter(
-                                  (id) => id !== user.id
+                                  (id) => id !== department.id
                                 ),
                               ]);
                             } else {
                               setSelectedDepatments([
                                 ...selectedDepatments,
-                                user.id,
+                                department.id,
                               ]);
                             }
                           }}
@@ -407,7 +421,7 @@ const LinkDepartmentCourse = () => {
                 </tbody>
               </table>
             </div>
-            <div className="w-80 flex p-6">
+            <div className="w-full  flex p-6 justify-center">
               <button
                 className="btn btn-neutral w-40 mx-auto "
                 onClick={linkDepartments}
