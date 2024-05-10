@@ -24,14 +24,12 @@ const LinkDepartmentCourse = () => {
     if (selectedCourses.length > 0) {
       try {
         const response = await axiosPrivate.post(
-          "/api/linkCourse",
+          "/admin/link/institution-course/",
           selectedCourses
         );
-        console.log(response.data);
-        toast.success("courses are linked");
+        toast.success(response.data.message);
       } catch (error) {
-        console.error(error);
-        toast.error("courses are not linked");
+        toast.error(error.response.data.message)
       }
     } else {
       toast.error("please select the courses");
@@ -42,14 +40,13 @@ const LinkDepartmentCourse = () => {
     if (selectedCourses.length > 0) {
       try {
         const response = await axiosPrivate.post(
-          "/api/linkDepartments",
+          "/admin/link/institution-department/",
           selectedCourses
         );
         console.log(response.data);
-        toast.success("Departments are linked");
+        toast.success(response.data.message);
       } catch (error) {
-        console.error(error);
-        toast.error("Departments are not linked");
+        toast.error(error.response.data.message)
       }
     } else {
       toast.error("please select the Departments");
@@ -73,22 +70,22 @@ const LinkDepartmentCourse = () => {
   const handleSearchIconClick = (option) => {
     const optionMap = {
       linkedCourse: {
-        apiEndpoint: "/auth/users",
+        apiEndpoint: "/admin/course?status=linked",
         stateSetter: setLinkedCourse,
         fetchFunc: fetchLinkedCourse,
       },
       linkedDeps: {
-        apiEndpoint: "/auth/users",
+        apiEndpoint: "/admin/course?status=unlinked",
         stateSetter: setLinkedDeps,
         fetchFunc: fetchLinkedDepartment,
       },
       courseList: {
-        apiEndpoint: "/auth/users",
+        apiEndpoint: "/admin/department?status=linked",
         stateSetter: setCourseList,
         fetchFunc: fetchCourse,
       },
       departmentList: {
-        apiEndpoint: "/auth/users",
+        apiEndpoint: "/admin/department?status=unlinked",
         stateSetter: setDepartmentList,
         fetchFunc: fetchDepartmnet,
       },
@@ -116,11 +113,10 @@ const LinkDepartmentCourse = () => {
   const fetchLinkedCourse = async () => {
     try {
       // add linkerd course api
-      const response = await axiosPrivate.get("/auth/users");
+      const response = await axiosPrivate.get("/admin/course?status=linked");
       setLinkedCourse(response.data);
-      console.log(response.data);
     } catch (error) {
-      console.error(error);
+      setLinkedCourse([]);
     }
   };
   useEffect(() => {
@@ -130,11 +126,10 @@ const LinkDepartmentCourse = () => {
   const fetchLinkedDepartment = async () => {
     try {
       // add linked department  api
-      const response = await axiosPrivate.get("/auth/users");
+      const response = await axiosPrivate.get("/admin/department?status=linked");
       setLinkedDeps(response.data);
-      console.log(response.data);
     } catch (error) {
-      console.error(error);
+      setLinkedDeps([]);
     }
   };
   useEffect(() => {
@@ -145,11 +140,10 @@ const LinkDepartmentCourse = () => {
   const fetchCourse = async () => {
     try {
       // add  unlinked course api
-      const response = await axiosPrivate.get("/auth/users");
+      const response = await axiosPrivate.get("/admin/course?status=unlinked");
       setCourseList(response.data);
-      console.log(response.data);
     } catch (error) {
-      console.error(error);
+      setCourseList([]);
     }
   };
   useEffect(() => {
@@ -159,11 +153,10 @@ const LinkDepartmentCourse = () => {
   const fetchDepartmnet = async () => {
     try {
       // add unlinked department  api
-      const response = await axiosPrivate.get("/auth/users");
+      const response = await axiosPrivate.get("/admin/department?status=unlinked");
       setDepartmentList(response.data);
-      console.log(response.data);
     } catch (error) {
-      console.error(error);
+      setDepartmentList([]);
     }
   };
   useEffect(() => {

@@ -123,21 +123,21 @@ const GiveRole = () => {
       return;
     }
     try {
+      let response
       if (selectedRole === "Faculty") {
-        await axiosPrivate.post("/admin/role/faculty/", {
+        response = await axiosPrivate.post("/admin/role/faculty/", {
           user_membership_id: selectedUsersDetails,
           class_or_semester: null,
         });
       } else if (selectedRole === "Student") {
-        await axiosPrivate.post("/admin/role/student/", {
+        response = await axiosPrivate.post("/admin/role/student/", {
           user_membership_id: selectedUsersDetails,
           class_or_semester: classOrSemester,
         });
       }
-      toast.success("Role given successfully");
+      toast.success(response.data.message);
     } catch (error) {
-      console.error(error);
-      toast.error("An error occurred");
+      toast.error(error.response.data.message);
     }
   };
   // Function to check if a user is selected
