@@ -14,7 +14,7 @@ const Dashboard = () => {
     const moveToDashBoard = (role) => {
         if (role == "Admin") {
             navigate("/admin");
-        }else if (role == "Institute") {
+        }else if (role == "Institution") {
             navigate("/institute");
         }else if (role == "Community") {
             navigate("/community");
