@@ -163,12 +163,12 @@ const GiveRole = () => {
   };
 
   return (
-    <div className="grid grid-cols-3">
+    <div className="md:grid md:grid-cols-2  flex flex-col-reverse gap-3  ">
       {/* role selection */}
-      <div className=" flex flex-col gap-4">
+      <div className=" flex flex-col gap-4 items-center ">
         {/* select role */}
         <select
-          className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
+          className="select select-bordered w-[90%] "
           value={selectedRole}
           onChange={handlerRoleChange}
         >
@@ -184,7 +184,7 @@ const GiveRole = () => {
         </select>
         {/* select department */}
         <select
-          className="select select-bordered  w-full mt- max-w-xs"
+          className="select select-bordered  w-[90%]"
           value={department}
           onChange={handleDepartmentChange}
         >
@@ -203,26 +203,26 @@ const GiveRole = () => {
           <input
             type="number"
             placeholder="Enter the semester/class."
-            className="input w-full mt- max-w-xs"
+            className="input w-[90%]"
             value={classOrSemester}
             onChange={(event) => setClassOrSemester(event.target.value)}
           />
         )}
 
-        <button className="btn btn-neutral w-80" onClick={giveRole}>
+        <button className="btn btn-neutral w-[90%]" onClick={giveRole}>
           Give Role
         </button>
       </div>
 
       {/* user detials */}
-      <div className=" w-72">
+      <div className=" w-full">
         <div className="searchBar">
-          <h1 className="text-xl font-bold mb-2 ml-1">User Details</h1>
+          {/* <h1 className="text-xl font-bold mb-2 ml-1">User Details</h1> */}
           <label className="input input-bordered flex items-center gap-2">
             <input
               type="text"
               className="grow"
-              placeholder="Search"
+              placeholder="Search Users.."
               value={searchData}
               onChange={handleInputChange}
               onKeyDown={handleKeyPress}
@@ -242,7 +242,7 @@ const GiveRole = () => {
             </svg>
           </label>
         </div>
-        <div className="user-table">
+        <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-80 overflow-y-auto no-scrollbar overflow-x-visible">
           <table className="table w-full">
             <thead>
               <tr>
@@ -285,6 +285,7 @@ const GiveRole = () => {
                     {isSelected(user) ? (
                       <input
                         type="text"
+                        className="border-2 border-gray-300 rounded-md"
                         onChange={(event) =>
                           handleMemberIdChange(event, user.id)
                         }
