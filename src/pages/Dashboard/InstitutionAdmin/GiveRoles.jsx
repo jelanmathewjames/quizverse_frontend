@@ -28,13 +28,26 @@ const GiveRole = () => {
   const [selectedRole, setSelectedRole] = useState(""); // [Institution Admin, Community Admin
   const [institution, setInstitution] = useState([]);
   const [selectedInstitution, setSelectedInstitution] = useState("");
- 
   const [selectedUsersDetails,setSelectedUsersDetails]  = useState([]);
-
+  const [departmentList, setDepartmentList] = useState("");
+  const [department, setDepartment] = useState("");
   const handleInputChange = (event) => {
     setSearchData(event.target.value);
   };
-
+  
+  // read departmentList data
+  useEffect(() => {
+    const fetchDepartment = async () => {
+      try {
+        const response = await axiosPrivate.get("/admin/department");
+        setDepartmentList(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchDepartment();
+  }, []);
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleSearchIconClick();
@@ -75,8 +88,6 @@ const GiveRole = () => {
     }
   };
   
-
-  
   useEffect(() => {
     getUserDetails();
   }, []);
@@ -88,7 +99,6 @@ const GiveRole = () => {
         try {
           const response = await axiosPrivate.get("/admin/institution");
           setInstitution(response.data);
-          console.log(response.data);
         } catch (error) {
           console.error(error);
         }
@@ -109,13 +119,13 @@ const GiveRole = () => {
     try {
       if (selectedRole === "Faculty") {
         await axiosPrivate.post("/admin/role/faculty/", {
-          user_ids: selectUsersId,
-          entity_id: selectedInstitution,
+          "user_membership_id":selectedUsersDetails,
+          "class_or_semester":null
         });
       } else if (selectedRole === "Student") {
         await axiosPrivate.post("/admin/role/student/", {
-          user_ids: selectUsersId,
-          entity_id: selectedInstitution,
+          "user_membership_id":selectedUsersDetails,
+          "class_or_semester":null
         });
       }
       toast.success("Role given successfully");
@@ -124,35 +134,34 @@ const GiveRole = () => {
       toast.error("An error occurred");
     }
   };
-  const [memberId, setMemberId] = useState("");
   // Function to check if a user is selected
   const isSelected = (user) => {
     return selectUsersId.includes(user.id);
   };
-  const handleUserSelect = (userId) => {
-    if (isSelected(userId)) {
-      setSelectUsersId(selectUsersId.filter(id => id !== userId));
-      setSelectedUsersDetails(selectedUsersDetails.filter(detail => detail.user_id !== userId));
-    } else {
-      setSelectUsersId([...selectUsersId, userId]);
-      setSelectedUsersDetails([...selectedUsersDetails, { user_id: userId, member_id: "" }]);
-    }
+  const handleDepartmentChange = (event) => {
+    setDepartment(event.target.value);
   };
 
+  useEffect(()=>{
+    console.log(selectedUsersDetails)
+  },[selectedUsersDetails])
   const handleMemberIdChange = (event, userId) => {
-    setMemberId(event.target.value);
-    setSelectedUsersDetails(selectedUsersDetails.map(detail => detail.user_id === userId ? { ...detail, member_id: event.target.value } : detail));
+    const newMemberId = event.target.value;
+    setSelectedUsersDetails((prevDetails) =>
+      prevDetails.map((detail) =>
+        detail.user_id == userId
+          ? { ...detail, member_id: newMemberId ,department_ids:[department]}
+          : detail
+      )
+    );
   };
 
-  const handleAddClick = (userId) => {
-    setSelectedUsersDetails(selectedUsersDetails.map(detail => detail.user_id === userId ? { ...detail, member_id: memberId } : detail));
-    setMemberId("");
-  };
-
+  
   return (
     <div className="grid grid-cols-3">
       {/* role selection */}
       <div className=" flex flex-col gap-4">
+        {/* select role */}
         <select
           className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
           value={selectedRole}
@@ -168,7 +177,22 @@ const GiveRole = () => {
             Student
           </option>
         </select>
-
+      {/* select department */}
+      <select
+              className="select select-bordered  w-full mt- max-w-xs"
+              value={department}
+              onChange={handleDepartmentChange}
+            >
+              <option disabled value="">
+                Select Department..
+              </option>
+              {departmentList != "" &&
+                departmentList.map((system) => (
+                  <option key={system.id} value={system.id}>
+                    {system.name}
+                  </option>
+                ))}
+            </select>
         {/* conditional rendering */}
         {selectedRole === "Institution" && (
           <div>
@@ -228,9 +252,9 @@ const GiveRole = () => {
               <tr>
                 <th>Username</th>
                 <th>Email</th>
-                <th></th>
-                <th>Selected User ID</th> {/* New column for input fields */}
-                <th></th>
+                <th>select</th>
+                <th>Give memberID</th> {/* New column for input fields */}
+                <th> </th>
               </tr>
             </thead>
             <tbody>
@@ -239,27 +263,24 @@ const GiveRole = () => {
                   <td>{user.username}</td>
                   <td>{user.email}</td>
                   <td>
-                  <input
+                    <input
                       type="checkbox"
-                      checked={isSelected(user.id)}
-                      onChange={() => handleUserSelect(user.id)}
+                      onChange={() => {
+                        if (selectUsersId.includes(user.id)) {
+                          setSelectUsersId(
+                            selectUsersId.filter((id) => id !== user.id)
+                          );
+                          setSelectedUsersDetails(selectedUsersDetails.filter((user) => user.user_id != user.id))
+                        } else {
+                          setSelectUsersId([...selectUsersId, user.id]);
+                          setSelectedUsersDetails([...selectedUsersDetails,{user_id:user.id,member_id:""}])
+                        }
+                      }}
                     />
                   </td>
                   <td>
-                  {isSelected(user.id) ? (
-                      <div className="flex gap-1">
-                        <input
-                          type="text"
-                          value={memberId}
-                          onChange={(event) => handleMemberIdChange(event, user.id)}
-                        />
-                        <button
-                          className="btn btn-neutral size-1 w-1 h-1"
-                          onClick={() => handleAddClick(user.id)}
-                        >
-                          Add
-                        </button>
-                      </div>
+                    {isSelected(user) ? (
+                      <input type="text" onChange={(event) => handleMemberIdChange(event, user.id)}   />                  
                     ) : null}
                   </td>
                 </tr>
