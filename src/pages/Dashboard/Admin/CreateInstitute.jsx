@@ -43,15 +43,13 @@ const CreateInstitute = () => {
           institution_type: institution,
           education_system_id: selectedEducation
         });
-        console.log(response.data);
-        toast.success("Institution created");
+        toast.success("Institution created successfully");
         setName("");
         setPlace("");
         setInstitution("");
         setSelectedEducation("");
       } catch (error) {
-        console.error(error);
-        toast.error("An error occurred");
+        toast.error(error.response.data.message);
       }
     } else {
       toast.error("Please enter a value");
@@ -62,9 +60,8 @@ const CreateInstitute = () => {
       try {
         const response = await axiosPrivate.get("/admin/education-system");
         setEducationSystem(response.data);
-        console.log(response.data);
       } catch (error) {
-        console.error(error);
+        setEducationSystem([]);
       }
     };
     fetchEducationSystem();
@@ -77,11 +74,10 @@ const CreateInstitute = () => {
           name: educationSystemRead,
         });
         console.log(response.data);
-        toast.success("Education system created");
+        toast.success("Education system created successfully");
         setEducationSystem("");
       } catch (error) {
-        console.error(error);
-        toast.error("An error occurred");
+        toast.error(error.response.data.message);
       }
     } else {
       toast.error("Please enter a value");
