@@ -120,7 +120,8 @@ const CreateCourseAndDepartment = () => {
   return (
     <>
       {/* course and department */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+      <div className="md:grid md:grid-cols-2 flex flex-col-reverse gap-10 pt-5 pb-5">
+
         {/* div for course creattion */}
         <div className="flex flex-col gap-3   items-center">
           {/* course creation */}

@@ -84,9 +84,9 @@ const CreateInstitute = () => {
     }
   };
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr" }} >
+    <div className="md:grid md:grid-cols-2 flex flex-col-reverse gap-10 pt-5">
       {/* institution create  */}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 items-center">
       <input
           type="text"
           placeholder="Type institution name ..."
@@ -134,14 +134,15 @@ const CreateInstitute = () => {
 
         </select>
         <button
-          className="btn btn-neutral w-80 mt-4 "
+          className="btn btn-neutral w-80 mt-1 "
           onClick={createInstitute}
         >
           Create Institute
         </button>
       </div>
       {/* education system */}
-      <div>
+
+      <div className="flex flex-col items-center">
         <input
           type="text"
           id="education-system"
