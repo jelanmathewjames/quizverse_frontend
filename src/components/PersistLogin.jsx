@@ -1,7 +1,8 @@
+import { useEffect,useState } from "react";
 import { Outlet } from "react-router-dom"
-import { useState, useEffect } from "react";
 
 import useAuth from '../hooks/useAuth'
+import Preloader from "./PreLoader";
 
 const PersistLogin = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +30,7 @@ const PersistLogin = () => {
         <>
             {!persist
                 ? <Outlet />
-                : isLoading ? <p>Loading...</p> : <Outlet />}
+                : isLoading ? <Preloader/> : <Outlet />}
         </>
     )
 }
