@@ -185,11 +185,12 @@ const StartQuiz = () => {
 
   return (
     <>
-    <motion.div className="flex justify-center m-5 "initial="hidden"
+    <motion.div className="flex justify-center flex-col m-2 "initial="hidden"
     animate="visible"
     variants={containerVariants}>
-    <div className="flex justify-center bg-base-100 w-full p-5 pb-10 rounded-lg shadow-xl">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 m-auto   pt-12">
+      <div className="flex flex-col items-center lg:items-start gap-3 w-full md:w-1/2">
+      <h1 className="text-2xl font-bold">Start Quiz</h1>
+
         {/* <select
           className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
           value={selectedDepartment}
@@ -219,7 +220,7 @@ const StartQuiz = () => {
           ))}
         </select> */}
         <select
-          className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
+          className="select select-bordered w-full sm:w-[80%]"
           value={selectedSubject}
           onChange={handleSubjectChange}
         >
@@ -236,7 +237,7 @@ const StartQuiz = () => {
             ))}
         </select>
         <select
-          className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
+          className="select select-bordered  w-full sm:w-[80%]"
           value={selectedQuestionBank}
           onChange={handleQuestionBankChange}
         >
@@ -253,7 +254,7 @@ const StartQuiz = () => {
               ))}
         </select>
         <select
-          className="select select-bordered w-[400px] sm:w-[200px] md:w-[500px] max-w-xs"
+          className="select select-bordered  w-full sm:w-[80%]"
           onClick={(e) => {
             if (e.target.value === "custom") {
               setShowPopup(true);
@@ -271,6 +272,7 @@ const StartQuiz = () => {
             }
           
         </select>
+
         <div>
           {showPopup && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-10 transition-all ease-in-out delay-75 ">
@@ -318,25 +320,28 @@ const StartQuiz = () => {
             </div>
           )}
         </div>
-      </div>
 
 
-
-      </div>
-      
-
-    </motion.div>
-      
-
-      <div className="flex justify-center p-">
-        <button className="btn btn-outline btn-active mt-3" onClick={startQz}>
+    
+        <button className="btn btn-outline btn-active mt-3  w-full sm:w-[80%]" onClick={startQz}>
           {loading ? (
             <div className="animate-spin rounded-full  w-5 h-5 border-t-2 border-b-3 dark:border-[black] border-[#ffffff]"></div>
           ) : (
             "Start Quiz"
           )}
         </button>
+    
       </div>
+
+
+  
+      
+
+    </motion.div>
+      
+
+    
+
     </>
   );
 };
