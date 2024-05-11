@@ -166,7 +166,9 @@ const LinkDepartmentCourse = () => {
     fetchDepartmnet();
   }, []);
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3"
+  
+    >
       {/* your course and department */}
       <div className="md:grid md:grid-cols-2 gap-3">
         {/* your courses  */}
@@ -197,7 +199,7 @@ const LinkDepartmentCourse = () => {
               </svg>
             </label>
           </div>
-          <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-64 overflow-y-auto no-scrollbar overflow-x-visible">
+          <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-64   overflow-y-auto no-scrollbar overflow-x-visible">
             <table className="table w-full">
               <thead>
                 <tr>
@@ -212,8 +214,8 @@ const LinkDepartmentCourse = () => {
                 (
                   linkedCourse.map((course) => (
                     <tr key={course.id}>
-                      <td>{course.username}</td>
-                      <td>{course.email}</td>
+                      <td>{course.name}</td>
+                      <td>{course.code}</td>
                     </tr>
                   ))
                 )
@@ -309,7 +311,7 @@ const LinkDepartmentCourse = () => {
               </svg>
             </label>
           </div>
-          <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-64 overflow-y-auto no-scrollbar overflow-x-visible">
+          <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-64  overflow-y-auto no-scrollbar overflow-x-visible">
             <table className="table w-full">
               <thead>
                 <tr>

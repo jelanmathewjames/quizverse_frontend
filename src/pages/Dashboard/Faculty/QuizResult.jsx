@@ -64,7 +64,9 @@ const QuizResult = ({ quizId }) => {
     
     
     
-        <div className="overflow-x-auto shadow-2xl ">
+        <div className="shadow-2xl ">
+        <div className="w-full bg-base-100 border-base-300 mt-5 rounded border-2  h-96 overflow-y-auto no-scrollbar overflow-x-visible">
+
             <table className="table-auto w-full   ">
                 <thead>
                     <tr className="bg-base-300"></tr>
@@ -74,6 +76,7 @@ const QuizResult = ({ quizId }) => {
                     </tr>
                 </thead>
                 {/* Data Rows */}
+                
                 <tbody>
                     {results && results.map((result, index) => (
                         <tr key={index} className={index % 2 === 0 ? '' : 'bg-base-100'}>
@@ -83,6 +86,7 @@ const QuizResult = ({ quizId }) => {
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
         <div className='flex justify-center'> 
         <button className="btn btn-outline btn-active mt-3 " >

@@ -123,7 +123,7 @@ const GiveRole = () => {
       return;
     }
     try {
-      let response
+      let response;
       if (selectedRole === "Faculty") {
         response = await axiosPrivate.post("/admin/role/faculty/", {
           user_membership_id: selectedUsersDetails,
@@ -151,6 +151,7 @@ const GiveRole = () => {
   useEffect(() => {
     console.log(selectedUsersDetails);
   }, [selectedUsersDetails]);
+
   const handleMemberIdChange = (event, userId) => {
     const newMemberId = event.target.value;
     setSelectedUsersDetails((prevDetails) =>
@@ -161,6 +162,9 @@ const GiveRole = () => {
       )
     );
   };
+  useEffect(() => {
+    console.log("after operation : " + selectUsersId);
+  },[selectUsersId]);
 
   return (
     <div className="md:grid md:grid-cols-2  flex flex-col-reverse gap-3  ">
@@ -263,14 +267,27 @@ const GiveRole = () => {
                       type="checkbox"
                       onChange={() => {
                         if (selectUsersId.includes(user.id)) {
+                          console.log("before removal");
+
+                          console.log("details: " + selectedUsersDetails);
+                          console.log("id:" + selectUsersId);
+                          let checkEmpty = selectUsersId.filter(
+                            (id) => id != user.id
+                          );
+                          console.log("temp usersid type: " + typeof(checkEmpty));
+                          console.log("temp usersid : " + checkEmpty);
                           setSelectUsersId(
-                            selectUsersId.filter((id) => id !== user.id)
+                            checkEmpty.length === 0 ? [] : checkEmpty 
                           );
                           setSelectedUsersDetails(
                             selectedUsersDetails.filter(
-                              (user) => user.user_id != user.id
+                              (userInDetails) =>
+                                userInDetails.user_id != user.id
                             )
                           );
+                          console.log("after removal");
+                          console.log("details: " + selectedUsersDetails);
+                          console.log("id:" + selectUsersId);
                         } else {
                           setSelectUsersId([...selectUsersId, user.id]);
                           setSelectedUsersDetails([
