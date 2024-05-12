@@ -12,29 +12,31 @@ const ModuleQuestionReadWrite = ({
     question_number,
   }) => {
   
-   const [questionNumber, setQuestionNumber] = useState(question_number + 2);
+  const [questionNumber, setQuestionNumber] = useState(question_number + 2);
   const [questions, setQuestions] = useState([
-    {
+    { 
+      qbank_id: quiz_id,
       question: "",
       question_number: questionNumber -2,
       options: [
-        { option_number: "A", option_value: "", is_correct: false },
-        { option_number: "B", option_value: "", is_correct: false },
-        { option_number: "C", option_value: "", is_correct: false },
-        { option_number: "D", option_value: "", is_correct: false },
+        { option_number: "A", option: "", is_correct: false },
+        { option_number: "B", option: "", is_correct: false },
+        { option_number: "C", option: "", is_correct: false },
+        { option_number: "D", option: "", is_correct: false },
       ],
       module_id: module_id,
       question_type: "MCQ"
     },
 
     {
+      qbank_id: quiz_id,
       question: "",
       question_number: questionNumber -1,
       options: [
-        { option_number: "A", option_value: "", is_correct: false },
-        { option_number: "B", option_value: "", is_correct: false },
-        { option_number: "C", option_value: "", is_correct: false },
-        { option_number: "D", option_value: "", is_correct: false },
+        { option_number: "A", option: "", is_correct: false },
+        { option_number: "B", option: "", is_correct: false },
+        { option_number: "C", option: "", is_correct: false },
+        { option_number: "D", option: "", is_correct: false },
       ],
       module_id: module_id,
       question_type: "MCQ"
@@ -46,13 +48,14 @@ const ModuleQuestionReadWrite = ({
     setQuestions([
       ...questions,
       {
+        qbank_id: quiz_id,
         question: "",
         question_number:questionNumber,
         options: [
-          { option_number: "A", option_value: "", is_correct: false },
-          { option_number: "B", option_value: "", is_correct: false },
-          { option_number: "C", option_value: "", is_correct: false },
-          { option_number: "D", option_value: "", is_correct: false },
+          { option_number: "A", option: "", is_correct: false },
+          { option_number: "B", option: "", is_correct: false },
+          { option_number: "C", option: "", is_correct: false },
+          { option_number: "D", option: "", is_correct: false },
         ],
         module_id: module_id,
         question_type: "MCQ"
@@ -65,7 +68,7 @@ const ModuleQuestionReadWrite = ({
       newQuestions[index].question = value;
     } else if (field === "options") {
       if ('optionValue' in value) {
-        newQuestions[index].options[value.optionIndex].option_value = value.optionValue;
+        newQuestions[index].options[value.optionIndex].option = value.optionValue;
       }
       if ('isCorrect' in value) {
         newQuestions[index].options[value.optionIndex].is_correct = value.isCorrect;
@@ -81,7 +84,7 @@ const ModuleQuestionReadWrite = ({
   }
   const checkIfEveryOptionHasValue = (questions) => {
     return questions.every(question => 
-      question.options.every(option => option.option_value.trim() !== "")
+      question.options.every(option => option.option.trim() !== "")
     )
   }
   const validateQuestions = () => {
@@ -106,11 +109,11 @@ const ModuleQuestionReadWrite = ({
     if (validateQuestions()) {
       setIsSaving(true);
       try {
-        const response = await axiosPrivate.post("/quiz/questi", questions);
-        toast.success("Questions saved successfully");
+        const response = await axiosPrivate.post("/quiz/question/", questions);
+        toast.success(response.data.message);
         setIsAccordionOpen(false);
       } catch (error) {
-        toast.error("Failed to save questions");
+        toast.error(error.response.data.message);
       } finally {
         setIsSaving(false);
         setIsAccordionOpen(false);
@@ -173,7 +176,7 @@ const ModuleQuestionReadWrite = ({
                     <input
                       className={`input input-bordered ${option.is_correct ? 'input-success' : ''} input-sm w-full max-w-xs`}
                       type="text"
-                      value={option.option_value}
+                      value={option.option}
                       onChange={(e) =>
                         updateQuestion(index, "options", {
                           optionIndex,
