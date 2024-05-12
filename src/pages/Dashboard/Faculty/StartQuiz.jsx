@@ -3,10 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { TiTick } from "react-icons/ti";
 
-import { axiosPrivate } from "../../../config/axiosInstance";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { containerVariants } from "./../../../helpers/animationHelpers/containerVariants";
 
 const StartQuiz = () => {
+  const axiosPrivate = useAxiosPrivate();
+  const [title, setTitle] = useState("");
   const [courseId, setCourseId] = useState("");
   const [courseList, setCourseList] = useState([]);
   const [qbankId, setQbankId] = useState("");
@@ -60,10 +62,12 @@ const StartQuiz = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axiosPrivate.get(
-          `/admin/student?course_id=${courseId}`
-        );
-        setStudentsList(response.data);
+        if (courseId) {
+          const response = await axiosPrivate.get(
+            `/admin/student?course_id=${courseId}`
+          );
+          setStudentsList(response.data);
+        }
       } catch (error) {
         console.error("Failed to fetch question banks:", error);
       }
@@ -96,6 +100,7 @@ const StartQuiz = () => {
     try {
       setLoading(true);
       const response = await axiosPrivate.post("/api/startQuiz", {
+        title: title,
         qbank_id: qbankId,
         course_id: courseId,
         student_ids: studentsIds,
@@ -132,7 +137,6 @@ const StartQuiz = () => {
           {/* select coures */}
           <select
             className="select select-bordered   w-[80%] md:w-[60%]"
-            value={courseId}
             onChange={(event) => setCourseId(event.target.value)}
           >
             <option disabled value="">
@@ -193,7 +197,12 @@ const StartQuiz = () => {
               </option>
             )}
           </select>
-          
+          <input
+            type="text"
+            placeholder="Type Quiz Title.."
+            onChange={(event) => setTitle(event.target.value)}
+            className="input input-bordered w-[80%] md:w-[60%] "
+          />
           <label className="form-control w-[80%] md:w-[60%] ">
             <div className="label">
               <span className="label-text">Start Time </span>
