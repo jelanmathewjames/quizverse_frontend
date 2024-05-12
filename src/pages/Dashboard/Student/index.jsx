@@ -1,16 +1,13 @@
 import DashboardLayout from '../../../components/DashboardLayout';
-import Profile from './Profile';
-import QuizResult from './QuizResult';
 import items from './studentNavItems.json';
 import TakeQuiz from './TakeQuiz';
-
+import ViewResults from './ViewResults';
 
 const StudentDashboard = () => {
   return (
     <DashboardLayout navitems={items} title="student">
       <TakeQuiz/>
-      <QuizResult />
-      <Profile />
+      <ViewResults/>
     </DashboardLayout>
   );
 };
