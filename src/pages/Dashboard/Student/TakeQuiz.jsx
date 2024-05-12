@@ -81,35 +81,39 @@ const TakeQuiz = () => {
               initial="hidden"
               animate="visible"
             >
-              <h2 className="text-xl font-bold text-gray-800">
-                {quiz.title}
-                <br />
-                
-                <p className="text-gray-500 text-sm">
-                  start date:
-                <span className="text-gray-500 text-sm">
-                  {new Date(quiz.start_time).toLocaleDateString()}
-                </span>
-                start time :
-                  {new Date(quiz.start_time).toLocaleTimeString()}
+              <div className="flex flex-col">
+                <h2 className="text-xl font-bold mb-3 ">
+                  {quiz.title}
+                </h2>
+                <p className="text-gray-500 text-sm mb-1">
+                <span className="badge badge-neutral">Start Date:{" "} </span>
+                  <span className="text-gray-500 text-sm">
+                    {new Date(quiz.start_time).toLocaleDateString()}
+                  </span>
+                  <span className="badge badge-neutral"> {" "}Start Time:{" "} </span>
+                  <span className="text-gray-500 text-sm">
+                    {new Date(quiz.start_time).toLocaleTimeString()}
+                  </span>
                 </p>
-
-                <p className="text-gray-500 text-sm">
-                  end date:
-                <span className="text-gray-500 text-sm">
-                  {new Date(quiz.end_time).toLocaleDateString()}
-                </span>
-                end time:
-                  {new Date(quiz.end_time).toLocaleTimeString()}
+                <p className="text-gray-500 text-sm mb-1">
+                <span className="badge badge-accent">End Date:{" "} </span>
+                  <span className="text-gray-500 text-sm">
+                    {new Date(quiz.end_time).toLocaleDateString()}
+                  </span>
+                  <span className="badge badge-accent">End Time:{" "} </span>
+                  <span className="text-gray-500 text-sm">
+                    {new Date(quiz.end_time).toLocaleTimeString()}
+                  </span>
                 </p>
-
-                <p className="text-gray-500 text-sm">{quiz.duration}</p>
-              </h2>
+                <p className="text-gray-500 text-sm">
+                <span className="badge">Duration:{" "} </span>
+ 
+                  {quiz.duration} min
+                </p>
+              </div>
               <button
                 className="btn btn-active btn-neutral"
-                onClick={() =>
-                  attendQuiz(quiz.id, quiz.qbank,quiz.duration)
-                }
+                onClick={() => attendQuiz(quiz.id, quiz.qbank, quiz.duration)}
               >
                 Attend
               </button>
@@ -117,28 +121,35 @@ const TakeQuiz = () => {
           ))
         ) : (
           <div className="text-center text-xl text-gray-500">
-            no quizzes available
+            No quizzes available
           </div>
         )}
       </div>
       {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-10 transition-all ease-in-out delay-75 ">
-          <div className="fixed  inset-0 flex items-center justify-center z-10">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-10 transition-all ease-in-out delay-75">
+          <div className="fixed inset-0 flex items-center justify-center z-10">
             <div
               ref={popupRef}
-              className=" z-20 m-10 p-5 w-80 lg:w-[600px]  rounded-lg shadow-2xl bg-base-300 ring-1 ring-black ring-opacity-5 overflow-y-auto transition-all duration-300 ease-in-out transform scale-100 "
+              className="z-20 m-10 p-5 w-80 lg:w-[600px] rounded-lg shadow-2xl bg-base-300 ring-1 ring-black ring-opacity-5 overflow-y-auto transition-all duration-300 ease-in-out transform scale-100"
               style={{ maxHeight: "80vh" }}
             >
-              {/* pop up box content */}
               <div className="flex flex-col">
                 <div>
                   <h2 className="text-2xl font-bold text-center text-gray-800">
                     {title}
                   </h2>
-                  <p className="text-center text-gray-500">{`duration : ${duration} min`}</p>
-                  <div className="flex">
-                    <span className="text-red-500"> <FaTriangleExclamation /></span>
-                    <p className="text-red-500">By starting this quiz, you agree not to use any unauthorized aids or attempt to cheat. Violations may result in immediate disqualification.</p>
+                  <p className="text-center text-gray-500">
+                    Duration: {duration} min
+                  </p>
+                  <div className="flex items-center gap-2 p-2">
+                    <span className="text-red-500">
+                      <FaTriangleExclamation />
+                    </span>
+                    <p className="text-red-500">
+                      By starting this quiz, you agree not to use any
+                      unauthorized aids or attempt to cheat. Violations may
+                      result in immediate disqualification.
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-4 p-4">
