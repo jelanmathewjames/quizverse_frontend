@@ -2,8 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-import { axiosPrivate } from "../../../config/axiosInstance";
-
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 const ModuleQuestionReadWrite = ({
     module_name,
     module_number,
@@ -11,7 +10,7 @@ const ModuleQuestionReadWrite = ({
     quiz_id,
     question_number,
   }) => {
-  
+  const axiosPrivate = useAxiosPrivate();
   const [questionNumber, setQuestionNumber] = useState(question_number + 2);
   const [questions, setQuestions] = useState([
     { 

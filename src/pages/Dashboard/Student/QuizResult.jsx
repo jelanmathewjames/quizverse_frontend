@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { axiosPrivate } from "../../../config/axiosInstance";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 
 
@@ -15,7 +15,8 @@ const QuizResult = ({quizId}) => {
     date
     total_questions
     */
-    const [quizResultData, setQuizResultData] = useState({
+    const axiosPrivate = useAxiosPrivate();
+     const [quizResultData, setQuizResultData] = useState({
         course_name: "sample course",
         quiz_name: "sample quiz name",
         faculty_name: "faculty name",

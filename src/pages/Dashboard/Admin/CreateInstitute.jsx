@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-import { axiosPrivate } from "../../../config/axiosInstance";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 const CreateInstitute = () => {
+  const axiosPrivate = useAxiosPrivate();
   const [educationSystem, setEducationSystem] = useState("");
   const [selectedEducation, setSelectedEducation] = useState("");
   const [institution, setInstitution] = useState("");

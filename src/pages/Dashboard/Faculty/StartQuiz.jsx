@@ -17,7 +17,7 @@ const StartQuiz = () => {
   const [studentsList, setStudentsList] = useState([]);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [duration, setDuration] = useState();
+  const [duration, setDuration] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const popupRef = useRef(null);
   const [loading, setLoading] = useState(false);
@@ -99,18 +99,18 @@ const StartQuiz = () => {
     }
     try {
       setLoading(true);
-      const response = await axiosPrivate.post("/api/startQuiz", {
+      const response = await axiosPrivate.post("/quiz/viva/", {
         title: title,
         qbank_id: qbankId,
         course_id: courseId,
-        student_ids: studentsIds,
+        student_id: studentsIds,
         duration: duration,
         start_time: startTime,
         end_time: endTime,
+        viva_or_quiz:"VIVA"
       });
       toast.success("Quiz started successfully");
-      toast.success(response.data.message);
-      console.log(response.data);
+ 
     } catch (error) {
       toast.error(error.response.data.message);
     } finally {
@@ -137,6 +137,7 @@ const StartQuiz = () => {
           {/* select coures */}
           <select
             className="select select-bordered   w-[80%] md:w-[60%]"
+            value={courseId}
             onChange={(event) => setCourseId(event.target.value)}
           >
             <option disabled value="">

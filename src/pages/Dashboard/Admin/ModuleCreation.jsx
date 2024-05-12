@@ -2,8 +2,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-import { axiosPrivate } from "../../../config/axiosInstance";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 const ModuleCreation = ({ course_id, module_num }) => {
+  const axiosPrivate = useAxiosPrivate();
   /*
    {
         "course_id": "string",

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-import { axiosPrivate } from "../../../config/axiosInstance";
-
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 const LinkDepartmentCourse = () => {
+  const axiosPrivate = useAxiosPrivate();
   const [departmentList, setDepartmentList] = useState([]);
   const [courseList, setCourseList] = useState([]);
   const [linkedDeps, setLinkedDeps] = useState([]);
