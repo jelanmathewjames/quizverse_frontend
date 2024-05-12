@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-import { axiosPrivate } from "../../../config/axiosInstance";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { containerVariants } from "./../../../helpers/animationHelpers/containerVariants";
 import ModuleQuestionReadWrite from "./ModuleQuestionReadWrite";
 
 const CreateQubank = () => {
+  const axiosPrivate = useAxiosPrivate();
   const [modules, setModules] = useState([]);
   const [quizId, setQuziId] = useState("");
   const [selectedCourseId, setSelectedCourseId] = useState();

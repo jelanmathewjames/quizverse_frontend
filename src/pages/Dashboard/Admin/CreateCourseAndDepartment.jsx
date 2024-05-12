@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-import { axiosPrivate } from "../../../config/axiosInstance";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import ModuleCreation from "./ModuleCreation";
 
 const CreateCourseAndDepartment = () => {
+  const axiosPrivate = useAxiosPrivate();
   const [departmentRead, setDepartmentRead] = useState("");
   const [departmenet, setDepartment] = useState("");
   const [departmentList, setDepartmentList] = useState("");

@@ -2,9 +2,10 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-import { axiosPrivate } from "../../../config/axiosInstance";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 const AssignCourses = () => {
+  const axiosPrivate = useAxiosPrivate();
   const [courseList, setCourseList] = useState([]);
   const [facultyList, setFacultyList] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState("");
