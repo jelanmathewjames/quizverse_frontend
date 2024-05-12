@@ -75,7 +75,7 @@ const ModuleCreation = ({ course_id, module_num }) => {
             <input
               type="text"
               placeholder="Type module name ..."
-              className="input w-full mt- max-w-xs"
+              className="input w-full input-bordered max-w-xs"
               value={module.module_name}
               onChange={(e) =>
                 setModule({ ...module, module_name: e.target.value })
@@ -83,7 +83,7 @@ const ModuleCreation = ({ course_id, module_num }) => {
             />
             <textarea
               placeholder="Type syllabus..."
-              className="input w-full mt-2 h-32 max-w-xs"
+              className="input w-full input-bordered  mt-2 h-32 max-w-xs"
               value={module.syllabus}
               onChange={(e) =>
                 setModule({ ...module, syllabus: e.target.value })
