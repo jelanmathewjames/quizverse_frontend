@@ -10,6 +10,7 @@ import InstitutionAdmin from "./pages/Dashboard/InstitutionAdmin"
 import StudentDashboard from "./pages/Dashboard/Student"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
+import QuizBoard from "./pages/quiz/QuizBoard"
 import Resetpassword from "./pages/Resetpassword"
 import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"
@@ -21,6 +22,8 @@ function App() {
   return (
     <Routes>
       <Route path="/unauthorized" element={<Unauthorized/>}></Route>
+    
+      
       <Route element={<PersistenLogin/>}>
         <Route path="/" element={<Home/>}> </Route>
         <Route element={<CheckAuth requireAuth={false} allowedRoles={[]} />}>
@@ -30,6 +33,7 @@ function App() {
         <Route element={<CheckAuth requireAuth={true} allowedRoles={[]} />}>
           <Route path="/dashboard" element={<Dashboard/>}> </Route>
           <Route path="/resetpassword" element={<Resetpassword/>}> </Route>
+          <Route path="/quiz/*" element={<QuizBoard/>}></Route>
         </Route>
         <Route element={<CheckAuth requireAuth={true} allowedRoles={[]} />}>
           <Route path="/faculty/*" element={<FacultyDashboard/>}> </Route>
@@ -37,7 +41,7 @@ function App() {
         <Route element={<CheckAuth requireAuth={true} allowedRoles={["Institution"]} />}>
           <Route path="/institute/*" element={<InstitutionAdmin/>}> </Route>
         </Route>
-        <Route element={<CheckAuth requireAuth={true} allowedRoles={["Student"]} />}>
+        <Route element={<CheckAuth requireAuth={true} allowedRoles={[]} />}>
           <Route path="/student/*" element={<StudentDashboard/>}> </Route>
         </Route>
         <Route element={<CheckAuth requireAuth={true} allowedRoles={["Admin"]} />}>
