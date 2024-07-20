@@ -56,17 +56,18 @@ const CreateInstitute = () => {
       toast.error("Please enter a value");
     }
   }
+  const fetchEducationSystem = async () => {
+    try {
+      const response = await axiosPrivate.get("/admin/education-system");
+      setEducationSystem(response.data);
+    } catch (error) {
+      setEducationSystem([]);
+    }
+  };
   useEffect(() => {
-    const fetchEducationSystem = async () => {
-      try {
-        const response = await axiosPrivate.get("/admin/education-system");
-        setEducationSystem(response.data);
-      } catch (error) {
-        setEducationSystem([]);
-      }
-    };
     fetchEducationSystem();
   },[]);
+
 
   const createEducationSystem = async () => {
     if (educationSystemRead != "") {
@@ -76,6 +77,7 @@ const CreateInstitute = () => {
         });
         setEducationSystemRead("");
         toast.success("Education system created successfully");
+        fetchEducationSystem();
       } catch (error) {
         toast.error(error.response.data.message);
       }
