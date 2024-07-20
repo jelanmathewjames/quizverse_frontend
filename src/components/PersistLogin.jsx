@@ -1,38 +1,32 @@
-import { useEffect,useState } from "react";
-import { Outlet } from "react-router-dom"
+import { useEffect, useState } from 'react'
+import { Outlet } from 'react-router-dom'
 
 import useAuth from '../hooks/useAuth'
-import Preloader from "./PreLoader";
+import Preloader from './PreLoader'
 
 const PersistLogin = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const { auth, persist, refresh } = useAuth();
-    
+    const [isLoading, setIsLoading] = useState(true)
+    const { auth, persist, refresh } = useAuth()
+
     useEffect(() => {
-        let isMounted = true;
+        let isMounted = true
         const verifyRefreshToken = async () => {
             try {
-                await refresh();
+                await refresh()
             } catch (error) {
-                console.log(error);
+                console.log(error)
             } finally {
-                isMounted && setIsLoading(false);
+                isMounted && setIsLoading(false)
             }
         }
 
-        !auth?.access_token ? verifyRefreshToken() : setIsLoading(false);
+        !auth?.access_token ? verifyRefreshToken() : setIsLoading(false)
         return () => {
-            isMounted = false;
+            isMounted = false
         }
     }, [isLoading])
 
-    return (
-        <>
-            {!persist
-                ? <Outlet />
-                : isLoading ? <Preloader/> : <Outlet />}
-        </>
-    )
+    return <>{!persist ? <Outlet /> : isLoading ? <Preloader /> : <Outlet />}</>
 }
 
-export default PersistLogin;
+export default PersistLogin

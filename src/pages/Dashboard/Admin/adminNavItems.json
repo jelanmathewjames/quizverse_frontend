@@ -1,14 +1,14 @@
 [
     {
-      "name": "Give Role"
+        "name": "Give Role"
     },
     {
-      "name":"Create Institution"
+        "name": "Create Institution"
     },
     {
-      "name":"Create Community"
+        "name": "Create Community"
     },
     {
-      "name":"Create Course & Department"
+        "name": "Create Course & Department"
     }
-  ]
+]

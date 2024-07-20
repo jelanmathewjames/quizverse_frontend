@@ -1,10 +1,5 @@
-
 const CreateCommunity = () => {
-    return (
-        <div>
-            logic for Create Community
-        </div>
-    );
+    return <div>logic for Create Community</div>
 }
 
-export default CreateCommunity;
+export default CreateCommunity

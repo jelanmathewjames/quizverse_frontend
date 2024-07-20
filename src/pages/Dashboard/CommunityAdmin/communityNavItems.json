@@ -1,20 +1,20 @@
 [
     {
-      "name": "Start quiz"
+        "name": "Start quiz"
     },
     {
-      "name": "Create quiz"
+        "name": "Create quiz"
     },
     {
-      "name":"Recent quiz"
+        "name": "Recent quiz"
     },
     {
-      "name":"Leaderboard"
+        "name": "Leaderboard"
     },
     {
-      "name":"Profile"
+        "name": "Profile"
     },
     {
-      "name":"Logout"
+        "name": "Logout"
     }
-  ]
+]

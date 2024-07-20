@@ -1,30 +1,30 @@
 {
     "moduleResults": [
-       {
-         "moduleName": "Arrays",
-         "moduleNumber": 1,
-         "marksObtained": 80
-       },
-       {
-         "moduleName": "Linked List",
-         "moduleNumber": 2,
-         "marksObtained": 50
-       },
-       {
-         "moduleName": "queues",
-         "moduleNumber": 3,
-         "marksObtained": 60
-       },
-       {
-         "moduleName": "Stacks",
-         "moduleNumber": 4,
-         "marksObtained": 70
-       },
-       {
-         "moduleName": "Hash tables",
-         "moduleNumber": 5,
-         "marksObtained": 92
-       }
+        {
+            "moduleName": "Arrays",
+            "moduleNumber": 1,
+            "marksObtained": 80
+        },
+        {
+            "moduleName": "Linked List",
+            "moduleNumber": 2,
+            "marksObtained": 50
+        },
+        {
+            "moduleName": "queues",
+            "moduleNumber": 3,
+            "marksObtained": 60
+        },
+        {
+            "moduleName": "Stacks",
+            "moduleNumber": 4,
+            "marksObtained": 70
+        },
+        {
+            "moduleName": "Hash tables",
+            "moduleNumber": 5,
+            "marksObtained": 92
+        }
     ],
     "totalMarksObtained": 180,
     "totalExamMarks": 300

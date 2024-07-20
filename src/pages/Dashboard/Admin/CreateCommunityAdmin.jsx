@@ -1,11 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const CreateCommunityAdmin = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return <div></div>
 }
 
-export default CreateCommunityAdmin;
+export default CreateCommunityAdmin

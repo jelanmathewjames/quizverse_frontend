@@ -1,72 +1,72 @@
 [
-        {
-            "module_id": 1,
-            "module_num": 1,
-            "module_name": "Module 1",
-            "syllabus": "Module 1 Syllabus",
-            "course_id": 1
-        },
-        {
-            "module_id": 2,
-            "module_num": 2,
-            "module_name": "Module 2",
-            "syllabus": "Module 2 Syllabus",
-            "course_id": 1
-        },
-        {
-            "module_id": 3,
-            "module_num": 3,
-            "module_name": "Module 3",
-            "syllabus": "Module 3 Syllabus",
-            "course_id": 1
-        },
-        {
-            "module_id": 4,
-            "module_num": 4,
-            "module_name": "Module 4",
-            "syllabus": "Module 4 Syllabus",
-            "course_id": 1
-        },
-        {
-            "module_id": 5,
-            "module_num": 5,
-            "module_name": "Module 5",
-            "syllabus": "Module 5 Syllabus",
-            "course_id": 1
-        },
-        {
-            "module_id": 6,
-            "module_num": 1,
-            "module_name": "Arrays",
-            "syllabus": "Module 1 Syllabus",
-            "course_id": 2
-        },
-        {
-            "module_id": 7,
-            "module_num": 2,
-            "module_name": "Linked Lists",
-            "syllabus": "Module 2 Syllabus",
-            "course_id": 2
-        },
-        {
-            "module_id": 8,
-            "module_num": 3,
-            "module_name": "Stacks",
-            "syllabus": "Module 3 Syllabus",
-            "course_id": 2
-        },
-        {
-            "module_id": 9,
-            "module_num": 4,
-            "module_name": "Queues",
-            "syllabus": "Module 4 Syllabus",
-            "course_id": 2
-        },
-        {
-            "module_id": 10,
-            "module_num": 5,
-            "module_name": "Hash Tables",
-            "syllabus": "Module 5 Syllabus",
-            "course_id": 2
-        }
+    {
+        "module_id": 1,
+        "module_num": 1,
+        "module_name": "Module 1",
+        "syllabus": "Module 1 Syllabus",
+        "course_id": 1
+    },
+    {
+        "module_id": 2,
+        "module_num": 2,
+        "module_name": "Module 2",
+        "syllabus": "Module 2 Syllabus",
+        "course_id": 1
+    },
+    {
+        "module_id": 3,
+        "module_num": 3,
+        "module_name": "Module 3",
+        "syllabus": "Module 3 Syllabus",
+        "course_id": 1
+    },
+    {
+        "module_id": 4,
+        "module_num": 4,
+        "module_name": "Module 4",
+        "syllabus": "Module 4 Syllabus",
+        "course_id": 1
+    },
+    {
+        "module_id": 5,
+        "module_num": 5,
+        "module_name": "Module 5",
+        "syllabus": "Module 5 Syllabus",
+        "course_id": 1
+    },
+    {
+        "module_id": 6,
+        "module_num": 1,
+        "module_name": "Arrays",
+        "syllabus": "Module 1 Syllabus",
+        "course_id": 2
+    },
+    {
+        "module_id": 7,
+        "module_num": 2,
+        "module_name": "Linked Lists",
+        "syllabus": "Module 2 Syllabus",
+        "course_id": 2
+    },
+    {
+        "module_id": 8,
+        "module_num": 3,
+        "module_name": "Stacks",
+        "syllabus": "Module 3 Syllabus",
+        "course_id": 2
+    },
+    {
+        "module_id": 9,
+        "module_num": 4,
+        "module_name": "Queues",
+        "syllabus": "Module 4 Syllabus",
+        "course_id": 2
+    },
+    {
+        "module_id": 10,
+        "module_num": 5,
+        "module_name": "Hash Tables",
+        "syllabus": "Module 5 Syllabus",
+        "course_id": 2
+    }
 ]
