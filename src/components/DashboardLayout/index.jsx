@@ -58,7 +58,7 @@ const DashboardLayout = ({ navitems, children, title }) => {
                 />
               </svg>
             </button>
-            <h1 className="text-2xl font-bold lg:hidden">QuizVerse</h1>
+            <h1 className="text-2xl font-bold gradient-text lg:hidden">QuizVerse</h1>
             
             <h1 className="text-2xl font-semibold ml-[300px] hidden lg:block">Hello  </h1>
             {/* <div className="m-3 ">{<MdWavingHand  size={30} />}  </div> */}
@@ -97,7 +97,7 @@ const DashboardLayout = ({ navitems, children, title }) => {
           ></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-100   text-base-content  border-base-300 ">
             {/* Sidebar content here */}
-            <h1 className="text-3xl p-4 pb-0  font-bold">QuizVerse </h1>
+            <h1 className="text-3xl p-4 pb-0 gradient-text font-bold">QuizVerse </h1>
             <span className=" m-3  mb-5 badge badge-ghost font-semibold ">{title}</span>
             {navitems.map((item, index) => (
               <li
