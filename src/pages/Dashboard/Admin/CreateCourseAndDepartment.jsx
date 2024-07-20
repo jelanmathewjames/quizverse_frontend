@@ -30,26 +30,27 @@ const CreateCourseAndDepartment = () => {
     fetchEducationSystem();
   }, []);
   // read departmentList data
+  const fetchDepartment = async () => {
+    try {
+      const response = await axiosPrivate.get("/admin/department");
+      setDepartmentList(response.data);
+    } catch (error) {
+      setDepartmentList([]);
+    }
+  };
   useEffect(() => {
-    const fetchDepartment = async () => {
-      try {
-        const response = await axiosPrivate.get("/admin/department");
-        setDepartmentList(response.data);
-      } catch (error) {
-        setDepartmentList([]);
-      }
-    };
     fetchDepartment();
   }, []);
 
   const createDepartment = async () => {
     if (departmentRead != "") {
       try {
-        const response = await axiosPrivate.post("/admin/department/", {
+          await axiosPrivate.post("/admin/department/", {
           name: departmentRead,
         });
         toast.success("Department created successfully");
         setDepartmentRead("");
+        fetchDepartment(); // reload department list
       } catch (error) {
         toast.error(error.response.data.message);
       }
@@ -132,7 +133,7 @@ const CreateCourseAndDepartment = () => {
             <input
               type="text"
               placeholder="Type Course Name ..."
-              className="input w-full mt- max-w-xs"
+              className="input input-bordered  w-full mt- max-w-xs"
               value={name}
               onChange={handleNameChange}
             />
@@ -140,7 +141,7 @@ const CreateCourseAndDepartment = () => {
             <input
               type="text"
               placeholder="Type Course Code."
-              className="input w-full mt- max-w-xs"
+              className="input input-bordered  w-full mt- max-w-xs"
               value={code}
               onChange={handleCodeChange}
             />
@@ -149,7 +150,7 @@ const CreateCourseAndDepartment = () => {
             <input
               type="number"
               placeholder="Type class or semester."
-              className="input w-full mt- max-w-xs"
+              className="input input-bordered  w-full mt- max-w-xs"
               value={class_or_semester}
               onChange={handleClassChange}
             />
@@ -204,7 +205,7 @@ const CreateCourseAndDepartment = () => {
             type="text"
             id="education-system"
             placeholder="Type department name ..."
-            className="input w-full mt- max-w-xs"
+            className="input input-bordered  w-full mt- max-w-xs"
             value={departmentRead}
             onChange={handleDepartmentReadChange}
             onKeyDown={handleKeyPress}

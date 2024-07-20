@@ -56,27 +56,28 @@ const CreateInstitute = () => {
       toast.error("Please enter a value");
     }
   }
+  const fetchEducationSystem = async () => {
+    try {
+      const response = await axiosPrivate.get("/admin/education-system");
+      setEducationSystem(response.data);
+    } catch (error) {
+      setEducationSystem([]);
+    }
+  };
   useEffect(() => {
-    const fetchEducationSystem = async () => {
-      try {
-        const response = await axiosPrivate.get("/admin/education-system");
-        setEducationSystem(response.data);
-      } catch (error) {
-        setEducationSystem([]);
-      }
-    };
     fetchEducationSystem();
   },[]);
+
 
   const createEducationSystem = async () => {
     if (educationSystemRead != "") {
       try {
-        const response = await axiosPrivate.post("/admin/education-system/", {
+          await axiosPrivate.post("/admin/education-system/", {
           name: educationSystemRead,
         });
-        console.log(response.data);
+        setEducationSystemRead("");
         toast.success("Education system created successfully");
-        setEducationSystem("");
+        fetchEducationSystem();
       } catch (error) {
         toast.error(error.response.data.message);
       }
@@ -91,14 +92,14 @@ const CreateInstitute = () => {
       <input
           type="text"
           placeholder="Type institution name ..."
-          className="input w-full mt- max-w-xs"
+          className="input input-bordered  w-full mt- max-w-xs"
           value={name}
           onChange={handleNameChange}
         />
           <input
           type="text"
           placeholder="Type place ..."
-          className="input w-full mt- max-w-xs"
+          className="input input-bordered   w-full mt- max-w-xs "
           value={place}
           onChange={handlePlaceChange}
         />
@@ -148,7 +149,7 @@ const CreateInstitute = () => {
           type="text"
           id="education-system"
           placeholder="Type Education system name ..."
-          className="input w-full mt- max-w-xs"
+          className="input input-bordered  w-full mt- max-w-xs"
           value={educationSystemRead}
           onChange={handleEducationChange}
           onKeyDown={handleKeyPress}
