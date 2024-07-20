@@ -71,12 +71,11 @@ const CreateInstitute = () => {
   const createEducationSystem = async () => {
     if (educationSystemRead != "") {
       try {
-        const response = await axiosPrivate.post("/admin/education-system/", {
+          await axiosPrivate.post("/admin/education-system/", {
           name: educationSystemRead,
         });
-        console.log(response.data);
+        setEducationSystemRead("");
         toast.success("Education system created successfully");
-        setEducationSystem("");
       } catch (error) {
         toast.error(error.response.data.message);
       }
