@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { GrFormNextLink } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 
 import DashboardLayout from "../components/DashboardLayout";
@@ -39,19 +40,22 @@ const Dashboard = () => {
                 <motion.button
                     key={i}
                     onClick={() => moveToDashBoard(role)}
-                    className="flex justify-center bg-base-200  hover:bg-base-300  font-bold py-2 px-4 rounded-lg shadow-xl transition-all duration-500 ease-in-out w-full"
-                    whileHover={{ scale: 0.9, opacity: 0.9 }}
+                    className="flex justify-between items-center bg-base-200 hover:bg-base-200 font-bold py-2 w-4/5 rounded-lg shadow-md transition-all duration-500 ease-in-out"
+                    whileHover={{ scale: 0.97, opacity: 1.0 }}
                 >
-                    {role}
+                    <span className="flex-1 text-center">{role}</span>
+                    <span className="mx-4">
+                    <GrFormNextLink size={25}/>
+                    </span>
                 </motion.button>
+
             )
             :
             <motion.button
-                className="flex justify-center bg-base-200  hover:bg-base-300  font-bold py-2 px-4 rounded-lg shadow-xl transition-all duration-500 ease-in-out w-full"
-                    whileHover={{ scale: 0.9, opacity: 0.9 }}
-                >
+               className="flex justify-center items-center bg-base-200 hover:bg-base-200 font-bold py-2 w-4/5 rounded-lg shadow-md transition-all duration-500 ease-in-out cursor-default"
+            >
                 user has no specific dashboards
-                </motion.button>
+            </motion.button>
 
          }
         </motion.div>
