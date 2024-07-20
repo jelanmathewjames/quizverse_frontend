@@ -1,12 +1,11 @@
 [
     {
-      "name": "Available dashboards"
+        "name": "Available dashboards"
     },
     {
-      "name": "Profile"
+        "name": "Profile"
     },
     {
-      "name": "Notification"
+        "name": "Notification"
     }
-
 ]

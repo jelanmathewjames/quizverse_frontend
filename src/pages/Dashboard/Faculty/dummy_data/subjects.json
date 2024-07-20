@@ -1,27 +1,27 @@
 [
-   {
-      "id": 1,
-      "name": "Computer Science",
-      "code": "CS105"
-   },
-   {
-      "id": 2,
-      "name": "Data Structures",
-      "code": "CS201"
-   },
-   {
-      "id": 3,
-      "name": "Algorithms",
-      "code": "CS301"
-   },
-   {
-      "id": 4,
-      "name": "Database Management",
-      "code": "CS401"
-   },
-   {
-      "id": 5,
-      "name": "Operating Systems",
-      "code": "CS501"
-   }
+    {
+        "id": 1,
+        "name": "Computer Science",
+        "code": "CS105"
+    },
+    {
+        "id": 2,
+        "name": "Data Structures",
+        "code": "CS201"
+    },
+    {
+        "id": 3,
+        "name": "Algorithms",
+        "code": "CS301"
+    },
+    {
+        "id": 4,
+        "name": "Database Management",
+        "code": "CS401"
+    },
+    {
+        "id": 5,
+        "name": "Operating Systems",
+        "code": "CS501"
+    }
 ]

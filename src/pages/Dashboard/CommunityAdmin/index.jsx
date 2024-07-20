@@ -1,13 +1,12 @@
-import DashboardLayout from '../../../components/DashboardLayout';
-import items from './communityNavItems.json';
+import DashboardLayout from '../../../components/DashboardLayout'
+import items from './communityNavItems.json'
 
 const CommunityDashboard = () => {
-  return (
-    <DashboardLayout navitems={items} title="CommunityAdmin">
-        <>
-        </>
-    </DashboardLayout>
-  );
-};
+    return (
+        <DashboardLayout navitems={items} title="CommunityAdmin">
+            <></>
+        </DashboardLayout>
+    )
+}
 
-export default CommunityDashboard;
+export default CommunityDashboard

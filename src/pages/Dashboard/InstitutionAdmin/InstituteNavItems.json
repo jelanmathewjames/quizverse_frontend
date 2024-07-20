@@ -1,11 +1,11 @@
 [
     {
-      "name": "Give Roles"
+        "name": "Give Roles"
     },
     {
-      "name": "Link Department & Course"
+        "name": "Link Department & Course"
     },
     {
-      "name": "AssignCourses"
+        "name": "AssignCourses"
     }
-  ]
+]

@@ -1,12 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const LogOut = () => {
-    return (
-        <div>
-            log out function
-                
-        </div>
-    );
+    return <div>log out function</div>
 }
 
-export default LogOut;
+export default LogOut

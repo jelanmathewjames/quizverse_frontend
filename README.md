@@ -9,7 +9,7 @@
 
 ```
 
-2. move into the directory 
+2. move into the directory
 
 ```
     cd quizverse_frontend
@@ -26,6 +26,7 @@
 ```
     npm run dev
 ```
+
 ### Adding plugins and dependencies
 
 ```
@@ -34,11 +35,12 @@ npm install @reduxjs/toolkit react-redux react-router-dom react-icons react-char
 
 ### Adding auto import sort
 
-1. Install the plugin 
+1. Install the plugin
 
 ```
     npm i eslint-plugin-simple-import-sort
 ```
+
 2. Add rule in `.eslintrc.cjs`
 
 ```

@@ -1,52 +1,52 @@
 [
     {
-       "id": 1,
-       "title": "Question Bank 1",
-       "subjectId": 1
+        "id": 1,
+        "title": "Question Bank 1",
+        "subjectId": 1
     },
     {
-       "id": 2,
-       "title": "Question Bank 2",
-       "subjectId": 1
+        "id": 2,
+        "title": "Question Bank 2",
+        "subjectId": 1
     },
     {
-       "id": 3,
-       "title": "Question Bank 3",
-       "subjectId": 2
+        "id": 3,
+        "title": "Question Bank 3",
+        "subjectId": 2
     },
     {
-       "id": 4,
-       "title": "Question Bank 4",
-       "subjectId": 2
+        "id": 4,
+        "title": "Question Bank 4",
+        "subjectId": 2
     },
     {
-       "id": 5,
-       "title": "Question Bank 5",
-       "subjectId": 3
+        "id": 5,
+        "title": "Question Bank 5",
+        "subjectId": 3
     },
     {
-       "id": 6,
-       "title": "Question Bank 6",
-       "subjectId": 3
+        "id": 6,
+        "title": "Question Bank 6",
+        "subjectId": 3
     },
     {
-       "id": 7,
-       "title": "Question Bank 7",
-       "subjectId": 4
+        "id": 7,
+        "title": "Question Bank 7",
+        "subjectId": 4
     },
     {
-       "id": 8,
-       "title": "Question Bank 8",
-       "subjectId": 4
+        "id": 8,
+        "title": "Question Bank 8",
+        "subjectId": 4
     },
     {
-       "id": 9,
-       "title": "Question Bank 9",
-       "subjectId": 5
+        "id": 9,
+        "title": "Question Bank 9",
+        "subjectId": 5
     },
     {
-       "id": 10,
-       "title": "Question Bank 10",
-       "subjectId": 5
+        "id": 10,
+        "title": "Question Bank 10",
+        "subjectId": 5
     }
 ]

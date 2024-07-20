@@ -1,11 +1,13 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 const NavItems = ({ className, items }) => (
     <ul className={className}>
         {items.map((item, index) => (
-            <li key={index}><a href={item.link}>{item.name}</a></li>
+            <li key={index}>
+                <a href={item.link}>{item.name}</a>
+            </li>
         ))}
     </ul>
-);
+)
 
 NavItems.propTypes = {
     className: PropTypes.string,
@@ -15,6 +17,6 @@ NavItems.propTypes = {
             name: PropTypes.string,
         })
     ),
-};
+}
 
-export default NavItems;
+export default NavItems
