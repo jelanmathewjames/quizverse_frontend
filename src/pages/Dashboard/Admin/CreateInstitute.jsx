@@ -92,14 +92,14 @@ const CreateInstitute = () => {
       <input
           type="text"
           placeholder="Type institution name ..."
-          className="input w-full mt- max-w-xs"
+          className="input input-bordered  w-full mt- max-w-xs"
           value={name}
           onChange={handleNameChange}
         />
           <input
           type="text"
           placeholder="Type place ..."
-          className="input w-full mt- max-w-xs"
+          className="input input-bordered   w-full mt- max-w-xs "
           value={place}
           onChange={handlePlaceChange}
         />
@@ -149,7 +149,7 @@ const CreateInstitute = () => {
           type="text"
           id="education-system"
           placeholder="Type Education system name ..."
-          className="input w-full mt- max-w-xs"
+          className="input input-bordered  w-full mt- max-w-xs"
           value={educationSystemRead}
           onChange={handleEducationChange}
           onKeyDown={handleKeyPress}

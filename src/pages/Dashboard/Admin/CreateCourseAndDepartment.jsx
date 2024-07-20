@@ -132,7 +132,7 @@ const CreateCourseAndDepartment = () => {
             <input
               type="text"
               placeholder="Type Course Name ..."
-              className="input w-full mt- max-w-xs"
+              className="input input-bordered  w-full mt- max-w-xs"
               value={name}
               onChange={handleNameChange}
             />
@@ -140,7 +140,7 @@ const CreateCourseAndDepartment = () => {
             <input
               type="text"
               placeholder="Type Course Code."
-              className="input w-full mt- max-w-xs"
+              className="input input-bordered  w-full mt- max-w-xs"
               value={code}
               onChange={handleCodeChange}
             />
@@ -149,7 +149,7 @@ const CreateCourseAndDepartment = () => {
             <input
               type="number"
               placeholder="Type class or semester."
-              className="input w-full mt- max-w-xs"
+              className="input input-bordered  w-full mt- max-w-xs"
               value={class_or_semester}
               onChange={handleClassChange}
             />
@@ -204,7 +204,7 @@ const CreateCourseAndDepartment = () => {
             type="text"
             id="education-system"
             placeholder="Type department name ..."
-            className="input w-full mt- max-w-xs"
+            className="input input-bordered  w-full mt- max-w-xs"
             value={departmentRead}
             onChange={handleDepartmentReadChange}
             onKeyDown={handleKeyPress}
