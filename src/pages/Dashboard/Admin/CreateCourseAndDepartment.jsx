@@ -30,26 +30,27 @@ const CreateCourseAndDepartment = () => {
     fetchEducationSystem();
   }, []);
   // read departmentList data
+  const fetchDepartment = async () => {
+    try {
+      const response = await axiosPrivate.get("/admin/department");
+      setDepartmentList(response.data);
+    } catch (error) {
+      setDepartmentList([]);
+    }
+  };
   useEffect(() => {
-    const fetchDepartment = async () => {
-      try {
-        const response = await axiosPrivate.get("/admin/department");
-        setDepartmentList(response.data);
-      } catch (error) {
-        setDepartmentList([]);
-      }
-    };
     fetchDepartment();
   }, []);
 
   const createDepartment = async () => {
     if (departmentRead != "") {
       try {
-        const response = await axiosPrivate.post("/admin/department/", {
+          await axiosPrivate.post("/admin/department/", {
           name: departmentRead,
         });
         toast.success("Department created successfully");
         setDepartmentRead("");
+        fetchDepartment(); // reload department list
       } catch (error) {
         toast.error(error.response.data.message);
       }
