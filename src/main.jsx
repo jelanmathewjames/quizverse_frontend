@@ -10,6 +10,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <AuthProvider>
             <App />
         </AuthProvider>
-        <Toaster />
+        <Toaster
+            toastOptions={{
+                style: {
+                    padding: '7px',
+                    border: '2px solid #E1C6E6',
+                    duration: 5000,
+                    zIndex: 9999,
+                },
+            }}
+        />
     </BrowserRouter>
 )
