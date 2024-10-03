@@ -10,13 +10,14 @@ QuizVerse is an interactive quiz platform designed to offer users a seamless exp
 4. [🤝 Contributing](#contributing)
 
 
-## 🚀 Features
+## Features
 - 🔐 User authentication and role-based access (Admin, Faculty, Student, Institution Admin)
 - 📝 Creation and management of quizzes
 - 📱 Responsive design for better accessibility
 - 📊 Dashboard for managing quizzes and tracking progress
 
-## 📸 Screenshots
+
+##  Screenshots 
 
 ### General Pages
 
@@ -71,7 +72,7 @@ QuizVerse is an interactive quiz platform designed to offer users a seamless exp
 ![Quiz Board](./screenshots/quizboard/quiz_board_responsive.png)
 
 
-##  ⚙️ Installation
+## Installation
 
 1. clone the project
 
