@@ -1,48 +1,73 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [QuizVerse 🎉](#quizverse-)
+  - [Features](#features)
+  - [Screenshots](#screenshots)
+    - [General Pages](#general-pages)
+      - [Home Page (User)](#home-page-user)
+      - [Sign Up (Responsive)](#sign-up-responsive)
+      - [Sign In (Responsive)](#sign-in-responsive)
+      - [Page Not Found](#page-not-found)
+      - [User Dashboard without role](#user-dashboard-without-role)
+    - [Users](#users)
+      - [Admin Dashboard](#admin-dashboard)
+      - [Faculty Dashboard](#faculty-dashboard)
+      - [Student Dashboard](#student-dashboard)
+    - [Quizboard](#quizboard)
+      - [Quiz Board](#quiz-board)
+  - [Installation](#installation)
+  - [Contributing](#contributing)
+    - [Essential setup steps for maintaining code quality while contributing to the project](#essential-setup-steps-for-maintaining-code-quality-while-contributing-to-the-project)
+    - [Adding auto prettier](#adding-auto-prettier)
+    - [1. Install Prettier in Your Project](#1-install-prettier-in-your-project)
+    - [2. Install Prettier Extension for VSCode](#2-install-prettier-extension-for-vscode)
+    - [3. Create Prettier Configuration File](#3-create-prettier-configuration-file)
+    - [4. Set Up VSCode Settings for Auto Formatting](#4-set-up-vscode-settings-for-auto-formatting)
+    - [5. Add Prettier Ignore File (Optional)](#5-add-prettier-ignore-file-optional)
+    - [6. Run Prettier Manually (Optional)](#6-run-prettier-manually-optional)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # QuizVerse 🎉
 
 QuizVerse is an interactive quiz platform designed to offer users a seamless experience for creating, participating in, and managing quizzes. The platform includes various user roles like admins, faculty, and students, each having specific functionalities. 🧑‍🏫🎓
 
-
-## 📑 Table of Contents
-1. [✨ Features](#features)
-2. [📸 Screenshots](#screenshots)
-3. [⚙️ Installation](#installation)
-4. [🤝 Contributing](#contributing)
-
-
 ## Features
-- 🔐 User authentication and role-based access (Admin, Faculty, Student, Institution Admin)
-- 📝 Creation and management of quizzes
-- 📱 Responsive design for better accessibility
-- 📊 Dashboard for managing quizzes and tracking progress
 
+-   🔐 User authentication and role-based access (Admin, Faculty, Student, Institution Admin)
+-   📝 Creation and management of quizzes
+-   📱 Responsive design for better accessibility
+-   📊 Dashboard for managing quizzes and tracking progress
 
-##  Screenshots 
+## Screenshots
 
 ### General Pages
 
 #### Home Page (User)
+
 ![Home Page](./screenshots/general_pages/home_page_user_without_persistant_login.png)
 
-
-
 #### Sign Up (Responsive)
+
 ![Sign Up Responsive](./screenshots/general_pages/sigg_up_responsive.png)
 
 #### Sign In (Responsive)
+
 ![Sign In Responsive](./screenshots/general_pages/sign_in.png)
 
-
-
 #### Page Not Found
+
 ![Page Not Found](./screenshots/general_pages/page_not_found.png)
 
-#### User Dashboard without role 
+#### User Dashboard without role
+
 ![User Dashboard](./screenshots/general_pages/user_dashboard_without_role.png)
 
-
 ### Users
+
 #### Admin Dashboard
+
 ![Admin Dashboard](./screenshots/users/admin/create_course_department.png)
 ![give role to user](./screenshots/users/admin/give_role.png)
 ![create institution](./screenshots/users/admin/create_institution.png)
@@ -51,26 +76,23 @@ QuizVerse is an interactive quiz platform designed to offer users a seamless exp
 
 ![give role](./screenshots/users/admin/give_role.png)
 
-
-
 #### Faculty Dashboard
+
 ![Faculty Dashboard](./screenshots/users/faculty/create_qbank.png)
 ![Faculty Dashboard](./screenshots/users/faculty/start_quiz.png)
 ![Faculty Dashboard](./screenshots/users/faculty/view_result.png)
 
-
 #### Student Dashboard
+
 ![Student Dashboard](./screenshots/users/student/take_quiz.png)
 ![Student Dashboard](./screenshots/users/student/view_result.png)
-
-
 
 ### Quizboard
 
 #### Quiz Board
+
 ![Quiz Board](./screenshots/quizboard/quiz_board.png)
 ![Quiz Board](./screenshots/quizboard/quiz_board_responsive.png)
-
 
 ## Installation
 
@@ -103,7 +125,6 @@ QuizVerse is an interactive quiz platform designed to offer users a seamless exp
 
 ### Essential setup steps for maintaining code quality while contributing to the project
 
-
 1. Install the plugin
 
 ```
@@ -133,13 +154,14 @@ QuizVerse is an interactive quiz platform designed to offer users a seamless exp
 ```
 
 ### Adding auto prettier
+
 To set up **Prettier** in your VSCode project and ensure that it automatically formats your code, follow these steps:
 
 ### 1. Install Prettier in Your Project
 
 You need to install Prettier as a development dependency for your project.
 
-- Open a terminal in your project root and run the following command:
+-   Open a terminal in your project root and run the following command:
 
 ```bash
 npm install --save-dev prettier
@@ -158,7 +180,8 @@ This will install Prettier locally for your project.
 
 In the root of your project, create a `.prettierrc` file to configure Prettier options. Here’s a basic example:
 
-- **.prettierrc** file:
+-   **.prettierrc** file:
+
 ```json
 {
     "trailingComma": "es5",
@@ -166,7 +189,6 @@ In the root of your project, create a `.prettierrc` file to configure Prettier o
     "semi": false,
     "singleQuote": true
 }
-
 ```
 
 You can customize the Prettier settings based on your preferences or team guidelines.
@@ -176,7 +198,8 @@ You can customize the Prettier settings based on your preferences or team guidel
 You need to tell VSCode to format your code using Prettier every time you save a file. Follow these steps:
 
 1. Open the **Settings** by going to:
-   - **File** > **Preferences** > **Settings** (or press `Ctrl + ,`).
+
+    - **File** > **Preferences** > **Settings** (or press `Ctrl + ,`).
 
 2. In the search bar, type `editor.formatOnSave`.
 
@@ -185,24 +208,24 @@ You need to tell VSCode to format your code using Prettier every time you save a
 4. Now you need to specify Prettier as your default formatter. In the settings search bar, type `default formatter`, and under **Editor: Default Formatter**, select **Prettier - Code Formatter**.
 
 5. You can also add these settings in your project-level VSCode settings file (in the `.vscode/settings.json` file):
-   ```json
-   {
-     "editor.formatOnSave": true,
-     "editor.defaultFormatter": "esbenp.prettier-vscode"
-   }
-   ```
+    ```json
+    {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+    ```
 
 ### 5. Add Prettier Ignore File (Optional)
 
 If there are files or directories you don’t want Prettier to format, you can create a `.prettierignore` file in the root of your project.
 
-- Example **.prettierignore** file:
-  ```plaintext
-  node_modules/
-  dist/
-  .git/
-  build/
-  ```
+-   Example **.prettierignore** file:
+    ```plaintext
+    node_modules/
+    dist/
+    .git/
+    build/
+    ```
 
 ### 6. Run Prettier Manually (Optional)
 
@@ -214,4 +237,4 @@ npx prettier --write .
 
 This will format all supported files in the project according to your Prettier configuration.
 
-### Oh, you made it through all that? Impressive! 🎉 QuizVerse will be launching soon—get ready! 🚀😎
+`Oh, you made it through all that? Impressive! 🎉 QuizVerse will be launching soon—get ready! 🚀😎
